@@ -1,14 +1,30 @@
+body {
+    margin: 0;
+}
 .headerLogoSettings {
-
+    display: flex;
+    justify-content: space-between;
+    background-color: lightgray;
+    padding: 14px;
+}
+.headerLogoSettings a {
+    align-self: center;
 }
 .headerLogoSettings a img {
- width: 20px;
+    width: 20px;
 }
 .headerNameEdit {
-
+    padding: 5px 20px 0px 20px;
+    position: relative;
+}
+.headerNameEdit h1 {
+    text-align: center;
 }
 .headerNameEdit button {
     all: unset;
+    position: absolute;
+    top: 50%;
+    right: 20px;
 }
 .headerNameEdit img {
     width: 6px;

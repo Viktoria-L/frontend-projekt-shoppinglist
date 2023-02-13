@@ -1,0 +1,15 @@
+.headerLogoSettings {
+
+}
+.headerLogoSettings a img {
+ width: 20px;
+}
+.headerNameEdit {
+
+}
+.headerNameEdit button {
+    all: unset;
+}
+.headerNameEdit img {
+    width: 6px;
+}

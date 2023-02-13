@@ -13,7 +13,9 @@ let body = document.querySelector("body");
 // Elements (bara för testing!)
 let getAllListsButton = document.createElement("button");
 getAllListsButton.innerText = "Get all lists";
-getAllListsButton.addEventListener("click", async () => getAllLists());
+getAllListsButton.addEventListener("click", async () =>
+  console.log(await getAllLists())
+);
 body.append(getAllListsButton);
 
 let filterButton = document.createElement("button");

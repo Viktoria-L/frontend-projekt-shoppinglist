@@ -31,9 +31,14 @@ Om du skall spara data så måste du göra ditt anrop med Content-Type "applicat
 ## Hämta alla listor
 
 ```js
+
 const res = await fetch(`https://nackademin-item-tracker.herokuapp.com/lists`);
 const data = await res.json();
-Sök efter listor
+```
+
+## Sök efter listor
+
+```js
 const query = listNameField.value;
 const res = await fetch(
   `https://nackademin-item-tracker.herokuapp.com/listsearch?listname=${query}`

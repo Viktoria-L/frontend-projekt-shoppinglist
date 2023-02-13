@@ -29,9 +29,7 @@ console.log(
 );
 
 // spara listorna i en variabel lists (ta bort stringify om man bara vill ha objekten)
-let lists;
-
-lists = await getAllLists();
+let lists = await getAllLists();
 lists = JSON.stringify(lists);
 
 console.log("All lists:\n" + lists);

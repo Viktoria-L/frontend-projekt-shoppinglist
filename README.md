@@ -124,3 +124,32 @@ const { list } = await res.json();
 ## Exempel-applikation
 
 En applikation som använder sig av detta API går att titta på här: https://github.com/JonasStattin/item-tracker-demo
+
+## Nya funktioner
+
+1. DELETE på en enskild lista
+2. GET en enskild lista med hjälp av ID:t
+3. GET alla listor där en viss key har ett visst värde, så tex:
+
+GET https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&value=Custom  
+
+> Med feature nr 3 blir det enklare för er att t.ex. ha ett custom-fält som innehåller namnet på eran app/grupp/etc, och hämta alla listor som just ni använder.
+
+## Använd ID, inte namn
+
+>> Förtydligande om en sak: När ni jobbar med item-listorna, är det alltså ID:t på listan som skall användas, och inte namnet. Förtydligande om detta i dokumentationen, samt errorhantering är på plats strax!
+
+## Schema
+
+(från Jonas)
+Gällande de kommande dagarna:
+
+13/2 (idag): Harald är på plats fram till lunch, jag är på plats till c:a 16
+15/2: Jag är på plats hela dagen, även tillgänglig på Discord
+17/2: Jag är på plats hela dagen, även tillgänglig på Discord
+
+20/2: Demodag, demo körs via Zoom, jag är tillgänglig för frågor på Discord efter att Demosarna är avklarade, schema kommer på Discord och E-mail under denna vecka
+22/2: Jag är på plats hela dagen, även tillgänglig på Discord
+
+27/2: Jag är på plats hela dagen, även tillgänglig på Discord
+1/3: Presentationsdag, schema kommer på Discord och E-mail under denna vecka

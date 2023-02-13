@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+}
+
+/* Header */
+.headerLogoSettings {
+    display: flex;
+    justify-content: space-between;
+    background-color: lightgray;
+    padding: 14px;
+}
+.headerLogoSettings a {
+    align-self: center;
+}
+.headerLogoSettings a img {
+    width: 20px;
+}

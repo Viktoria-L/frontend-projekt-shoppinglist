@@ -1,5 +1,7 @@
-export async function filterByName(name) {
-  let json = await getAllLists();
+import { listsFromFile as offlineList } from "./data.js";
+
+export async function filterByNameOffline(name) {
+  let json = await getAllListsOffline(offlineList);
   let ids = [];
   // borde vara custom thingy sen istället för listname
   let result = json.filter((list) => list.listname.includes(name) === true);
@@ -10,11 +12,11 @@ export async function filterByName(name) {
   return ids;
 }
 
-export async function getAllLists() {
-  const res = await fetch(
-    `https://nackademin-item-tracker.herokuapp.com/lists`
-  );
-  let data = await res.json();
+export async function getAllListsOffline(lists) {
+  // const res = await fetch("./data.js");
+  // let data = await res.json();
+  const res = lists;
+  let data = res;
 
   // ser finare ut men kanske inte nödvändigtvis bättre
   let stringifiedData = JSON.stringify(data);

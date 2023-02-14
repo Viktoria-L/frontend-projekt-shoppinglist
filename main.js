@@ -1,6 +1,6 @@
 // se ChatGPT förklarar ECMAscriptmoduler.md
 import { filterByName, getAllLists } from "./module-api.js";
-import { filterByNameOffline, getAllListsOffline } from "./module-api.js";
+import { filterByNameOffline, getAllListsOffline } from "./module-api-offline.js";
 import { displayLists } from "./module-display-lists.js";
 import { listsFromFile as offlineList } from "./data.js";
 

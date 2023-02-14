@@ -9,15 +9,28 @@
     <script src="main.js" defer></script>
 </head>
 <body>
-    <header></header>
-    <main>
-
-
+    <header>
+        <div class="headerLogoSettings">
+            <img src="assets/logo.svg" alt="">
+            <a href=""><img src="assets/gear.svg" alt=""></a>
+        </div>
+        <div class="headerNameEdit">
+            <h1>My shopping list</h1>
+            <button><img src="assets/three-dots-vertical.svg" alt=""></button>
+        </div>
+        <hr>
+    </header>
+    <main class="main">
         
-            <a href="currentlist.html">
-                <button id="newListBtn">+</button>
-            </a>
-           
+        <div id="current-content">
+            <div class="addAnItemDiv"></div>
+            <ul id="listItems"></ul>
+            <div class="saveToApi"></div>
+        </div>
+        <div class="buttonDiv">
+            <button id="newListBtn">+</button>
+        </div>
+
     </main>
     <footer></footer>
     

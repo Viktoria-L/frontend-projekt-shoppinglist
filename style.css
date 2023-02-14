@@ -4,6 +4,7 @@
     display: flex;
     position: relative;
 }
+/*Plus-knappen på startsidan*/
 #newListBtn {
     position: absolute;
     bottom: 0px;
@@ -37,14 +38,4 @@
 }
 .additembtn {
     border: none;
-}
-
-#listItems li {
-    list-style: none;
-}
-input {
-    border: none;
-}
-.iconspans {
-    padding: 5px;
 }

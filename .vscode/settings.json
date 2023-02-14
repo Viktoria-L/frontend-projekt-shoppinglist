@@ -1,3 +1,8 @@
 {
-  "conventionalCommits.scopes": ["CSS", "API", "DOM output"]
+  "conventionalCommits.scopes": [
+    "CSS",
+    "API",
+    "DOM output"
+  ],
+  "liveServer.settings.port": 5501
 }

@@ -18,6 +18,7 @@ console.log(lists);
 // skapar debugelement om debugMode är true
 createDebugElements(debugMode);
 
+const main = document.getElementById('main');
 const createListBtn = document.getElementById('newListBtn');
 const currentContentDiv = document.getElementById('current-content');
 
@@ -85,7 +86,6 @@ function editFunc() {
 }
 
 editFunc()
-
 
 
 

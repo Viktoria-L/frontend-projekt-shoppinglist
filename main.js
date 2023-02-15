@@ -19,7 +19,6 @@ if (debugMode) {
   console.log(lists);
 }
 
-
 // om man vill skriva ut
 // let stringifiedLists = JSON.stringify(lists);
 // console.log("All lists:\n" + stringifiedLists);

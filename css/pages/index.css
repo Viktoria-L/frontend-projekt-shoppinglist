@@ -67,6 +67,8 @@ ITEM STRUCTURE
 	padding: 0.5em 1em;
 
 	color: white;
+
+	position: relative;
 }
 
 .item-container ul {
@@ -101,4 +103,19 @@ ITEM STRUCTURE
 .item-container input[type="text"] {
 	padding: 0.25em;
 	margin-left: 0.5em;
+}
+
+
+/* TEST CSS */
+.remove {
+	all: unset;
+	position: absolute;
+	right: -8px;
+	top: -8px;
+	background-color: lightgray;
+	padding: 6px 8px 4px 8px;
+	border-radius: 16px;
+}
+.remove img {
+	width: 12px;
 }

@@ -20,7 +20,7 @@
         </div>
         <div class="headerNameEdit">
             <h1>My shopping list</h1>
-            <button><img src="assets/three-dots-vertical.svg" alt=""></button>
+            <button id="editBtn"><img src="assets/three-dots-vertical.svg" alt=""></button>
         </div>
         <hr>
     </header>
@@ -64,6 +64,7 @@
 					result += `
 					<div>
 						<h2 class="list-title">${listName}</h2>
+                        <button class="iconspans remove hidden"><img src="assets/trash.svg" alt=""></button>
 						<ul>
 					`
 					children.forEach((item) => {

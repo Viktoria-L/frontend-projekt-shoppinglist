@@ -23,6 +23,28 @@ console.log(lists);
 // skapar debugelement om debugMode är true
 createDebugElements(debugMode);
 
+//Funktion för edit-knapp 
+function editFunc() {
+  let editBtn = document.getElementById("editBtn");
+  editBtn.addEventListener("click", () => {
+    let remove = document.querySelectorAll(".remove");
+    if(!editBtn.classList.contains("on")){
+      editBtn.classList.add("on");
+      remove.forEach((element) => {
+        element.classList.remove("hidden");
+      });
+    }
+    else {
+      editBtn.classList.remove("on");
+      remove.forEach((element) => {
+        element.classList.add("hidden");
+      });
+    }
+  });
+}
+
+editFunc();
+
 const createListBtn = document.getElementById("newListBtn");
 const currentContentDiv = document.getElementById("current-content");
 
@@ -76,3 +98,5 @@ createListBtn.addEventListener("click", (event) => {
 });
 
 //Man lär behöva ha en loop då som loopar igenom alla Li-items och tar deras value och skickar in via POST?
+
+

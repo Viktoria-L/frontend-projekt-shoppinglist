@@ -16,7 +16,7 @@ let debugMode = false;
 // variabel med alla listor
 let lists;
 if (debugMode) {
-  lists = await getAllLists();
+  lists = await getListsUsingCustomField();
   console.log(lists);
 }
 

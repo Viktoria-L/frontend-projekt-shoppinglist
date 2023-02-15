@@ -49,8 +49,11 @@ editFunc();
 let listView = document.getElementById('list-output');
 
 listView.onclick = e => {
-  console.log(e.target.parentElement.parentElement.id);
-}
+    console.log(e.target.parentElement.parentElement.id);
+    let currentList = e.target.parentElement.parentElement;
+    deleteListUsingID(currentList.id);
+    currentList.remove();
+};
 
 const createListBtn = document.getElementById("newListBtn");
 const currentContentDiv = document.getElementById("current-content");

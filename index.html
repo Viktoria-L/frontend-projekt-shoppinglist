@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="style.css">
+
     <script src="main.js" type="module" defer></script>
 </head>
 <body>
@@ -19,88 +20,35 @@
             <a href=""><img src="assets/gear.svg" alt=""></a>
         </div>
         <div class="headerNameEdit">
-            <h1>My shopping list</h1>
+			<h1>My shopping list</h1>
             <button><img src="assets/three-dots-vertical.svg" alt=""></button>
         </div>
         <hr>
     </header>
 
     <main>
-		<content class="item-container" id="list-output"></content>
-		<p id="output-status">No lists available!</p>
-		<!--
-		ITEM STRUCTURE
-		<div>
-			<h2>List title</h2>
-			<ul>
-				<li>
-					<input type="checkbox">
-					<input type="text">
-				</li>
-				...
-			</ul>
+    	<p id="output-status" class="hidden">No lists available!</p>
+		<div id="window-list-edit">
+			<p>yo</p>
 		</div>
-		-->	
-    	<script type="text/javascript">
-    		const statusElement = document.querySelector('#output-status');
-    		const outputElement = document.querySelector('#list-output');
-    		let result = '';
-
-			function display(outputArray) {
-				console.log(outputArray);
-
-				const isEmpty = outputArray.length === 0
-				statusElement.style = 'display: ' + (isEmpty && 'block' || 'none')
-				statusElement.innerHTML = isEmpty && 'No lists available!' || ''
-
-				for (let i = 0; i < outputArray.length; i++) {
-					let list = outputArray[i];
-					let listName = list.listname || '???'
-					let children = list.itemList
-
-					let isNotArray = !Array.isArray(children)
-					if (isNotArray) {continue;}
-
-					result += `
-					<div>
-						<h2 class="list-title">${listName}</h2>
-						<ul>
-					`
-					children.forEach((item) => {
-						let checkedText = item.checked && 'checked' || ''
-						let itemName = item.title || '???'
-
-						result += `
-							<li>
-								<input type="checkbox" ${checkedText}>
-								<input type="text" value="${itemName}">
-							</li>
-						`
-					})
-
-					result += `
-						</ul>
-					</div>
-					`
-				}
-				console.log(outputElement);
-				outputElement.innerHTML = result;
-				//json = JSON.stringify(outputObj);
-				//output.innerHTML = json;
-			}
-
-			statusElement.innerHTML = 'Loading lists...';
-
-			const API_BASE = 'https://nackademin-item-tracker.herokuapp.com';
-			const API_FILTER = 'grupp_e';
-			// https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&value=Custom
-			fetch(API_BASE + '/findlistbykey?key=customfield&value=' + API_FILTER)
-				.then((response) => response.json())
-				.then(display);
-
-    	</script>
+		<div class="item-container hidden" id="window-list-content"></div>
     </main>
-    <footer></footer>
+	
+    <footer>
+    	<div>
+    		<h2>Choose the a color for your list:</h2>
+    		<ul class="footer-colors flex-center">
+    			<li></li>
+    			<li></li>
+    			<li></li>
+    			<li></li>
+    		</ul>
+    		<button id="list-items-save">Save</button>
+    	</div>
+    </footer>
+
+    <script type="text/javascript" src="js/variables.js"></script>
+    <script type="text/javascript" src="js/show-lists.js"></script>
     
 </body>
 </html>

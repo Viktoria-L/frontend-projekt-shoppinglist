@@ -2,6 +2,11 @@ body {
     margin: 0;
 }
 
+
+footer, main {
+	padding: 0 10em;
+}
+
 /* Header */
 .headerLogoSettings {
     display: flex;
@@ -20,6 +25,21 @@ body {
 .hidden {
     display: none;
 }
+
 .bold {
   font-weight: bold;
+}
+
+
+.flex-center {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+
+	margin-bottom: 2rem;
+	gap: 3rem;
+}
+.flex-center li {
+	flex-grow: 1;
+	text-align: center;
 }

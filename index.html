@@ -48,7 +48,6 @@
 
 			function display(outputArray) {
 				console.log(outputArray);
-
 				const isEmpty = outputArray.length === 0
 				statusElement.style = 'display: ' + (isEmpty && 'block' || 'none')
 				statusElement.innerHTML = isEmpty && 'No lists available!' || ''
@@ -62,7 +61,7 @@
 					if (isNotArray) {continue;}
 
 					result += `
-					<div>
+					<div id="${list._id}">
 						<h2 class="list-title">${listName}</h2>
                         <button class="iconspans remove hidden"><img src="assets/trash.svg" alt=""></button>
 						<ul>

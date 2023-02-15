@@ -1,16 +1,19 @@
+/* Header */
 .headerNameEdit {
+    display: flex;
+    justify-content: space-between;
     padding: 5px 20px 0px 20px;
-    position: relative;
 }
 .headerNameEdit h1 {
     text-align: center;
 }
 .headerNameEdit button {
     all: unset;
-    position: absolute;
-    top: 50%;
-    right: 20px;
 }
-.headerNameEdit button img {
+.headerNameEdit .backArrow {
+    width: 12px;
+}
+.headerNameEdit .edit {
     width: 6px;
 }
+

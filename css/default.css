@@ -15,3 +15,8 @@ body {
 .headerLogoSettings a img {
     width: 20px;
 }
+
+/* Hidden */
+.hidden {
+    display: none;
+}

@@ -7,7 +7,10 @@
     <title>Mina listor</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/pages/index.css">
-    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" type="module" defer></script>
 </head>
 <body>
     <header>
@@ -21,7 +24,18 @@
         </div>
         <hr>
     </header>
-    <main></main>
+    <main class="main">
+        
+        <div id="current-content">
+            <div class="addAnItemDiv"></div>
+            <ul id="listItems"></ul>
+            <div class="saveToApi"></div>
+        </div>
+        <div class="buttonDiv">
+            <button id="newListBtn">+</button>
+        </div>
+
+    </main>
     <footer></footer>
     
 </body>

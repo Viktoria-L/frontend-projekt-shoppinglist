@@ -47,8 +47,8 @@
 				console.log(outputArray);
 
 				const isEmpty = outputArray.length === 0
-				statusElement.style = 'display: ' + (isEmpty && 'none' || 'block')
-				statusElement.innerHTML = !isEmpty && 'No lists available!' || ''
+				statusElement.style = 'display: ' + (isEmpty && 'block' || 'none')
+				statusElement.innerHTML = isEmpty && 'No lists available!' || ''
 
 				for (let i = 0; i < outputArray.length; i++) {
 					let list = outputArray[i];
@@ -86,7 +86,7 @@
 				//output.innerHTML = json;
 			}
 
-			statusElement.innerHTML = 'Loading lists';
+			statusElement.innerHTML = 'Loading lists...';
 
 			const API_BASE = 'https://nackademin-item-tracker.herokuapp.com';
 			const API_FILTER = 'grupp_e';

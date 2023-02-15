@@ -1,5 +1,11 @@
 import { createDebugElements } from "./module-debug.js";
-import { filterByName, getAllLists } from "./module-api.js";
+import {
+  filterByName,
+  getAllLists,
+  getListUsingID,
+  deleteListUsingID,
+  getListsUsingCustomField,
+} from "./module-api.js";
 
 // inte använd men länken till början av APIt
 const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
@@ -8,8 +14,11 @@ const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
 let debugMode = true;
 
 // variabel med alla listor
-let lists = await getAllLists();
-console.log(lists);
+let lists;
+if (debugMode) {
+  lists = await getListsUsingCustomField();
+  console.log(lists);
+}
 
 // om man vill skriva ut
 // let stringifiedLists = JSON.stringify(lists);
@@ -18,8 +27,8 @@ console.log(lists);
 // skapar debugelement om debugMode är true
 createDebugElements(debugMode);
 
-const createListBtn = document.getElementById('newListBtn');
-const currentContentDiv = document.getElementById('current-content');
+const createListBtn = document.getElementById("newListBtn");
+const currentContentDiv = document.getElementById("current-content");
 
 const addAnItemDiv = document.querySelector(".addAnItemDiv");
 const headerName = document.querySelector(".headerNameEdit");
@@ -50,7 +59,7 @@ createListBtn.addEventListener("click", (event) => {
     //Eventlistener för "gå tillbaka-knappen"
   const backBtn = document.querySelector(".backBtn");
   backBtn.addEventListener("click", () => {
-       window.location.href = "index.html";
+    window.location.href = "index.html";
   });
 
 
@@ -91,7 +100,7 @@ createListBtn.addEventListener("click", (event) => {
     
     listItemInput.value = "";
     } else {
-        alert("Fyll i ett item för att lägga till")
+      alert("Fyll i ett item för att lägga till");
     }
   });
 

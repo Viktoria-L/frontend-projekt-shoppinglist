@@ -1,3 +1,31 @@
 .bold {
   font-weight: bold;
 }
+
+
+.preview-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  grid-auto-rows: 30vh;
+  grid-gap: 2rem;
+  /* grid-template-rows: repeat(5, 25%); */
+}
+
+.preview-container>div {
+  border: 2px inset rgb(168, 168, 168);
+  margin: 1rem;
+  padding: 10px;
+}
+
+.preview-object {
+  background-color: rgb(241, 239, 239);
+  min-width: 154px;
+
+  border-radius: 6px;
+  background: #e0e0e0;
+  box-shadow: 16px 16px 32px #bebebe,
+    -16px -16px 32px #ffffff;
+}
+
+.selected-item {}

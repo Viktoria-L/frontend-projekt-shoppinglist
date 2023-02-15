@@ -2,25 +2,17 @@
 
 ## API routes
 
-Metod	Route	Beskrivning
-
-GET	/lists	Hämta alla listor
-
-GET	/lists/:id	Hämta lista med ett visst ID
-
-GET	/listsearch?listname=namn	Hämta alla listor som innehåller "namn" i listname
-
-GET	/findlistbykey?key=k&value=v	Hämta alla listor där "key" innehåller "value"
-
-POST	/lists	Skapa en ny lista
-
-DELETE	/lists/:id	Ta bort en lista
-
-POST	/lists/:id/items	Skapa ett nytt list item i lista med "id"
-
-DELETE	/lists/:listid/items/:itemid	Ta bort list item med "itemid" i lista med "listid"
-
-PUT	/lists/:listid/items/:itemid	Uppdatera item med "itemid" i lista med "listid"
+| Metod |	Route |	Beskrivning |
+| ----- | ----- | ----------- |
+| GET |	/lists |	Hämta alla listor |
+| GET |	/lists/:id |	Hämta lista med ett visst ID |
+| GET |	/listsearch?listname=namn |	Hämta alla listor som innehåller "namn" i listname |
+| GET	| /findlistbykey?key=k&value=v |	Hämta alla listor där "key" innehåller "value" |
+| POST |	/lists |	Skapa en ny lista |
+| DELETE |	/lists/:id |	Ta bort en lista |
+| POST |	/lists/:id/items |	Skapa ett nytt list item i lista med "id" |
+| DELETE |	/lists/:listid/items/:itemid |	Ta bort list item med "itemid" i lista med "listid" |
+| PUT |	/lists/:listid/items/:itemid |	Uppdatera item med "itemid" i lista med "listid" |
 
 ## Fetch requests
 
@@ -142,19 +134,23 @@ GET https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&
 
 ## Använd ID, inte namn
 
->> Förtydligande om en sak: När ni jobbar med item-listorna, är det alltså ID:t på listan som skall användas, och inte namnet. Förtydligande om detta i dokumentationen, samt errorhantering är på plats strax!
+> Förtydligande om en sak: När ni jobbar med item-listorna, är det alltså ID:t på listan som skall användas, och inte namnet. Förtydligande om detta i dokumentationen, samt errorhantering är på plats strax!
 
 ## Schema
 
 (från Jonas)
 Gällande de kommande dagarna:
 
-13/2 (idag): Harald är på plats fram till lunch, jag är på plats till c:a 16
-15/2: Jag är på plats hela dagen, även tillgänglig på Discord
-17/2: Jag är på plats hela dagen, även tillgänglig på Discord
+- 13/2 (idag): Harald är på plats fram till lunch, jag är på plats till c:a 16
 
-20/2: Demodag, demo körs via Zoom, jag är tillgänglig för frågor på Discord efter att Demosarna är avklarade, schema kommer på Discord och E-mail under denna vecka
-22/2: Jag är på plats hela dagen, även tillgänglig på Discord
+- 15/2: Jag är på plats hela dagen, även tillgänglig på Discord
 
-27/2: Jag är på plats hela dagen, även tillgänglig på Discord
-1/3: Presentationsdag, schema kommer på Discord och E-mail under denna vecka
+- 17/2: Jag är på plats hela dagen, även tillgänglig på Discord
+
+- **20/2**: Demodag, demo körs via Zoom, jag är tillgänglig för frågor på Discord efter att Demosarna är avklarade, schema kommer på Discord och E-mail under denna vecka
+
+- 22/2: Jag är på plats hela dagen, även tillgänglig på Discord
+
+- 27/2: Jag är på plats hela dagen, även tillgänglig på Discord
+
+- **1/3**: Presentationsdag, schema kommer på Discord och E-mail under denna vecka

@@ -24,6 +24,7 @@
     </header>
     <main>
 		<content class="item-container" id="list-output"></content>
+		<p id="output-status">No lists available!</p>
 		<!--
 		ITEM STRUCTURE
 		<div>
@@ -38,11 +39,16 @@
 		</div>
 		-->	
     	<script type="text/javascript">
+    		const statusElement = document.querySelector('#output-status');
     		const outputElement = document.querySelector('#list-output');
     		let result = '';
 
 			function display(outputArray) {
 				console.log(outputArray);
+
+				const isEmpty = outputArray.length === 0
+				statusElement.style = 'display: ' + (isEmpty && 'none' || 'block')
+				statusElement.innerHTML = !isEmpty && 'No lists available!' || ''
 
 				for (let i = 0; i < outputArray.length; i++) {
 					let list = outputArray[i];
@@ -80,7 +86,12 @@
 				//output.innerHTML = json;
 			}
 
-			fetch('https://nackademin-item-tracker.herokuapp.com/lists')
+			statusElement.innerHTML = 'Loading lists';
+
+			const API_BASE = 'https://nackademin-item-tracker.herokuapp.com';
+			const API_FILTER = 'grupp_e';
+			// https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&value=Custom
+			fetch(API_BASE + '/findlistbykey?key=' + API_FILTER)
 				.then((response) => response.json())
 				.then(display);
 

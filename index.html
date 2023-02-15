@@ -27,7 +27,9 @@
 
     <main>
 		<content class="item-container" id="list-output"></content>
-		<p id="output-status">No lists available!</p>
+        <div id="output-status" class="call-to-action">
+            <h3>Du verkar inte ha några listor att visa.<br> Skapa en genom att klicka på plus-symbolen</h3>
+        </div>
 		<!--
 		ITEM STRUCTURE
 		<div>
@@ -51,7 +53,7 @@
 				console.log(outputArray);
 				const isEmpty = outputArray.length === 0
 				statusElement.style = 'display: ' + (isEmpty && 'block' || 'none')
-				statusElement.innerHTML = isEmpty && 'No lists available!' || ''
+				// statusElement.innerHTML = isEmpty && 'No lists available!' || ''
 
 				for (let i = 0; i < outputArray.length; i++) {
 					let list = outputArray[i];
@@ -90,7 +92,7 @@
 				//output.innerHTML = json;
 			}
 
-			statusElement.innerHTML = 'Loading lists...';
+			// statusElement.innerHTML = 'Loading lists...';
 
 			const API_BASE = 'https://nackademin-item-tracker.herokuapp.com';
 			const API_FILTER = 'grupp_e';

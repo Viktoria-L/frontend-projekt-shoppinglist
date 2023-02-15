@@ -4,6 +4,7 @@ import {
   getAllLists,
   getListUsingID,
   deleteListUsingID,
+  getListsUsingCustomField,
 } from "./module-api.js";
 
 // inte använd men länken till början av APIt
@@ -13,8 +14,11 @@ const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
 let debugMode = false;
 
 // variabel med alla listor
-let lists = await getAllLists();
-console.log(lists);
+let lists;
+if (debugMode) {
+  lists = await getListsUsingCustomField();
+  console.log(lists);
+}
 
 // om man vill skriva ut
 // let stringifiedLists = JSON.stringify(lists);

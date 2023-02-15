@@ -39,6 +39,17 @@ export async function getListUsingID(id) {
   return data;
 }
 
+export async function getListsUsingCustomField() {
+  const res = await fetch(
+    `https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&value=grupp_e`
+  );
+  let data = await res.json();
+
+  let stringifiedData = JSON.stringify(data);
+
+  return data;
+}
+
 // funktion som tar bort lista med ett speciellt ID
 // ta inte bort fel 😄
 export async function deleteListUsingID(id) {

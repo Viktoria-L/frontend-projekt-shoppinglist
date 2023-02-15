@@ -23,8 +23,9 @@ createListBtn.addEventListener("click", (event) => {
   headerName.innerHTML = `
     <span class="backBtn"><img src="assets/back-arrow.svg" alt=""></span>
     <input type="text" class="nameinput" placeholder="New List" onfocus="this.placeholder=''"></input>
-    <button><img src="assets/three-dots-vertical.svg" alt=""></button>
+    <button id="editBtn"><img src="assets/three-dots-vertical.svg" alt=""></button>
     `;
+
     //Eventlistener för "gå tillbaka-knappen"
   const backBtn = document.querySelector(".backBtn");
   backBtn.addEventListener("click", () => {
@@ -63,6 +64,18 @@ createListBtn.addEventListener("click", (event) => {
 });
 
 //Man lär behöva ha en loop då som loopar igenom alla Li-items och tar deras value och skickar in via POST?
+
+
+//Funktion för edit-knapp 
+function editFunc() {
+  const editBtn = document.getElementById('editBtn')
+  editBtn.addEventListener("click", () => {
+    
+    console.log("edit knapp")
+  })
+}
+
+editFunc()
 
 
 

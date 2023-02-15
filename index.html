@@ -20,7 +20,7 @@
         </div>
         <div class="headerNameEdit">
             <h1>My shopping list</h1>
-            <button><img src="assets/three-dots-vertical.svg" alt=""></button>
+            <button id="editBtn"><img src="assets/three-dots-vertical.svg" alt=""></button>
         </div>
         <hr>
     </header>
@@ -42,6 +42,7 @@
 		ITEM STRUCTURE
 		<div>
 			<h2>List title</h2>
+            <button>Delete list</button>
 			<ul>
 				<li>
 					<input type="checkbox">
@@ -58,7 +59,6 @@
 
 			function display(outputArray) {
 				console.log(outputArray);
-
 				const isEmpty = outputArray.length === 0
 				statusElement.style = 'display: ' + (isEmpty && 'block' || 'none')
 				// statusElement.innerHTML = isEmpty && 'No lists available!' || ''
@@ -72,8 +72,9 @@
 					if (isNotArray) {continue;}
 
 					result += `
-					<div>
+					<div id="${list._id}">
 						<h2 class="list-title">${listName}</h2>
+                        <button class="iconspans remove hidden"><img src="assets/trash.svg" alt=""></button>
 						<ul>
 					`
 					children.forEach((item) => {

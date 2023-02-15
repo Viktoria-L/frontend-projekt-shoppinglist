@@ -27,6 +27,38 @@ if (debugMode) {
 // skapar debugelement om debugMode är true
 createDebugElements(debugMode);
 
+//Funktion för edit-knapp 
+function editFunc() {
+  let editBtn = document.getElementById("editBtn");
+  editBtn.addEventListener("click", () => {
+    let remove = document.querySelectorAll(".remove");
+    if(!editBtn.classList.contains("on")){
+      editBtn.classList.add("on");
+      remove.forEach((element) => {
+        element.classList.remove("hidden");
+      });
+    }
+    else {
+      editBtn.classList.remove("on");
+      remove.forEach((element) => {
+        element.classList.add("hidden");
+      });
+    }
+  });
+}
+
+editFunc();
+
+//Hitta id för listan som ska tas bort
+let listView = document.getElementById('list-output');
+
+listView.onclick = e => {
+    console.log(e.target.parentElement.parentElement.id);
+    let currentList = e.target.parentElement.parentElement;
+    deleteListUsingID(currentList.id);
+    currentList.remove();
+};
+
 const createListBtn = document.getElementById("newListBtn");
 const currentContentDiv = document.getElementById("current-content");
 

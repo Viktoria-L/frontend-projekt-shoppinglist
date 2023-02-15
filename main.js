@@ -56,7 +56,7 @@ listView.onclick = e => {
     console.log(e.target.parentElement.parentElement.id);
     let currentList = e.target.parentElement.parentElement;
     deleteListUsingID(currentList.id);
-    currentList.remove();
+    // currentList.remove();
 };
 
 const createListBtn = document.getElementById("newListBtn");

@@ -19,10 +19,12 @@ const saveBtnDiv = document.querySelector(".saveToApi");
 
 //Plus-knappen på index-sidan som ska ta en till skapa lista-vyn.
 createListBtn.addEventListener("click", (event) => {
+  createListBtn.style = `display: none`;
+  
   //Bygger listans namninput-fält med fältet för namnet i headern
   headerName.innerHTML = `
     <span class="backBtn"><img src="assets/back-arrow.svg" alt=""></span>
-    <input type="text" class="nameinput" placeholder="New List" onfocus="this.placeholder=''"></input>
+    <input type="text" class="nameinput" value="New List"></input>
     <button><img src="assets/three-dots-vertical.svg" alt=""></button>
     `;
     //Eventlistener för "gå tillbaka-knappen"

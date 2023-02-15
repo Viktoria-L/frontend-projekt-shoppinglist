@@ -45,6 +45,13 @@ function editFunc() {
 
 editFunc();
 
+//Hitta id för listan som ska tas bort
+let listView = document.getElementById('list-output');
+
+listView.onclick = e => {
+  console.log(e.target.parentElement.parentElement.id);
+}
+
 const createListBtn = document.getElementById("newListBtn");
 const currentContentDiv = document.getElementById("current-content");
 

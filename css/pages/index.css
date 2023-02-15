@@ -114,7 +114,60 @@ ITEM STRUCTURE
 }
 
 
-/* TEST CSS */
+.main {
+    height: 80vh;
+    width: 440px;
+    display: flex;
+    position: relative;
+}
+/*Plus-knappen på startsidan*/
+#newListBtn {
+    position: absolute;
+    bottom: 0px;
+   left: 50%;
+   font-size: larger;
+   
+}
+
+/* Styling för inputfältet i headern */
+.nameinput {
+    border: none;
+    font-size: 28px;
+    margin-left: 5px;
+    
+}
+.listiteminput {
+    border: none;
+    border-bottom: 2px solid black;
+    margin: 5px 5px 0 20px;  
+    
+}
+.saveBtn {
+    margin: 5px 0px 0 20px;
+    background: rgb(138, 216, 138);
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+}
+.backBtn {
+    padding: 5px;
+}
+.additembtn {
+    border: none;
+}
+
+#listItems li {
+    list-style: none;
+}
+input {
+    border: none;
+}
+.iconspans {
+    padding: 5px;
+}
+/*------------------------------------*/
+
+/* TRASHCAN CSS */
 .remove {
 	all: unset;
 	position: absolute;

@@ -11,7 +11,7 @@ import {
 const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
 
 // Globala variabler (for now)
-let debugMode = true;
+let debugMode = false;
 
 // variabel med alla listor
 let lists;
@@ -66,6 +66,7 @@ const addAnItemDiv = document.querySelector(".addAnItemDiv");
 const headerName = document.querySelector(".headerNameEdit");
 const listItemsUl = document.querySelector("#listItems");
 const saveBtnDiv = document.querySelector(".saveToApi");
+const outputElement = document.querySelector('#list-output');
 
 let currentList = '';
 let amountOfItems = -1;
@@ -79,6 +80,7 @@ let listObject = {
 
 //Plus-knappen på index-sidan som ska ta en till skapa lista-vyn.
 createListBtn.addEventListener("click", (event) => {
+outputElement.innerHTML = '';
   createListBtn.style = `display: none`;
   
   //Bygger listans namninput-fält med fältet för namnet i headern

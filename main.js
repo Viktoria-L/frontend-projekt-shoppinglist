@@ -4,6 +4,7 @@ import {
   getAllLists,
   getListUsingID,
   deleteListUsingID,
+  getListsUsingCustomField,
 } from "./module-api.js";
 
 // inte använd men länken till början av APIt

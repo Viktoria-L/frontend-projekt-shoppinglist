@@ -19,6 +19,19 @@ if (debugMode) {
   console.log(lists);
 }
 
+// CTA- Funktion
+let callToAction = () => {
+    let outputStatus = document.querySelector("#output-status");
+    console.log(outputStatus)
+    if (outputStatus.innerHTML === "No lists available!") {
+        let div = document.createElement("div");
+        div.className = "call-to-action";
+        outputStatus.append(div);
+        div.innerHTML = "<h3>Du verkar inte ha några listor att visa.<br> Skapa en genom att klicka på plus-symbolen</h3>";
+    };
+}
+callToAction();
+
 // om man vill skriva ut
 // let stringifiedLists = JSON.stringify(lists);
 // console.log("All lists:\n" + stringifiedLists);

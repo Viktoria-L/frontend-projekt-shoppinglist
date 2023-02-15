@@ -76,6 +76,7 @@ createListBtn.addEventListener("click", (event) => {
 
   saveToAPIBtn.addEventListener("click", ()=>{
     saveList();
+    saveItems();
         
   })
 });
@@ -101,18 +102,17 @@ console.log(list)
 currentList = list._id;
 console.log(currentList);
 
-itemListArray.forEach((object)=>{
-  saveItems(object);
-})
 
 }
 
-async function saveItems(listid){
-  
-const title = itemListArray.title;
-const checked = itemListArray.checked;
+async function saveItems(){
+ 
+itemListArray.forEach(async (object)=>{  
+ 
+const title = object.title;
+const checked = object.checked;
 const res = await fetch(
-  `https://nackademin-item-tracker.herokuapp.com/lists/${listid}/items`,
+  `https://nackademin-item-tracker.herokuapp.com/lists/${currentList}/items`,
   {
     method: "POST",
     headers: {
@@ -124,8 +124,10 @@ const res = await fetch(
     }),
   }
 );
+
 const { list } = await res.json();
 console.log(list);
+})
 }
 
 

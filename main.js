@@ -4,6 +4,7 @@ import {
   getAllLists,
   getListUsingID,
   deleteListUsingID,
+  getListsUsingCustomField,
 } from "./module-api.js";
 
 // inte använd men länken till början av APIt
@@ -15,7 +16,7 @@ let debugMode = false;
 // variabel med alla listor
 let lists;
 if (debugMode) {
-  lists = await getAllLists();
+  lists = await getListsUsingCustomField();
   console.log(lists);
 }
 

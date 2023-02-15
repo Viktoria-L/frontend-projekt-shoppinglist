@@ -78,5 +78,18 @@ createListBtn.addEventListener("click", (event) => {
 //Man lär behöva ha en loop då som loopar igenom alla Li-items och tar deras value och skickar in via POST?
 
 
+//Funktion för edit-knapp 
+function editFunc() {
+  const editBtn = document.getElementById('editBtn')
+  editBtn.addEventListener("click", () => {
+    if(){
+      remove.classList.remove("hidden");
+      checkbox.classList.add("hidden");
+    }
+  })
+}
+
+editFunc()
+
 
 

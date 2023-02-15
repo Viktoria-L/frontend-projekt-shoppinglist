@@ -21,13 +21,16 @@ if (debugMode) {
 
 // CTA- Funktion
 let callToAction = () => {
-    let outputStatus = document.querySelector("#output-status");
+    let outputStatus = document.querySelector
+    ("#output-status");
     console.log(outputStatus)
     if (outputStatus.innerHTML === "No lists available!") {
         let div = document.createElement("div");
         div.className = "call-to-action";
         outputStatus.append(div);
         div.innerHTML = "<h3>Du verkar inte ha några listor att visa.<br> Skapa en genom att klicka på plus-symbolen</h3>";
+        outputStatus.className = "hidden";
+        console.log(div);
     };
 }
 callToAction();

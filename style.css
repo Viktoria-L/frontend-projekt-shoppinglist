@@ -24,7 +24,7 @@
     border: none;
     border-bottom: 2px solid black;
     margin: 5px 5px 0 20px;  
-    
+
 }
 .saveBtn {
     margin: 5px 0px 0 20px;
@@ -38,4 +38,14 @@
 }
 .additembtn {
     border: none;
+}
+
+#listItems li {
+    list-style: none;
+}
+input {
+    border: none;
+}
+.iconspans {
+    padding: 5px;
 }

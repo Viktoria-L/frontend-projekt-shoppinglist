@@ -122,11 +122,11 @@ ITEM STRUCTURE
 }
 /*Plus-knappen på startsidan*/
 #newListBtn {
-    position: absolute;
-    bottom: 0px;
-   left: 50%;
-   font-size: larger;
-   
+		position: sticky;
+		bottom: 1rem;
+		left: 50%;
+		transform: translateX(-50%);
+		font-size: larger;
 }
 
 /* Styling för inputfältet i headern */

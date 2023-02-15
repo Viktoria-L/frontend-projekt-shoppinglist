@@ -1,18 +1,4 @@
-body {
-    margin: 0;
-}
-.headerLogoSettings {
-    display: flex;
-    justify-content: space-between;
-    background-color: lightgray;
-    padding: 14px;
-}
-.headerLogoSettings a {
-    align-self: center;
-}
-.headerLogoSettings a img {
-    width: 20px;
-}
+/* Header */
 .headerNameEdit {
     padding: 5px 20px 0px 20px;
     position: relative;

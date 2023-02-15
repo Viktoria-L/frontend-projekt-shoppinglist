@@ -1,10 +1,19 @@
 import { createDebugElements } from "./module-debug.js";
+import { filterByName, getAllLists } from "./module-api.js";
 
 // inte använd men länken till början av APIt
 const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
 
 // Globala variabler (for now)
 let debugMode = true;
+
+// variabel med alla listor
+let lists = await getAllLists();
+console.log(lists);
+
+// om man vill skriva ut
+// let stringifiedLists = JSON.stringify(lists);
+// console.log("All lists:\n" + stringifiedLists);
 
 // skapar debugelement om debugMode är true
 createDebugElements(debugMode);

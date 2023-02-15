@@ -94,7 +94,7 @@
 			const API_BASE = 'https://nackademin-item-tracker.herokuapp.com';
 			const API_FILTER = 'grupp_e';
 			// https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&value=Custom
-			fetch(API_BASE + '/findlistbykey?key=' + API_FILTER)
+			fetch(API_BASE + '/lists')// + '/findlistbykey?key=' + API_FILTER)
 				.then((response) => response.json())
 				.then(display);
 

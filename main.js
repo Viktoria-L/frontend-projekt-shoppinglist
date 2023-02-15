@@ -18,6 +18,7 @@ const listItemsUl = document.querySelector("#listItems");
 const saveBtnDiv = document.querySelector(".saveToApi");
 
 let currentList = '';
+let amountOfItems = -1;
 let itemListArray = [];
 
 let listObject = {
@@ -56,12 +57,29 @@ createListBtn.addEventListener("click", (event) => {
   addItemBtn.addEventListener("click", () => {
     
     if(listItemInput.value !== null && listItemInput.value !== ''){
+      amountOfItems++;
+
     let li = document.createElement("li");
-    li.innerHTML = `<span class="iconspans"><img src="assets/trash.svg" alt="" width="12px"></span><input type="text" value="${listItemInput.value}"></input>
-            `;
+    li.innerHTML = `<span class="iconspans" id="${amountOfItems}"><img src="assets/trash.svg" id="delete${amountOfItems}" width="12px"></span><input type="text" value="${listItemInput.value}"></input>`;
     listItemsUl.append(li);
-    itemListArray.push({title:listItemInput.value, checked: false});
+    itemListArray.push({title:listItemInput.value, checked: false, itemnumber: amountOfItems});
     console.log(itemListArray);
+    let removeBtn = document.querySelector(`#delete${amountOfItems}`);
+    removeBtn.addEventListener("click", (e) => {
+      console.log(itemListArray)
+      // console.log(+e.target.id.split("delete")[1] - 1);
+      // let itemToDelete = +e.target.id.split("delete")[1]
+      // itemListArray.splice(itemToDelete, 1);
+      // itemListArray.filter(())
+      li.remove();
+      console.log(itemListArray)
+
+      // itemListArray.forEach((item, i)=> {
+      //   item.itemnumber = i;
+      // })
+      // amountOfItems--;
+    })
+    
     listItemInput.value = "";
     } else {
         alert("Fyll i ett item för att lägga till")
@@ -76,7 +94,7 @@ createListBtn.addEventListener("click", (event) => {
 
   saveToAPIBtn.addEventListener("click", ()=>{
     saveList();
-    saveItems();
+
         
   })
 });
@@ -102,6 +120,7 @@ console.log(list)
 currentList = list._id;
 console.log(currentList);
 
+saveItems();
 
 }
 

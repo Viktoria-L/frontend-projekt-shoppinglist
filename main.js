@@ -13,8 +13,11 @@ const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
 let debugMode = false;
 
 // variabel med alla listor
-let lists = await getAllLists();
-console.log(lists);
+let lists;
+if (debugMode) {
+  lists = await getAllLists();
+  console.log(lists);
+}
 
 // om man vill skriva ut
 // let stringifiedLists = JSON.stringify(lists);

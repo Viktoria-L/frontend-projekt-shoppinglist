@@ -1,4 +1,10 @@
 import { createDebugElements } from "./module-debug.js";
+import {
+  filterByName,
+  getAllLists,
+  getListUsingID,
+  deleteListUsingID,
+} from "./module-api.js";
 
 // inte använd men länken till början av APIt
 const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
@@ -6,11 +12,19 @@ const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
 // Globala variabler (for now)
 let debugMode = false;
 
+// variabel med alla listor
+let lists = await getAllLists();
+console.log(lists);
+
+// om man vill skriva ut
+// let stringifiedLists = JSON.stringify(lists);
+// console.log("All lists:\n" + stringifiedLists);
+
 // skapar debugelement om debugMode är true
 createDebugElements(debugMode);
 
-const createListBtn = document.getElementById('newListBtn');
-const currentContentDiv = document.getElementById('current-content');
+const createListBtn = document.getElementById("newListBtn");
+const currentContentDiv = document.getElementById("current-content");
 
 const addAnItemDiv = document.querySelector(".addAnItemDiv");
 const headerName = document.querySelector(".headerNameEdit");
@@ -25,11 +39,10 @@ createListBtn.addEventListener("click", (event) => {
     <input type="text" class="nameinput" placeholder="New List" onfocus="this.placeholder=''"></input>
     <button id="editBtn"><img src="assets/three-dots-vertical.svg" alt=""></button>
     `;
-
     //Eventlistener för "gå tillbaka-knappen"
   const backBtn = document.querySelector(".backBtn");
   backBtn.addEventListener("click", () => {
-       window.location.href = "index.html";
+    window.location.href = "index.html";
   });
 
   //Element för inputfält där man skriver list-item + lägg till-knapp
@@ -42,15 +55,14 @@ createListBtn.addEventListener("click", (event) => {
 
   //plus-knappen lägger till ett item i den "lokala" listan som gör att man kan redigera den innan den sparas till api
   addItemBtn.addEventListener("click", () => {
-    
-    if(listItemInput.value !== null && listItemInput.value !== ''){
-    let li = document.createElement("li");
-    li.innerHTML = `<span class="iconspans"><img src="assets/trash.svg" alt=""></span><input type="text" value="${listItemInput.value}"></input>
+    if (listItemInput.value !== null && listItemInput.value !== "") {
+      let li = document.createElement("li");
+      li.innerHTML = `<span class="iconspans"><img src="assets/trash.svg" alt=""></span><input type="text" value="${listItemInput.value}"></input>
             `;
-    listItemsUl.append(li);
-    listItemInput.value = "";
+      listItemsUl.append(li);
+      listItemInput.value = "";
     } else {
-        alert("Fyll i ett item för att lägga till")
+      alert("Fyll i ett item för att lägga till");
     }
 
     //FRÅGA:: Ska man skicka in värdet på list-itemet här i en lokal lista/objekt?
@@ -64,18 +76,6 @@ createListBtn.addEventListener("click", (event) => {
 });
 
 //Man lär behöva ha en loop då som loopar igenom alla Li-items och tar deras value och skickar in via POST?
-
-
-//Funktion för edit-knapp 
-function editFunc() {
-  const editBtn = document.getElementById('editBtn')
-  editBtn.addEventListener("click", () => {
-    
-    console.log("edit knapp")
-  })
-}
-
-editFunc()
 
 
 

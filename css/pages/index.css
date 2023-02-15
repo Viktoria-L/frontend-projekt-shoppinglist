@@ -1,17 +1,104 @@
-/* Header */
+body {
+	margin: 0;
+}
+
+/* HEADER CLASSES */
+
+.headerLogoSettings {
+	display: flex;
+	justify-content: space-between;
+	background-color: lightgray;
+	padding: 14px;
+}
+.headerLogoSettings a {
+	align-self: center;
+}
+.headerLogoSettings a img {
+	width: 20px;
+}
 .headerNameEdit {
-    padding: 5px 20px 0px 20px;
-    position: relative;
+	padding: 5px 20px 0px 20px;
+	position: relative;
 }
 .headerNameEdit h1 {
-    text-align: center;
+	text-align: center;
 }
 .headerNameEdit button {
-    all: unset;
-    position: absolute;
-    top: 50%;
-    right: 20px;
+	all: unset;
+	position: absolute;
+	top: 50%;
+	right: 20px;
 }
 .headerNameEdit img {
-    width: 6px;
+	width: 6px;
+}
+
+
+/* LIST DIVS */
+main {
+	padding: 0 4em;
+}
+
+/*
+ITEM STRUCTURE
+<div>
+	<h2>List title</h2>
+	<ul>
+		<li>
+			<input type="checkbox">
+			<input type="text">
+		</li>
+		...
+	</ul>
+</div>
+*/
+
+
+.item-container {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-gap: 1em;
+}
+
+.item-container div {
+	background-color: #c55;
+
+	margin: 1em 0;
+	padding: 0.5em 1em;
+
+	color: white;
+}
+
+.item-container ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.list-title {
+	margin: 0;
+	padding: 0.5em;
+	background-color: #a33;
+
+	text-transform: capitalize;
+	text-align: center;
+}
+
+.item-container li {
+	text-align: center;
+	margin-bottom: 0.5em;
+}
+
+.item-container input[type="checkbox"] {
+	/* 
+	Impossible to modify directly. If you want to make
+	any kind of customization, you'll have to hide the checkbox
+	and have other elements reflect its changes.
+
+	:before, :after
+	*/
+}
+
+.item-container input[type="text"] {
+	padding: 0.25em;
+	margin-left: 0.5em;
 }

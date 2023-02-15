@@ -54,6 +54,7 @@ export async function getListsUsingCustomField() {
 // ta inte bort fel 😄
 export async function deleteListUsingID(id) {
   if (!id) {
+    console.log(!id, "wrong");
     return;
   }
   const res = await fetch(

@@ -4,13 +4,13 @@
     display: flex;
     position: relative;
 }
-/*Plus-knappen på startsidan*/
+/*Plus-knappen på startsidan OBS, stylingen ligger både i style.css och pages/index.css*/
 #newListBtn {
-    position: absolute;
-    bottom: 0px;
-   left: 50%;
-   font-size: larger;
-   
+    position: sticky;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: larger;
 }
 
 /* Styling för inputfältet i headern */

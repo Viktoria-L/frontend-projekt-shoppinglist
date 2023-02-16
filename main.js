@@ -110,7 +110,8 @@ createListBtn.addEventListener("click", (event) => {
   });
 
   //plus-knappen lägger till ett item i den "lokala" listan som gör att man kan redigera den innan den sparas till api
-  addItemBtn.addEventListener("click", () => { addItem(); });
+  // change-event körs när man trycker på knappen för inputfältet tappar fokus
+  // addItemBtn.addEventListener("click", () => { addItem(); });
   
   function addItem() {
     if (containsSpecialChars(listItemInput.value)) {

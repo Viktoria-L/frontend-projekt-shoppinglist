@@ -53,7 +53,7 @@ function printLists(fetchedLists) {
 
         let count = 0;
 
-        previewObjekt.innerHTML += `<span class="bold">${list.listname} </span></p> `
+        previewObjekt.innerHTML += `<p><span class="bold">${list.listname} </span></p> `
         if (list.itemList && Array.isArray(list.itemList)) {
             previewObjekt.innerHTML += `<ul>`;
 

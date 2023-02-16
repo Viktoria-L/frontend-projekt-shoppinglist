@@ -19,6 +19,8 @@
 }
 
 .preview-object {
+  font-size: 24px;
+  text-align: center;
   background-color: rgb(241, 239, 239);
   min-width: 154px;
 

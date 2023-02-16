@@ -29,3 +29,16 @@
 }
 
 .selected-item {}
+
+
+.trashBtn img {
+  height: 1rem;
+}
+
+.checkedItem {
+  text-decoration: line-through;
+}
+
+li {
+  list-style: none;
+}

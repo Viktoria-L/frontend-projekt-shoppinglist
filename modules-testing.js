@@ -1,106 +1,42 @@
-let ourLists = await getOurLists();
+let eGroupLists = await getOurLists();
 
-// let minData = await getAllLists()
+const currentContenContainer = document.getElementById("current-content")
 
-printLists(ourLists)
+printLists(eGroupLists)
 
-
-console.log(ourLists)
+console.log(eGroupLists)
 
 let selectedList = null;
 
-
-
-
 const headerName = document.querySelector(".headerNameEdit");
-
-
-// export async function getAllLists() {
-//     const res = await fetch(
-//         `https://nackademin-item-tracker.herokuapp.com/lists`
-//     );
-//     let data = await res.json();
-//     return data;
-// }
 
 async function getOurLists() {
     const listResults = await fetch(
         `https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&value=grupp_e`
     )
-    let usableList = await listResults.json();
+    let jsonList = await listResults.json();
 
-    return usableList;
+    return jsonList;
 }
-
-
-
-
-
-
-export function displayLists(inputLists) {
-    let outputHTML = "";
-    for (const list of inputLists) {
-        // console.log(list);
-        outputHTML += `<p><span class="bold">List ID: </span>${list._id} `;
-        outputHTML += `<span class="bold">List name: </span>${list.listname}</p>`;
-        // console.log(list.itemList);
-        try {
-            for (const itemList of Array(list.itemList)) {
-                if (list.itemList.length !== 0) {
-                    outputHTML += `<ul>`;
-                }
-                for (const item of itemList) {
-                    outputHTML += `<li>`;
-                    outputHTML += `<span class="bold">Item ID: </span>`;
-                    outputHTML += `${item._id}`;
-                    if (item.title)
-                        outputHTML += `<span class="bold"> title: </span>${item.title} `;
-                    if (item.checked)
-                        outputHTML += `<span class="bold">  checked: </span>${item.checked} `;
-                }
-                outputHTML += `</ul>`;
-            }
-        } catch (error) {
-            console.log("error error! " + error);
-        }
-    }
-
-    let cContent = document.getElementById("current-content")
-    let element = document.createElement("div");
-    element.id = "display-lists";
-    element.class = "grid-container"
-    element.innerHTML = outputHTML;
-    if (!document.querySelector("#display-lists")) {
-        cContent.append(element);
-    }
-}
-
-
-
-
-
 
 
 
 function printLists(fetchedLists) {
-    // let cContent = document.getElementById("current-content")
-
-    const currentCont = document.getElementById("current-content")
     const previewContainer = document.createElement("div");
     previewContainer.className = "preview-container"
-    currentCont.append(previewContainer);
+    currentContenContainer.append(previewContainer);
 
     previewContainer.innerHTML = "";  //clearing the container of content
 
-
     fetchedLists.forEach(list => {  //For each list item in the fetched array
-        // console.log(list.listname, "Im listname")
         const previewObjekt = document.createElement("div");
         previewContainer.append(previewObjekt)
         previewObjekt.classList.add("preview-object");
 
         previewObjekt.dataset.listId = list._id;
 
+
+        //event listener för klickad lista
         previewObjekt.addEventListener('click', async function () {
             try {
                 const listResponse = await fetch(
@@ -116,28 +52,28 @@ function printLists(fetchedLists) {
         });
 
         let count = 0;
+
         previewObjekt.innerHTML += `<span class="bold">${list.listname} </span></p> `
-
-
         if (list.itemList && Array.isArray(list.itemList)) {
             previewObjekt.innerHTML += `<ul>`;
+
             list.itemList.forEach(item => {
-                if (count >= 5) return;
-
-                previewObjekt.innerHTML += (item.title) ? `<li>${item.title} </li>` : "no title ";
-
+                if (count >= 5) {
+                    previewObjekt.innerHTML += `.`
+                    return;
+                }
+                console.log(item.checked)
+                previewObjekt.innerHTML += (item.title) ? `<li> ${item.title}  </li> ` : "no title ";
                 previewObjekt.innerHTML += (item.checked) ? `<span class="bold">checked:</span>${item.checked} ` : "";
 
                 count++;
-                // console.log(item, "im an item")
             })
+            // previewObjekt.innerHTML += + list.itemList.length - 5
+            console.log()
 
         } else console.log("not an Array")
     });
 }
-
-
-
 
 //funktion som navigerar till ett preview items fulla vy
 
@@ -151,35 +87,41 @@ function addItemToList(listItem) {
 
 }
 
-
-export {
-    printLists
-}
-
-
 function showSelectedList(selectedList) {
 
-    const currentCont = document.getElementById("current-content")
-    let listItemParent = document.createElement("ul");
+    const listItemsUl = document.querySelector("#listItems");
 
-
-
-
-
-    console.log(selectedList)
     let listNamn = selectedList.listname
-    console.log(listNamn)
-
-    console.log(selectedList.itemList)
 
     selectedList.itemList.forEach(item => {
+
         let listItem = document.createElement("li");
 
-        console.log(item.title)
+        const checkboxInput = document.createElement("input");
+        checkboxInput.type = "checkbox";        //typen av input
+        checkboxInput.name = item.title;        //checkbox namn är list items namn
+        checkboxInput.id = item._id;            //id för checkbox är items id
+        checkboxInput.value = item.checked;     // chckbox value
+        checkboxInput.checked = item.checked;   //visas som checked/unchecked beroende på true false value från item
+
+        const labelA = document.createElement("label");
+        labelA.setAttribute("for", item._id);
+        labelA.innerHTML = item.title;
+
+        listItem.appendChild(checkboxInput);
+        listItem.appendChild(labelA);
+
+        labelA.innerHTML += (item.qty) ? ` ${item.qty}` : " :1";
 
 
+        listItem.addEventListener("change", function () {
+            item.checked = !item.checked;
+            labelA.classList.toggle("checkedItem");
+            console.log(item.checked);
+            console.log("item changed state");
+        });
 
-        // console.log(item, "im an item")
+        listItemsUl.append(listItem)
     })
 
 
@@ -195,4 +137,8 @@ function showSelectedList(selectedList) {
     backBtn.addEventListener("click", () => {
         window.location.href = "index.html";
     });
+}
+
+export {
+    printLists
 }

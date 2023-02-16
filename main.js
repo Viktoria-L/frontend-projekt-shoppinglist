@@ -102,43 +102,44 @@ createListBtn.addEventListener("click", (event) => {
 
   //plus-knappen lägger till ett item i den "lokala" listan som gör att man kan redigera den innan den sparas till api
   addItemBtn.addEventListener("click", () => {
-    if (listItemInput.value !== null && listItemInput.value !== "") {
-
+    if (containsSpecialChars(listItemInput.value)) {
+      alert("No special characters are allowed");
+    } else {
+      if (listItemInput.value !== null && listItemInput.value !== "") {
         //OM list-itemets namn redan finns i vår lokala array, alert eller skriv ut den.
-        if(itemListArray.some(object => object.title === listItemInput.value)){
-          alert("That item already exists, write another one!")
-       
+        if (
+          itemListArray.some((object) => object.title === listItemInput.value)
+        ) {
+          alert("That item already exists, write another one!");
         } else {
           let li = document.createElement("li");
           li.innerHTML = `<span class="iconspans"><img src="assets/trash.svg" id="${listItemInput.value}"  width="12px"></span><input type="text" value="${listItemInput.value}"></input>`;
           listItemsUl.append(li);
           let removeBtn = document.getElementById(`${listItemInput.value}`);
-     
+
           //Funktion för att hitta rätt object i arrayen och ta bort den samtidigt som den tar bort utskriften
           function deleteObject(title) {
-            let index = itemListArray.findIndex((object) => object.title === title);
+            let index = itemListArray.findIndex(
+              (object) => object.title === title
+            );
             itemListArray.splice(index, 1);
             li.remove();
           }
 
           itemListArray.push({ title: listItemInput.value, checked: false });
           console.log(itemListArray);
-     
+
           removeBtn.addEventListener("click", (event) => {
-      
             deleteObject(removeBtn.id);
             console.log(itemListArray);
-          
           });
 
           listItemInput.value = "";
-        } 
-    } else {
-      alert("You need to write something to add an item ;)");
+        }
+      } else {
+        alert("You need to write something to add an item ;)");
+      }
     }
-
-
-
   });
 
   //Spara-knapp som ska ha eventlistener/funktion att skicka datan till api:et
@@ -152,8 +153,13 @@ createListBtn.addEventListener("click", (event) => {
   });
 });
 
-//Man lär behöva ha en loop då som loopar igenom alla Li-items och tar deras value och skickar in via POST?
 
+function containsSpecialChars(str) {
+  const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  return specialChars.test(str);
+}
+
+//Funktion för att spara listan med angivet namn
 async function saveList() {
   const listNameInput = document.querySelector(".nameinput");
   const listname = listNameInput.value;

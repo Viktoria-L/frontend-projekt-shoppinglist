@@ -1,6 +1,6 @@
 let eGroupLists = await getOurLists();
-
-const currentContenContainer = document.getElementById("current-content")
+const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
+const currentContentContainer = document.getElementById("current-content")
 
 printLists(eGroupLists)
 
@@ -24,9 +24,13 @@ async function getOurLists() {
 function printLists(fetchedLists) {
     const previewContainer = document.createElement("div");
     previewContainer.className = "preview-container"
-    currentContenContainer.append(previewContainer);
+    currentContentContainer.append(previewContainer);
+
+
 
     previewContainer.innerHTML = "";  //clearing the container of content
+
+
 
     fetchedLists.forEach(list => {  //For each list item in the fetched array
         const previewObjekt = document.createElement("div");
@@ -35,6 +39,8 @@ function printLists(fetchedLists) {
 
         previewObjekt.dataset.listId = list._id;
 
+        let listUL = document.createElement("ul")
+        previewObjekt.append(listUL)
 
         //event listener för klickad lista
         previewObjekt.addEventListener('click', async function () {
@@ -63,8 +69,17 @@ function printLists(fetchedLists) {
                     return;
                 }
                 console.log(item.checked)
-                previewObjekt.innerHTML += (item.title) ? `<li> ${item.title}  </li> ` : "no title ";
-                previewObjekt.innerHTML += (item.checked) ? `<span class="bold">checked:</span>${item.checked} ` : "";
+
+                let listItemet = document.createElement("li");
+                listItemet.innerHTML = (item.title) ? `${item.title}` : "no title ";
+                (item.checked) ? listItemet.classList.add("checkedItem") : listItemet.classList.remove("checkedItem");
+                previewObjekt.appendChild(listItemet);
+
+                // previewObjekt.innerHTML += (item.title) ? `<li> ${item.title}  </li> ` : "no title ";
+
+                // previewObjekt.innerHTML += (item.title) ? `<li> ${item.title}  </li> ` : "no title ";
+                // previewObjekt.innerHTML += (item.checked) ? `<span class="bold">checked:</span>${item.checked} ` : "";
+
 
                 count++;
             })
@@ -86,10 +101,12 @@ function createNewList() {
 function addItemToList(listItem) {
 
 }
+const listItemsUl = document.querySelector("#listItems");
 
 function showSelectedList(selectedList) {
+    console.log(selectedList._id)
 
-    const listItemsUl = document.querySelector("#listItems");
+
 
     let listNamn = selectedList.listname
 
@@ -108,17 +125,28 @@ function showSelectedList(selectedList) {
         labelA.setAttribute("for", item._id);
         labelA.innerHTML = item.title;
 
+        (item.checked) ? listItem.classList.add("checkedItem") : listItem.classList.remove("checkedItem");
+
+
         listItem.appendChild(checkboxInput);
         listItem.appendChild(labelA);
 
         labelA.innerHTML += (item.qty) ? ` ${item.qty}` : " :1";
 
 
+        // Funktion som ändrar om itemet är checked eller inte
         listItem.addEventListener("change", function () {
             item.checked = !item.checked;
-            labelA.classList.toggle("checkedItem");
+            // labelA.classList.toggle("checkedItem");
+            (item.checked) ? listItem.classList.add("checkedItem") : listItem.classList.remove("checkedItem");
             console.log(item.checked);
             console.log("item changed state");
+
+            console.log(selectedList._id)
+            console.log(item._id, "list item id", item.title)
+            console.log(item.checked)
+
+             updateCheckedState(selectedList._id, item._id, item.checked)
         });
 
         listItemsUl.append(listItem)
@@ -141,4 +169,23 @@ function showSelectedList(selectedList) {
 
 export {
     printLists
+}
+
+
+
+// updateItem(item._id,)
+
+// prövar att skapa en funktion som ska uppdatera
+
+async function updateCheckedState(currentListId, item_id, checked_state) {
+
+    await fetch(`${API_BASE}lists/${currentListId}/items/${item_id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            checked: checked_state,
+        }),
+    });
 }

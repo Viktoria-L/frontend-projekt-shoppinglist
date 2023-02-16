@@ -120,14 +120,19 @@ ITEM STRUCTURE
     display: flex;
     position: relative;
 }
-/*Plus-knappen på startsidan OBS,
- stylingen ligger både i style.css och pages/index.css*/
+/* Plus-knappen på startsidan  */
 #newListBtn {
 	position: sticky;
 	bottom: 1rem;
 	left: 50%;
 	transform: translateX(-50%);
-	font-size: larger;
+  line-height: 40px;
+  font-size: 4rem;
+  height: 50px;
+  border-radius: 100%;
+  border: 1px solid white;
+  /* dunno vilken som är bäst */
+  /* border: 1px solid black; */
 }
 
 /* Styling för inputfältet i headern */

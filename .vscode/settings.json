@@ -1,7 +1,3 @@
 {
-  "conventionalCommits.scopes": [
-    "CSS",
-    "API",
-    "DOM output"
-  ],
+  "conventionalCommits.scopes": ["CSS", "API", "DOM output", "fonts"]
 }

@@ -72,7 +72,7 @@ export async function displayListsAlt() {
 
       let count = 0;
       let trashcan = document.createElement("span");
-      trashcan.classList.add("remove-container", "hover");
+      trashcan.classList.add("remove-container", "hover", "hidden");
       trashcan.innerHTML = '<img class="remove hover" src="assets/trash.svg" alt="">';
       previewObjekt.appendChild(trashcan);
       previewObjekt.innerHTML += `<h2>${list.listname} </h2> `;
@@ -131,25 +131,31 @@ export async function displayListsAlt() {
     selectedList.itemList.forEach((item) => {
       let listItem = document.createElement("li");
 
-      const checkboxInput = document.createElement("input");
-      checkboxInput.type = "checkbox"; //typen av input
+      /* const checkboxInput = document.createElement("input"); */
+      /* checkboxInput.type = "checkbox"; //typen av input
       checkboxInput.name = item.title; //checkbox namn är list items namn
       checkboxInput.id = item._id; //id för checkbox är items id
       checkboxInput.value = item.checked; // chckbox value
       checkboxInput.checked = item.checked; //visas som checked/unchecked beroende på true false value från item
 
+      console.log(checkboxInput)  */
+      /* checked=${item.checked} */
+
       const labelA = document.createElement("label");
       labelA.setAttribute("for", item._id);
-      labelA.innerHTML = item.title;
+      labelA.classList.add("itemContainer")
+      labelA.innerHTML = `<input type="checkbox" name=${item.title} id=${item._id} value=${item.checked} /><span class="checkmark"></span>` + item.title;
+
+      console.log(labelA)
 
       item.checked
         ? listItem.classList.add("checkedItem")
         : listItem.classList.remove("checkedItem");
 
-      listItem.appendChild(checkboxInput);
+      /* listItem.appendChild(checkboxInput); */
       listItem.appendChild(labelA);
 
-      labelA.innerHTML += item.qty ? ` ${item.qty}` : " :1";
+      /* labelA.innerHTML += item.qty ? ` ${item.qty}` : " :1"; */
 
       // Funktion som ändrar om itemet är checked eller inte
       listItem.addEventListener("change", function () {

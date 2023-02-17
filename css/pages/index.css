@@ -182,13 +182,16 @@ input {
 /* TRASHCAN CSS */
 .remove {
 	all: unset;
-	position: absolute;
-	right: -8px;
-	top: -8px;
+	
+	margin: 6px 8px 4px 8px;
 	background-color: lightgray;
-	padding: 6px 8px 4px 8px;
-	border-radius: 100%;
+	width: 1rem;
 }
-.remove img {
-	width: 12px;
+.remove-container {
+	position: absolute;
+	right: -.8rem;
+	top: -.8rem;
+	/* padding: 6px 8px 4px 8px; */
+	background-color: lightgray;
+	border-radius: 100%;
 }

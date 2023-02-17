@@ -21,7 +21,9 @@ export function display(outputArray) {
     result += `
   <div id="${list._id}">
     <h2 class="list-title">${listName}</h2>
-                <button class="iconspans remove hidden"><img src="assets/trash.svg" alt=""></button>
+			<span class="remove-container hidden hover">
+				<img class="remove hover" src="assets/trash.svg" alt="">
+			</span>
     <ul>
   `;
     children.forEach((item) => {

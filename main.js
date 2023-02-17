@@ -40,7 +40,7 @@ createDebugElements(debugMode);
 function editFunc() {
   let editBtn = document.getElementById("editBtn");
   editBtn.addEventListener("click", () => {
-    let remove = document.querySelectorAll(".remove");
+    let remove = document.querySelectorAll(".remove-container");
     if (!editBtn.classList.contains("on")) {
       editBtn.classList.add("on");
       remove.forEach((element) => {
@@ -61,9 +61,14 @@ editFunc();
 let listView = document.getElementById("list-output");
 
 listView.onclick = (e) => {
-  console.log(e.target.parentElement.parentElement.id);
   let currentList = e.target.parentElement.parentElement;
-  deleteListUsingID(currentList.id);
+  console.log(currentList.id);
+  if (currentList.id === "" || currentList.id === "list-output") {
+    // console.log("missed")
+  } else {
+    deleteListUsingID(currentList.id);
+    // console.log("delete")
+  }
 };
 
 const createListBtn = document.getElementById("newListBtn");

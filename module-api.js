@@ -26,3 +26,41 @@ export async function getAllLists() {
   }
   return data;
 }
+
+// funktion som hämtar en lista med ett speciellt värde
+export async function getListUsingID(id) {
+  const res = await fetch(
+    `https://nackademin-item-tracker.herokuapp.com/lists/${id}`
+  );
+  let data = await res.json();
+
+  let stringifiedData = JSON.stringify(data);
+
+  return data;
+}
+
+export async function getListsUsingCustomField() {
+  const res = await fetch(
+    `https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&value=grupp_e`
+  );
+  let data = await res.json();
+
+  let stringifiedData = JSON.stringify(data);
+
+  return data;
+}
+
+// funktion som tar bort lista med ett speciellt ID
+// ta inte bort fel 😄
+export async function deleteListUsingID(id) {
+  if (!id) {
+    console.log(!id, "wrong");
+    return;
+  }
+  const res = await fetch(
+    `https://nackademin-item-tracker.herokuapp.com/lists/${id}`,
+    {
+      method: "DELETE",
+    }
+  );
+}

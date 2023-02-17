@@ -1,4 +1,6 @@
 import { createDebugElements } from "./module-debug.js";
+
+import { printLists } from "/modules-testing.js"
 import {
   filterByName,
   getAllLists,

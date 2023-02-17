@@ -1,4 +1,6 @@
 import { createDebugElements } from "./module-debug.js";
+
+import { displayListsAlt } from "/modules-testing.js"
 import {
   filterByName,
   getAllLists,
@@ -6,6 +8,7 @@ import {
   deleteListUsingID,
   getListsUsingCustomField,
 } from "./module-api.js";
+import { triggerDisplay, display } from "./module-display-lists.js";
 
 // inte använd men länken till början av APIt
 const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
@@ -20,6 +23,12 @@ if (debugMode) {
   console.log(lists);
 }
 
+// Visa index-funktioner här
+
+// triggerDisplay();
+
+displayListsAlt();
+
 // om man vill skriva ut
 // let stringifiedLists = JSON.stringify(lists);
 // console.log("All lists:\n" + stringifiedLists);
@@ -31,7 +40,7 @@ createDebugElements(debugMode);
 function editFunc() {
   let editBtn = document.getElementById("editBtn");
   editBtn.addEventListener("click", () => {
-    let remove = document.querySelectorAll(".remove");
+    let remove = document.querySelectorAll(".remove-container");
     if (!editBtn.classList.contains("on")) {
       editBtn.classList.add("on");
       remove.forEach((element) => {
@@ -52,9 +61,14 @@ editFunc();
 let listView = document.getElementById("list-output");
 
 listView.onclick = (e) => {
-  console.log(e.target.parentElement.parentElement.id);
   let currentList = e.target.parentElement.parentElement;
-  deleteListUsingID(currentList.id);
+  console.log(currentList.id);
+  if (currentList.id === "" || currentList.id === "list-output") {
+    // console.log("missed")
+  } else {
+    deleteListUsingID(currentList.id);
+    // console.log("delete")
+  }
 };
 
 const createListBtn = document.getElementById("newListBtn");
@@ -105,13 +119,13 @@ createListBtn.addEventListener("click", (event) => {
       addItem();
     }
   });
-  listItemInput.addEventListener("change", (e) => {
-      addItem();
-  });
+  // listItemInput.addEventListener("change", (e) => {
+    // addItem();
+  // });
 
   //plus-knappen lägger till ett item i den "lokala" listan som gör att man kan redigera den innan den sparas till api
   // change-event körs när man trycker på knappen för inputfältet tappar fokus
-  // addItemBtn.addEventListener("click", () => { addItem(); });
+  addItemBtn.addEventListener("click", () => { addItem(); });
   
   function addItem() {
     if (containsSpecialChars(listItemInput.value)) {

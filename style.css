@@ -5,15 +5,6 @@
     position: relative;
 } */
 
-/*Plus-knappen på startsidan*/
-#newListBtn {
-    position: absolute;
-    bottom: 0px;
-    left: 50%;
-    font-size: larger;
-
-}
-
 /* Styling för inputfältet i headern */
 .nameinput {
     border: none;

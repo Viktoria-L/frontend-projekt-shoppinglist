@@ -56,30 +56,34 @@ export async function displayListsAlt() {
       //   previewObjekt.append(listUL);
 
       //event listener för klickad lista
-      previewObjekt.addEventListener("click", async function () {
-        try {
-          const listResponse = await fetch(
-            `https://nackademin-item-tracker.herokuapp.com/lists/${list._id}`
-          );
-          const listData = await listResponse.json();
-          selectedList = listData;
-          showSelectedList(selectedList);
-          previewContainer.innerHTML = "";
-        } catch (error) {
-          console.log(error);
-        }
-      });
+      // previewObjekt.addEventListener("click", async function () {
+      //   try {
+      //     const listResponse = await fetch(
+      //       `https://nackademin-item-tracker.herokuapp.com/lists/${list._id}`
+      //     );
+      //     const listData = await listResponse.json();
+      //     selectedList = listData;
+      //     showSelectedList(selectedList);
+      //     previewContainer.innerHTML = "";
+      //   } catch (error) {
+      //     console.log(error);
+      //   }
+      // });
 
       let count = 0;
-      let trashcan = document.createElement("span");
-      trashcan.classList.add("remove-container","hidden", "hover");
-      trashcan.innerHTML =
-        '<img class="remove hover" src="assets/trash.svg" alt="">';
-      trashcan.addEventListener("click", (e) => {
-        e.stopPropagation();
+      let trashSpan = document.createElement("span");
+      trashSpan.classList.add("remove-container","hidden", "hover");
+      // trashcan.innerHTML =
+      //   '<img class="remove hover" src="assets/trash.svg" alt="">';
+      let trashIcon = document.createElement("img");
+      trashIcon.classList.add("remove", "hover");
+      trashIcon.src = "assets/trash.svg";
+      trashSpan.appendChild(trashIcon);
+      trashIcon.addEventListener("click", (e) => {
+        e.stopImmediatePropagation();
         console.log("du tryckte");
       })
-      previewObjekt.appendChild(trashcan);
+      previewObjekt.appendChild(trashSpan);
       previewObjekt.innerHTML += `<h2>${list.listname} </h2> `;
       if (list.itemList && Array.isArray(list.itemList)) {
         // previewObjekt.innerHTML += `<ul>`;

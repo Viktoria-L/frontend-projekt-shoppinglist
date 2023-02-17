@@ -162,7 +162,7 @@ function showSelectedList(selectedList) {
     headerName.innerHTML = `
     <span class="backBtn"><img src="assets/back-arrow.svg" alt=""></span>
     <input type="text" class="nameinput" value="${listNamn}" onfocus="this.placeholder=''"></input>
-    <button><img src="assets/three-dots-vertical.svg" alt=""></button>
+    <button id="button-editmode" class="hover"><img src="assets/three-dots-vertical.svg" alt=""></button>
     `;
     //Eventlistener för "gå tillbaka-knappen"
     const backBtn = document.querySelector(".backBtn");

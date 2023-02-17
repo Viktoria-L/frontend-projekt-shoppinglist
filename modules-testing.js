@@ -1,3 +1,7 @@
+export async function displayListsAlt() {
+  printLists();
+  
+
 let eGroupLists = await getOurLists();
 const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
 const currentContentContainer = document.getElementById("current-content")
@@ -21,7 +25,9 @@ async function getOurLists() {
 
 
 
-function printLists(fetchedLists) {
+async function printLists() {
+  let fetchedLists = await getOurLists();
+
     const previewContainer = document.createElement("div");
     previewContainer.className = "preview-container"
     currentContentContainer.append(previewContainer);
@@ -167,10 +173,6 @@ function showSelectedList(selectedList) {
     });
 }
 
-export {
-    printLists
-}
-
 
 
 // updateItem(item._id,)
@@ -188,4 +190,5 @@ async function updateCheckedState(currentListId, item_id, checked_state) {
             checked: checked_state,
         }),
     });
+  }
 }

@@ -1,6 +1,6 @@
 import { createDebugElements } from "./module-debug.js";
 
-import { printLists } from "/modules-testing.js"
+import { displayListsAlt } from "/modules-testing.js"
 import {
   filterByName,
   getAllLists,
@@ -8,6 +8,7 @@ import {
   deleteListUsingID,
   getListsUsingCustomField,
 } from "./module-api.js";
+import { triggerDisplay, display } from "./module-display-lists.js";
 
 // inte använd men länken till början av APIt
 const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
@@ -21,6 +22,12 @@ if (debugMode) {
   lists = await getListsUsingCustomField();
   console.log(lists);
 }
+
+// Visa index-funktioner här
+
+// triggerDisplay();
+
+displayListsAlt();
 
 // om man vill skriva ut
 // let stringifiedLists = JSON.stringify(lists);

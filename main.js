@@ -1,6 +1,6 @@
 import { createDebugElements } from "./module-debug.js";
 
-import { displayListsAlt } from "/modules-testing.js"
+import { displayListsAlt } from "./modules-testing.js"
 import {
   filterByName,
   getAllLists,

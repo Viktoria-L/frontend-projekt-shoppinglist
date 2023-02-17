@@ -1,10 +1,8 @@
 export async function displayListsAlt() {
-    const currentContentContainer = document.getElementById("current-content")
-    printLists();
+  const currentContentContainer = document.getElementById("current-content")
 
-
-    let eGroupLists = await getOurLists();
-    const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
+let eGroupLists = await getOurLists();
+const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
 
     printLists(eGroupLists)
 

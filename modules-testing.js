@@ -124,6 +124,8 @@ export async function displayListsAlt() {
   currentContentContainer.append(listItemsUl);
 
   function showSelectedList(selectedList) {
+    let bottomButton = document.querySelector("#newListBtn");
+    bottomButton.classList.add("hidden");
     console.log(selectedList._id);
 
     let listNamn = selectedList.listname;
@@ -179,6 +181,7 @@ export async function displayListsAlt() {
     //Eventlistener för "gå tillbaka-knappen"
     const backBtn = document.querySelector(".backBtn");
     backBtn.addEventListener("click", () => {
+    bottomButton.classList.remove("hidden");
       window.location.href = "index.html";
     });
   }

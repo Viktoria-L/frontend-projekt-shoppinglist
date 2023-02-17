@@ -71,7 +71,10 @@ export async function displayListsAlt() {
       });
 
       let count = 0;
-
+      let trashcan = document.createElement("span");
+      trashcan.classList.add("remove-container", "hover");
+      trashcan.innerHTML = '<img class="remove hover" src="assets/trash.svg" alt="">';
+      previewObjekt.appendChild(trashcan);
       previewObjekt.innerHTML += `<h2>${list.listname} </h2> `;
       if (list.itemList && Array.isArray(list.itemList)) {
         // previewObjekt.innerHTML += `<ul>`;
@@ -81,9 +84,12 @@ export async function displayListsAlt() {
 
         list.itemList.forEach((item) => {
           if (count >= 3) {
-            previewObjekt.innerHTML += `.`;
+            if (!previewObjekt.innerHTML.includes("...")) {
+              previewObjekt.innerHTML += `...`;
+            }
             return;
           }
+
           console.log(item.checked);
 
           let listItemet = document.createElement("li");

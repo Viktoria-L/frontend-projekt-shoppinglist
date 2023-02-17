@@ -33,7 +33,7 @@ createDebugElements(debugMode);
 function editFunc() {
   let editBtn = document.getElementById("editBtn");
   editBtn.addEventListener("click", () => {
-    let remove = document.querySelectorAll(".remove");
+    let remove = document.querySelectorAll(".remove-container");
     if (!editBtn.classList.contains("on")) {
       editBtn.classList.add("on");
       remove.forEach((element) => {
@@ -56,11 +56,11 @@ let listView = document.getElementById("list-output");
 listView.onclick = (e) => {
   let currentList = e.target.parentElement.parentElement;
   console.log(currentList.id);
-  // deleteListUsingID(currentList.id);
   if (currentList.id === "" || currentList.id === "list-output") {
-    console.log("missed")
+    // console.log("missed")
   } else {
-    console.log("delete")
+    deleteListUsingID(currentList.id);
+    // console.log("delete")
   }
 };
 

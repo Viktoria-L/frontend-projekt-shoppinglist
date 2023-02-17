@@ -146,7 +146,7 @@ function showSelectedList(selectedList) {
             console.log(item._id, "list item id", item.title)
             console.log(item.checked)
 
-             updateCheckedState(selectedList._id, item._id, item.checked)
+            updateCheckedState(selectedList._id, item._id, item.checked)
         });
 
         listItemsUl.append(listItem)
@@ -157,7 +157,7 @@ function showSelectedList(selectedList) {
 
     headerName.innerHTML = `
     <span class="backBtn"><img src="assets/back-arrow.svg" alt=""></span>
-    <input type="text" class="nameinput" placeholder="${listNamn}" onfocus="this.placeholder=''"></input>
+    <input type="text" class="nameinput" value="${listNamn}" onfocus="this.placeholder=''"></input>
     <button><img src="assets/three-dots-vertical.svg" alt=""></button>
     `;
     //Eventlistener för "gå tillbaka-knappen"

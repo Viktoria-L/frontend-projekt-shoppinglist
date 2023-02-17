@@ -119,7 +119,9 @@ export async function displayListsAlt() {
   function createNewList() {}
 
   function addItemToList(listItem) {}
-  const listItemsUl = document.querySelector("#listItems");
+  // const listItemsUl = document.querySelector("#listItems");
+  const listItemsUl = document.createElement("ul");
+  currentContentContainer.append(listItemsUl);
 
   function showSelectedList(selectedList) {
     console.log(selectedList._id);

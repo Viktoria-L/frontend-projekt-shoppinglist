@@ -72,8 +72,13 @@ export async function displayListsAlt() {
 
       let count = 0;
       let trashcan = document.createElement("span");
-      trashcan.classList.add("remove-container", "hover");
-      trashcan.innerHTML = '<img class="remove hover" src="assets/trash.svg" alt="">';
+      trashcan.classList.add("remove-container","hidden", "hover");
+      trashcan.innerHTML =
+        '<img class="remove hover" src="assets/trash.svg" alt="">';
+      trashcan.addEventListener("click", (e) => {
+        e.stopPropagation();
+        console.log("du tryckte");
+      })
       previewObjekt.appendChild(trashcan);
       previewObjekt.innerHTML += `<h2>${list.listname} </h2> `;
       if (list.itemList && Array.isArray(list.itemList)) {
@@ -119,9 +124,7 @@ export async function displayListsAlt() {
   function createNewList() {}
 
   function addItemToList(listItem) {}
-  // const listItemsUl = document.querySelector("#listItems");
-  const listItemsUl = document.createElement("ul");
-  currentContentContainer.append(listItemsUl);
+  const listItemsUl = document.querySelector("#listItems");
 
   function showSelectedList(selectedList) {
     let bottomButton = document.querySelector("#newListBtn");

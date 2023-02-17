@@ -1,6 +1,6 @@
 import { createDebugElements } from "./module-debug.js";
 
-import { printLists } from "/modules-testing.js"
+import { displayListsAlt } from "/modules-testing.js"
 import {
   filterByName,
   getAllLists,
@@ -27,7 +27,7 @@ if (debugMode) {
 
 // triggerDisplay();
 
-printLists();
+displayListsAlt();
 
 // om man vill skriva ut
 // let stringifiedLists = JSON.stringify(lists);

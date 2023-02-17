@@ -115,11 +115,12 @@ const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
     function addItemToList(listItem) {
 
     }
-    const listItemsUl = document.querySelector("#listItems");
+    
 
     function showSelectedList(selectedList) {
         console.log(selectedList._id)
-
+const listItemsUl = document.createElement("ul");
+currentContentContainer.append(listItemsUl);
 
 
         let listNamn = selectedList.listname

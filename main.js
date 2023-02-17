@@ -77,7 +77,8 @@ const addAnItemDiv = document.querySelector(".addAnItemDiv");
 const headerName = document.querySelector(".headerNameEdit");
 const listItemsUl = document.querySelector("#listItems");
 const saveBtnDiv = document.querySelector(".saveToApi");
-const outputElement = document.querySelector("#list-output");
+// const outputElement = document.querySelector("#list-output");
+const outputElement = document.querySelector("#current-content");
 
 let currentList = "";
 let itemListArray = [];

@@ -54,9 +54,14 @@ editFunc();
 let listView = document.getElementById("list-output");
 
 listView.onclick = (e) => {
-  console.log(e.target.parentElement.parentElement.id);
   let currentList = e.target.parentElement.parentElement;
-  deleteListUsingID(currentList.id);
+  console.log(currentList.id);
+  // deleteListUsingID(currentList.id);
+  if (currentList.id === "" || currentList.id === "list-output") {
+    console.log("missed")
+  } else {
+    console.log("delete")
+  }
 };
 
 const createListBtn = document.getElementById("newListBtn");

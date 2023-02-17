@@ -183,12 +183,10 @@ input {
 .remove {
 	all: unset;
 	position: absolute;
-	right: -8px;
-	top: -8px;
+	right: -1.5rem;
+	top: -5rem;
 	background-color: lightgray;
 	padding: 6px 8px 4px 8px;
 	border-radius: 100%;
-}
-.remove img {
-	width: 12px;
+	width: 1rem;
 }

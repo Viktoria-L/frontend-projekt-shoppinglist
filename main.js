@@ -64,10 +64,10 @@ listView.onclick = (e) => {
   let currentList = e.target.parentElement.parentElement;
   console.log(currentList.id);
   if (currentList.id === "" || currentList.id === "list-output") {
-    // console.log("missed")
+    console.log("missed")
   } else {
-    deleteListUsingID(currentList.id);
-    // console.log("delete")
+    // deleteListUsingID(currentList.id);
+    console.log("delete")
   }
 };
 

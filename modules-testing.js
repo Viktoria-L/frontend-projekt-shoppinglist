@@ -21,7 +21,9 @@ async function getOurLists() {
 
 
 
-function printLists(fetchedLists) {
+async function printLists() {
+  let fetchedLists = await getOurLists();
+
     const previewContainer = document.createElement("div");
     previewContainer.className = "preview-container"
     currentContentContainer.append(previewContainer);

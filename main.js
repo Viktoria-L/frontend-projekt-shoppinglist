@@ -25,7 +25,9 @@ if (debugMode) {
 
 // Visa index-funktioner här
 
-triggerDisplay();
+// triggerDisplay();
+
+printLists();
 
 // om man vill skriva ut
 // let stringifiedLists = JSON.stringify(lists);

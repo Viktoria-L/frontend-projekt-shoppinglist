@@ -3,7 +3,7 @@ import {
   filterByNameOffline,
   getAllListsOffline,
 } from "./module-api-offline.js";
-import { displayLists } from "./module-display-lists.js";
+import { debugDisplayLists } from "./module-display-lists.js";
 import { listsFromFile as offlineList } from "./data.js";
 
 let body = document.querySelector("body");

@@ -72,12 +72,8 @@ listView.onclick = (e) => {
 };
 
 const createListBtn = document.getElementById("newListBtn");
-
-const addAnItemDiv = document.querySelector(".addAnItemDiv");
 const headerName = document.querySelector(".headerNameEdit");
-const listItemsUl = document.querySelector("#listItems");
-const saveBtnDiv = document.querySelector(".saveToApi");
-const outputElement = document.querySelector("#list-output");
+const outputElement = document.querySelector("#current-content");
 
 let currentList = "";
 let itemListArray = [];
@@ -107,21 +103,27 @@ createListBtn.addEventListener("click", (event) => {
   });
 
   //Element för inputfält där man skriver list-item + lägg till-knapp
+  let addAnItemDiv = document.createElement("div");
   addAnItemDiv.innerHTML = `
     <input type="text" class="listiteminput" placeholder="Add an item..."></input>
     <button class="additembtn">+</button>
     `;
+    outputElement.append(addAnItemDiv);
+
   const listItemInput = document.querySelector(".listiteminput");
   const addItemBtn = document.querySelector(".additembtn");
 
   listItemInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-      addItem();
+      if(containsSpecialChars(listItemInput.value)){
+        alert("No special characters are allowed")
+      } else {
+        addItem();
     }
-  });
-  // listItemInput.addEventListener("change", (e) => {
-    // addItem();
-  // });
+}});
+ 
+let listItemsUl = document.createElement("ul");
+outputElement.append(listItemsUl);
 
   //plus-knappen lägger till ett item i den "lokala" listan som gör att man kan redigera den innan den sparas till api
   // change-event körs när man trycker på knappen för inputfältet tappar fokus
@@ -173,14 +175,15 @@ createListBtn.addEventListener("click", (event) => {
 
           let changeValue = '';
           li.addEventListener('change', event => {
-
+              if(containsSpecialChars(event.target.value)) {
+                alert("No special characters are allowed");
+              } else {
             changeValue = event.target.value;
+              }
+            
             let previousValue = event.target.id;
             let previousVal = previousValue.replace("item_", "");
             updateListItemLocally(previousVal);
-
-            console.log(changeValue);
-            console.log(itemListArray);
           });
 
           listItemInput.value = "";
@@ -191,6 +194,9 @@ createListBtn.addEventListener("click", (event) => {
     }
   }
 
+
+  let saveBtnDiv = document.createElement("div");
+  outputElement.append(saveBtnDiv);
   //Spara-knapp som ska ha eventlistener/funktion att skicka datan till api:et
   let saveToAPIBtn = document.createElement("button");
   saveToAPIBtn.className = "saveBtn";

@@ -72,8 +72,13 @@ export async function displayListsAlt() {
 
       let count = 0;
       let trashcan = document.createElement("span");
-      trashcan.classList.add("remove-container", "hover", "hidden");
-      trashcan.innerHTML = '<img class="remove hover" src="assets/trash.svg" alt="">';
+      trashcan.classList.add("remove-container","hidden", "hover");
+      trashcan.innerHTML =
+        '<img class="remove hover" src="assets/trash.svg" alt="">';
+      trashcan.addEventListener("click", (e) => {
+        e.stopPropagation();
+        console.log("du tryckte");
+      })
       previewObjekt.appendChild(trashcan);
       previewObjekt.innerHTML += `<h2>${list.listname} </h2> `;
       if (list.itemList && Array.isArray(list.itemList)) {
@@ -124,6 +129,8 @@ export async function displayListsAlt() {
   currentContentContainer.append(listItemsUl);
 
   function showSelectedList(selectedList) {
+    let bottomButton = document.querySelector("#newListBtn");
+    bottomButton.classList.add("hidden");
     console.log(selectedList._id);
 
     let listNamn = selectedList.listname;
@@ -185,6 +192,7 @@ export async function displayListsAlt() {
     //Eventlistener för "gå tillbaka-knappen"
     const backBtn = document.querySelector(".backBtn");
     backBtn.addEventListener("click", () => {
+    bottomButton.classList.remove("hidden");
       window.location.href = "index.html";
     });
   }

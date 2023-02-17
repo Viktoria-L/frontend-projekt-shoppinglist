@@ -2,6 +2,11 @@ body {
 	margin: 0;
 }
 
+/* HOVER CLASS */
+.hover {
+	cursor: pointer;
+}
+
 /* HEADER CLASSES */
 
 .headerLogoSettings {
@@ -31,6 +36,15 @@ body {
 }
 .headerNameEdit img {
 	width: 6px;
+	padding: 0 1rem;
+}
+
+/* CALL-TO-ACTION */
+.call-to-action {
+	margin: auto;
+	text-align: center;
+	padding: 1rem;
+	box-shadow: 5px 5px 10px #999;
 }
 
 
@@ -67,6 +81,8 @@ ITEM STRUCTURE
 	padding: 0.5em 1em;
 
 	color: white;
+
+	position: relative;
 }
 
 .item-container ul {
@@ -101,4 +117,78 @@ ITEM STRUCTURE
 .item-container input[type="text"] {
 	padding: 0.25em;
 	margin-left: 0.5em;
+}
+
+
+.main {
+    height: 80vh;
+    width: 440px;
+    display: flex;
+    position: relative;
+}
+/* Plus-knappen på startsidan  */
+#newListBtn {
+	position: sticky;
+	bottom: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
+  line-height: 40px;
+  font-size: 4rem;
+  height: 50px;
+  border-radius: 100%;
+  border: 1px solid white;
+  /* dunno vilken som är bäst */
+  /* border: 1px solid black; */
+}
+
+/* Styling för inputfältet i headern */
+.nameinput {
+    border: none;
+    font-size: 28px;
+    margin-left: 5px;
+    
+}
+.listiteminput {
+    border: none;
+    border-bottom: 2px solid black;
+    margin: 5px 5px 0 20px;  
+    
+}
+.saveBtn {
+    margin: 5px 0px 0 20px;
+    background: rgb(138, 216, 138);
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+}
+.backBtn {
+    padding: 5px;
+}
+.additembtn {
+    border: none;
+}
+
+#listItems li {
+    list-style: none;
+}
+input {
+    border: none;
+}
+.iconspans {
+    padding: 5px;
+}
+/*------------------------------------*/
+
+/* TRASHCAN CSS */
+.remove {
+	all: unset;
+	position: absolute;
+	right: -8px;
+	top: -8px;
+	background-color: lightgray;
+	padding: 6px 8px 4px 8px;
+	border-radius: 100%;
+}
+.remove img {
+	width: 12px;
 }

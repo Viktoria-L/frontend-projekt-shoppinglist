@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mina listor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/pages/index.css">
     <link rel="stylesheet" href="css/default.css">
@@ -19,19 +22,28 @@
             <a href=""><img src="assets/gear.svg" alt="Settings"></a>
         </nav>
         <div class="headerNameEdit">
-            <h1>My shopping list</h1>
-            <button id="editBtn"><img src="assets/three-dots-vertical.svg" alt="Edit button"></button>
+            <h1>My shopping lists</h1>
+            <button id="editBtn"><img class="hover" src="assets/three-dots-vertical.svg" alt=""></button>
         </div>
         <hr>
     </header>
 
     <main>
 		<content class="item-container" id="list-output"></content>
-		<p id="output-status">No lists available!</p>
+        <div id="output-status" class="call-to-action">
+            <h3>Du verkar inte ha några listor att visa.<br> Skapa en genom att klicka på plus-symbolen</h3>
+        </div>
+		<div id="current-content">
+            <div class="addAnItemDiv"></div>
+            <ul id="listItems"></ul>
+            <div class="saveToApi"></div>
+        </div>
+        <button class="hover" id="newListBtn">+</button>
 		<!--
 		ITEM STRUCTURE
 		<div>
 			<h2>List title</h2>
+            <button>Delete list</button>
 			<ul>
 				<li>
 					<input type="checkbox">
@@ -48,10 +60,9 @@
 
 			function display(outputArray) {
 				console.log(outputArray);
-
 				const isEmpty = outputArray.length === 0
-				statusElement.style = 'display: ' + (isEmpty && 'none' || 'block')
-				statusElement.innerHTML = !isEmpty && 'No lists available!' || ''
+				statusElement.style = 'display: ' + (isEmpty && 'block' || 'none')
+				// statusElement.innerHTML = isEmpty && 'No lists available!' || ''
 
 				for (let i = 0; i < outputArray.length; i++) {
 					let list = outputArray[i];
@@ -62,8 +73,9 @@
 					if (isNotArray) {continue;}
 
 					result += `
-					<div>
+					<div id="${list._id}">
 						<h2 class="list-title">${listName}</h2>
+                        <button class="remove hidden"><img src="assets/trash.svg" alt=""></button>
 						<ul>
 					`
 					children.forEach((item) => {
@@ -89,12 +101,12 @@
 				//output.innerHTML = json;
 			}
 
-			statusElement.innerHTML = 'Loading lists';
+			// statusElement.innerHTML = 'Loading lists...';
 
 			const API_BASE = 'https://nackademin-item-tracker.herokuapp.com';
 			const API_FILTER = 'grupp_e';
 			// https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&value=Custom
-			fetch(API_BASE + '/findlistbykey?key=' + API_FILTER)
+			fetch(API_BASE + '/findlistbykey?key=customfield&value=' + API_FILTER)
 				.then((response) => response.json())
 				.then(display);
 

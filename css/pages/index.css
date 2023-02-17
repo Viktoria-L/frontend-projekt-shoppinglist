@@ -236,6 +236,12 @@ li {
   border-radius: 100%;
 }
 
+.removeItem {
+  position: absolute;
+  top: -2px;
+  left: 0;
+}
+
 /* On mouse-over, add a grey background color */
 /* .itemContainer:hover input */ /* .checkedItem > .checkmark {
 } */

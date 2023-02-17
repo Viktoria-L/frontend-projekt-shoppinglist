@@ -151,7 +151,7 @@ export async function displayListsAlt() {
       const labelA = document.createElement("label");
       labelA.setAttribute("for", item._id);
       labelA.classList.add("itemContainer")
-      labelA.innerHTML = `<input type="checkbox" name=${item.title} id=${item._id} value=${item.checked} /><span class="checkmark"></span>` + item.title;
+      labelA.innerHTML = `<span class="iconspans hidden removeItem"><img src="assets/trash.svg" width="12px"></span><input type="checkbox" name=${item.title} id=${item._id} value=${item.checked} /><span class="checkmark"></span>` + item.title;
 
       console.log(labelA)
 
@@ -187,13 +187,39 @@ export async function displayListsAlt() {
     headerName.innerHTML = `
     <span class="backBtn"><img src="assets/back-arrow.svg" alt=""></span>
     <input type="text" class="nameinput" value="${listNamn}" onfocus="this.placeholder=''"></input>
-    <button id="button-editmode"><img class="hover" src="assets/three-dots-vertical.svg" alt=""></button>
+    <button id="editViewBtn"><img class="hover" src="assets/three-dots-vertical.svg" alt=""></button>
     `;
+   
+
     //Eventlistener för "gå tillbaka-knappen"
     const backBtn = document.querySelector(".backBtn");
     backBtn.addEventListener("click", () => {
     bottomButton.classList.remove("hidden");
       window.location.href = "index.html";
+    });
+    
+    //Eventlistener för edit-knappen
+    const editViewBtn = document.querySelector("#editViewBtn");
+    editViewBtn.addEventListener("click", () => {
+      let remove = document.querySelectorAll(".removeItem");
+      console.log(remove);
+      let checkbox = document.querySelectorAll(".checkmark");
+      if (!editViewBtn.classList.contains("on")) {
+        editViewBtn.classList.add("on");
+        remove.forEach((element) => {
+          element.classList.remove("hidden");
+        });
+        checkbox.forEach((element) => {
+          element.classList.add("hidden")});
+      } else {
+        editViewBtn.classList.remove("on");
+        remove.forEach((element) => {
+          element.classList.add("hidden");
+        });
+        checkbox.forEach((element) => {
+          element.classList.remove("hidden");
+        });
+      }
     });
   }
 

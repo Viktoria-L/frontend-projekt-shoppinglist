@@ -115,12 +115,13 @@ createListBtn.addEventListener("click", (event) => {
 
   listItemInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-      addItem();
+      if(containsSpecialChars(listItemInput.value)){
+        alert("No special characters are allowed")
+      } else {
+        addItem();
     }
-  });
-  // listItemInput.addEventListener("change", (e) => {
-    // addItem();
-  // });
+}});
+ 
 let listItemsUl = document.createElement("ul");
 outputElement.append(listItemsUl);
 
@@ -174,14 +175,15 @@ outputElement.append(listItemsUl);
 
           let changeValue = '';
           li.addEventListener('change', event => {
-
+              if(containsSpecialChars(event.target.value)) {
+                alert("No special characters are allowed");
+              } else {
             changeValue = event.target.value;
+              }
+            
             let previousValue = event.target.id;
             let previousVal = previousValue.replace("item_", "");
             updateListItemLocally(previousVal);
-
-            console.log(changeValue);
-            console.log(itemListArray);
           });
 
           listItemInput.value = "";

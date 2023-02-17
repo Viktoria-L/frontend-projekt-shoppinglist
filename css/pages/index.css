@@ -1,56 +1,55 @@
 body {
-	margin: 0;
+  margin: 0;
 }
 
 /* HOVER CLASS */
 .hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 /* HEADER CLASSES */
 
 .headerLogoSettings {
-	display: flex;
-	justify-content: space-between;
-	background-color: lightgray;
-	padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  background-color: lightgray;
+  padding: 14px;
 }
 .headerLogoSettings a {
-	align-self: center;
+  align-self: center;
 }
 .headerLogoSettings a img {
-	width: 20px;
+  width: 20px;
 }
 .headerNameEdit {
-	padding: 5px 20px 0px 20px;
-	position: relative;
+  padding: 5px 20px 0px 20px;
+  position: relative;
 }
 .headerNameEdit h1 {
-	text-align: center;
+  text-align: center;
 }
 .headerNameEdit button {
-	all: unset;
-	position: absolute;
-	top: 50%;
-	right: 20px;
+  all: unset;
+  position: absolute;
+  top: 50%;
+  right: 20px;
 }
 .headerNameEdit img {
-	width: 6px;
-	padding: 0 1rem;
+  width: 6px;
+  padding: 0 1rem;
 }
 
 /* CALL-TO-ACTION */
 .call-to-action {
-	margin: auto;
-	text-align: center;
-	padding: 1rem;
-	box-shadow: 5px 5px 10px #999;
+  margin: auto;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 5px 5px 10px #999;
 }
-
 
 /* LIST DIVS */
 main {
-	padding: 0 4em;
+  padding: 0;
 }
 
 /*
@@ -67,45 +66,44 @@ ITEM STRUCTURE
 </div>
 */
 
-
 .item-container {
-	display: grid;
-	grid-template-columns: auto auto;
-	grid-gap: 1em;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1em;
 }
 
 .item-container div {
-	background-color: #c55;
+  background-color: #c55;
 
-	margin: 1em 0;
-	padding: 0.5em 1em;
+  margin: 1em 0;
+  padding: 0.5em 1em;
 
-	color: white;
+  color: white;
 
-	position: relative;
+  position: relative;
 }
 
 .item-container ul {
-	list-style-type: none;
-	padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .list-title {
-	margin: 0;
-	padding: 0.5em;
-	background-color: #a33;
+  margin: 0;
+  padding: 0.5em;
+  background-color: #a33;
 
-	text-transform: capitalize;
-	text-align: center;
+  text-transform: capitalize;
+  text-align: center;
 }
 
 .item-container li {
-	text-align: center;
-	margin-bottom: 0.5em;
+  text-align: center;
+  margin-bottom: 0.5em;
 }
 
 .item-container input[type="checkbox"] {
-	/* 
+  /* 
 	Impossible to modify directly. If you want to make
 	any kind of customization, you'll have to hide the checkbox
 	and have other elements reflect its changes.
@@ -115,23 +113,22 @@ ITEM STRUCTURE
 }
 
 .item-container input[type="text"] {
-	padding: 0.25em;
-	margin-left: 0.5em;
+  padding: 0.25em;
+  margin-left: 0.5em;
 }
 
-
 .main {
-    height: 80vh;
-    width: 440px;
-    display: flex;
-    position: relative;
+  height: 80vh;
+  width: 440px;
+  display: flex;
+  position: relative;
 }
 /* Plus-knappen på startsidan  */
 #newListBtn {
-	position: sticky;
-	bottom: 1rem;
-	left: 50%;
-	transform: translateX(-50%);
+  position: sticky;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
   line-height: 40px;
   font-size: 4rem;
   height: 50px;
@@ -143,52 +140,60 @@ ITEM STRUCTURE
 
 /* Styling för inputfältet i headern */
 .nameinput {
-    border: none;
-    font-size: 28px;
-    margin-left: 5px;
-    
+  border: none;
+  font-size: 28px;
+  margin-left: 5px;
 }
 .listiteminput {
-    border: none;
-    border-bottom: 2px solid black;
-    margin: 5px 5px 0 20px;  
-    
+  border: none;
+  border-bottom: 2px solid black;
+  margin: 5px 5px 0 20px;
 }
 .saveBtn {
-    margin: 5px 0px 0 20px;
-    background: rgb(138, 216, 138);
-    padding: 5px;
-    border-radius: 10px;
-    border: none;
+  margin: 5px 0px 0 20px;
+  background: rgb(138, 216, 138);
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
 }
 .backBtn {
-    padding: 5px;
+  padding: 5px;
 }
 .additembtn {
-    border: none;
+  border: none;
 }
 
 #listItems li {
-    list-style: none;
+  list-style: none;
 }
 input {
-    border: none;
+  border: none;
 }
 .iconspans {
-    padding: 5px;
+  padding: 5px;
 }
 /*------------------------------------*/
 
 /* TRASHCAN CSS */
 .remove {
-	all: unset;
-	position: absolute;
-	right: -8px;
-	top: -8px;
-	background-color: lightgray;
-	padding: 6px 8px 4px 8px;
-	border-radius: 100%;
+  all: unset;
+
+  margin: 6px 8px 4px 8px;
+  background-color: lightgray;
+  width: 1rem;
 }
-.remove img {
-	width: 12px;
+.remove-container {
+  position: absolute;
+  right: -0.8rem;
+  top: -0.8rem;
+  /* padding: 6px 8px 4px 8px; */
+  background-color: lightgray;
+  border-radius: 100%;
+}
+
+/* ---------------------------------- */
+
+/*  PREVIEW LISTS  */
+.preview-object h2 {
+  font-size: 1.5rem;
 }

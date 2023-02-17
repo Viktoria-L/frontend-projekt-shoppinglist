@@ -139,10 +139,13 @@ createListBtn.addEventListener("click", (event) => {
           alert("That item already exists, write another one!");
         } else {
           let li = document.createElement("li");
-          li.innerHTML = `<span class="iconspans"><img src="assets/trash.svg" id="${listItemInput.value}"  width="12px"></span><input type="text" value="${listItemInput.value}"></input>`;
+          li.innerHTML = `<span class="iconspans"><img src="assets/trash.svg" id="${listItemInput.value}" width="12px"></span>
+          <input type="text" value="${listItemInput.value}" id="item_${listItemInput.value}"></input>`;
           listItemsUl.append(li);
           let removeBtn = document.getElementById(`${listItemInput.value}`);
-
+          let inputfields = document.getElementById(`item_${listItemInput.value}`)
+          console.log(inputfields);
+                     
           //Funktion för att hitta rätt object i arrayen och ta bort den samtidigt som den tar bort utskriften
           function deleteObject(title) {
             let index = itemListArray.findIndex(
@@ -151,12 +154,32 @@ createListBtn.addEventListener("click", (event) => {
             itemListArray.splice(index, 1);
             li.remove();
           }
-
+          
           itemListArray.push({ title: listItemInput.value, checked: false });
           console.log(itemListArray);
 
           removeBtn.addEventListener("click", (event) => {
             deleteObject(removeBtn.id);
+            console.log(itemListArray);
+          });
+
+          function updateListItemLocally(previoustitle){
+            let index = itemListArray.findIndex(
+              (object) => object.title === previoustitle
+            );
+            itemListArray.splice(index, 1)
+            itemListArray.splice(index, 0, {title: changeValue, checked: false});
+          }
+
+          let changeValue = '';
+          li.addEventListener('change', event => {
+
+            changeValue = event.target.value;
+            let previousValue = event.target.id;
+            let previousVal = previousValue.replace("item_", "");
+            updateListItemLocally(previousVal);
+
+            console.log(changeValue);
             console.log(itemListArray);
           });
 
@@ -176,6 +199,11 @@ createListBtn.addEventListener("click", (event) => {
 
   saveToAPIBtn.addEventListener("click", () => {
     saveList();
+    listItemsUl.innerHTML = '';
+    let p = document.createElement("p");
+    p.innerText = "Your list have been saved!";
+    p.style.color = "green";
+    saveBtnDiv.append(p);    //töm fälten och meddela att listan sparats
   });
 });
 

@@ -170,4 +170,40 @@ export async function displayListsAlt() {
   // updateItem(item._id,)
 
   // prövar att skapa en funktion som ska uppdatera
+
+  //Plus-knappen på index-sidan som ska ta en till skapa lista-vyn.
+  const createListBtn = document.getElementById("newListBtn");
+  const outputElement = document.querySelector("#current-content");
+
+  createListBtn.addEventListener("click", (event) => {
+    outputElement.innerHTML = "";
+    createListBtn.style = `display: none`;
+
+    //Bygger listans namninput-fält med fältet för namnet i headern
+    headerName.innerHTML = `
+    <span class="backBtn"><img src="assets/back-arrow.svg" alt=""></span>
+    <input type="text" class="nameinput" value="New List"></input>
+    <button><img src="assets/three-dots-vertical.svg" alt=""></button>
+    `;
+
+    //Eventlistener för "gå tillbaka-knappen"
+    const backBtn = document.querySelector(".backBtn");
+    backBtn.addEventListener("click", () => {
+      window.location.href = "index.html";
+    });
+
+    currentContentContainer.innerHTML = "";
+    let ulContainer = document.createElement("article");
+    ulContainer.className = "ul-container";
+    currentContentContainer.appendChild(ulContainer);
+    const listItemsUl = document.createElement("ul");
+    ulContainer.append(listItemsUl);
+
+    editMode({
+      selectedList: selectedList,
+      listItemsUl: listItemsUl,
+      API_BASE: API_BASE,
+      headerName: headerName,
+    });
+  });
 }

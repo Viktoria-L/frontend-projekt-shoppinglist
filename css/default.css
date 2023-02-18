@@ -91,3 +91,19 @@ ul {
   padding: 0px;
   margin: 0px;
 }
+
+/* se lista-vy med checkboxar */
+.ul-container {
+  padding-top: 24px;
+  padding-left: 48px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.ul-container li {
+  padding: 4px;
+}
+.ul-container li label {
+  padding-left: 40px;
+  padding-top: 2px;
+}

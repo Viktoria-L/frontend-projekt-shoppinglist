@@ -125,8 +125,11 @@ export async function displayListsAlt() {
 
   function addItemToList(listItem) {}
   // const listItemsUl = document.querySelector("#listItems");
+  let ulContainer = document.createElement("article");
+  ulContainer.className = "ul-container";
+  currentContentContainer.appendChild(ulContainer);
   const listItemsUl = document.createElement("ul");
-  currentContentContainer.append(listItemsUl);
+  ulContainer.append(listItemsUl);
 
   function showSelectedList(selectedList) {
     let bottomButton = document.querySelector("#newListBtn");
@@ -134,7 +137,6 @@ export async function displayListsAlt() {
     console.log(selectedList._id);
 
     let listNamn = selectedList.listname;
-
     selectedList.itemList.forEach((item) => {
       let listItem = document.createElement("li");
 
@@ -189,6 +191,11 @@ export async function displayListsAlt() {
     <input type="text" class="nameinput" value="${listNamn}" onfocus="this.placeholder=''"></input>
     <button id="button-editmode"><img class="hover" src="assets/three-dots-vertical.svg" alt=""></button>
     `;
+    const editModeButton = document.querySelector("#button-editmode");
+    editModeButton.addEventListener("click", (e)=> {
+      console.log("edit mode clicked");
+    });
+
     //Eventlistener för "gå tillbaka-knappen"
     const backBtn = document.querySelector(".backBtn");
     backBtn.addEventListener("click", () => {

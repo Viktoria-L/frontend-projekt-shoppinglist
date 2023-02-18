@@ -91,3 +91,13 @@ ul {
   padding: 0px;
   margin: 0px;
 }
+
+.ul-container {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ul-container li {
+  padding: 4px;
+}

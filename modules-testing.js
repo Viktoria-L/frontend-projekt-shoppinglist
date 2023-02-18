@@ -1,3 +1,6 @@
+import { viewMode } from "./stateViewMode.js";
+import { editMode } from "./stateEditMode.js";
+
 export async function displayListsAlt() {
   const currentContentContainer = document.getElementById("current-content");
 
@@ -72,13 +75,13 @@ export async function displayListsAlt() {
 
       let count = 0;
       let trashcan = document.createElement("span");
-      trashcan.classList.add("remove-container","hidden", "hover");
+      trashcan.classList.add("remove-container", "hidden", "hover");
       trashcan.innerHTML =
         '<img class="remove hover" src="assets/trash.svg" alt="">';
       trashcan.addEventListener("click", (e) => {
         e.stopPropagation();
         console.log("du tryckte");
-      })
+      });
       previewObjekt.appendChild(trashcan);
       previewObjekt.innerHTML += `<h2>${list.listname} </h2> `;
       if (list.itemList && Array.isArray(list.itemList)) {
@@ -125,82 +128,42 @@ export async function displayListsAlt() {
 
   function addItemToList(listItem) {}
   // const listItemsUl = document.querySelector("#listItems");
-  let ulContainer = document.createElement("article");
-  ulContainer.className = "ul-container";
-  currentContentContainer.appendChild(ulContainer);
-  const listItemsUl = document.createElement("ul");
-  ulContainer.append(listItemsUl);
-
-  function showSelectedList(selectedList) {
-    let bottomButton = document.querySelector("#newListBtn");
-    bottomButton.classList.add("hidden");
-    console.log(selectedList._id);
-
-    let listNamn = selectedList.listname;
-    selectedList.itemList.forEach((item) => {
-      let listItem = document.createElement("li");
-
-      /* const checkboxInput = document.createElement("input"); */
-      /* checkboxInput.type = "checkbox"; //typen av input
-      checkboxInput.name = item.title; //checkbox namn är list items namn
-      checkboxInput.id = item._id; //id för checkbox är items id
-      checkboxInput.value = item.checked; // chckbox value
-      checkboxInput.checked = item.checked; //visas som checked/unchecked beroende på true false value från item
-
-      console.log(checkboxInput)  */
-      /* checked=${item.checked} */
-
-      const labelA = document.createElement("label");
-      labelA.setAttribute("for", item._id);
-      labelA.classList.add("itemContainer")
-      labelA.innerHTML = `<input type="checkbox" name=${item.title} id=${item._id} value=${item.checked} /><span class="checkmark"></span>` + item.title;
-
-      console.log(labelA)
-
-      item.checked
-        ? listItem.classList.add("checkedItem")
-        : listItem.classList.remove("checkedItem");
-
-      /* listItem.appendChild(checkboxInput); */
-      listItem.appendChild(labelA);
-
-      /* labelA.innerHTML += item.qty ? ` ${item.qty}` : " :1"; */
-
-      // Funktion som ändrar om itemet är checked eller inte
-      listItem.addEventListener("change", function () {
-        item.checked = !item.checked;
-        // labelA.classList.toggle("checkedItem");
-        item.checked
-          ? listItem.classList.add("checkedItem")
-          : listItem.classList.remove("checkedItem");
-        console.log(item.checked);
-        console.log("item changed state");
-
-        console.log(selectedList._id);
-        console.log(item._id, "list item id", item.title);
-        console.log(item.checked);
-
-        updateCheckedState(selectedList._id, item._id, item.checked);
+  
+  let currentState = "viewOneList";
+  
+  async function showSelectedList(selectedList) {
+    currentContentContainer.innerHTML = "";
+    let ulContainer = document.createElement("article");
+    ulContainer.className = "ul-container";
+    currentContentContainer.appendChild(ulContainer);
+    const listItemsUl = document.createElement("ul");
+    ulContainer.append(listItemsUl);
+    if (currentState === "viewOneList") {
+      viewMode({
+        selectedList: selectedList,
+        listItemsUl: listItemsUl,
+        API_BASE: API_BASE,
+        headerName: headerName,
       });
+    } else if (currentState === "editOneList") {
+      editMode({
+        selectedList: selectedList,
+        listItemsUl: listItemsUl,
+        API_BASE: API_BASE,
+        headerName: headerName,
+      });
+    }
+    createEditModeEventListener();
+  }
 
-      listItemsUl.append(listItem);
-    });
-
-    headerName.innerHTML = `
-    <span class="backBtn"><img src="assets/back-arrow.svg" alt=""></span>
-    <input type="text" class="nameinput" value="${listNamn}" onfocus="this.placeholder=''"></input>
-    <button id="button-editmode"><img class="hover" src="assets/three-dots-vertical.svg" alt=""></button>
-    `;
+  function createEditModeEventListener() {
     const editModeButton = document.querySelector("#button-editmode");
-    editModeButton.addEventListener("click", (e)=> {
-      console.log("edit mode clicked");
-    });
-
-    //Eventlistener för "gå tillbaka-knappen"
-    const backBtn = document.querySelector(".backBtn");
-    backBtn.addEventListener("click", () => {
-    bottomButton.classList.remove("hidden");
-      window.location.href = "index.html";
+    editModeButton.addEventListener("click", (e) => {
+      currentState === "viewOneList"
+        ? (currentState = "editOneList")
+        : (currentState = "viewOneList");
+      console.log("edit mode clicked    current state: " + currentState);
+      showSelectedList(selectedList);
     });
   }
 
@@ -208,15 +171,39 @@ export async function displayListsAlt() {
 
   // prövar att skapa en funktion som ska uppdatera
 
-  async function updateCheckedState(currentListId, item_id, checked_state) {
-    await fetch(`${API_BASE}lists/${currentListId}/items/${item_id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        checked: checked_state,
-      }),
+  //Plus-knappen på index-sidan som ska ta en till skapa lista-vyn.
+  const createListBtn = document.getElementById("newListBtn");
+  const outputElement = document.querySelector("#current-content");
+
+  createListBtn.addEventListener("click", (event) => {
+    outputElement.innerHTML = "";
+    createListBtn.style = `display: none`;
+
+    //Bygger listans namninput-fält med fältet för namnet i headern
+    headerName.innerHTML = `
+    <span class="backBtn"><img src="assets/back-arrow.svg" alt=""></span>
+    <input type="text" class="nameinput" value="New List"></input>
+    <button><img src="assets/three-dots-vertical.svg" alt=""></button>
+    `;
+
+    //Eventlistener för "gå tillbaka-knappen"
+    const backBtn = document.querySelector(".backBtn");
+    backBtn.addEventListener("click", () => {
+      window.location.href = "index.html";
     });
-  }
+
+    currentContentContainer.innerHTML = "";
+    let ulContainer = document.createElement("article");
+    ulContainer.className = "ul-container";
+    currentContentContainer.appendChild(ulContainer);
+    const listItemsUl = document.createElement("ul");
+    ulContainer.append(listItemsUl);
+
+    editMode({
+      selectedList: selectedList,
+      listItemsUl: listItemsUl,
+      API_BASE: API_BASE,
+      headerName: headerName,
+    });
+  });
 }

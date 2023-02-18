@@ -1,6 +1,6 @@
 import { createDebugElements } from "./module-debug.js";
 
-import { displayListsAlt } from "./modules-testing.js"
+import { displayListsAlt } from "./modules-testing.js";
 import {
   filterByName,
   getAllLists,
@@ -109,27 +109,30 @@ createListBtn.addEventListener("click", (event) => {
     <input type="text" class="listiteminput" placeholder="Add an item..."></input>
     <button class="additembtn">+</button>
     `;
-    outputElement.append(addAnItemDiv);
+  outputElement.append(addAnItemDiv);
 
   const listItemInput = document.querySelector(".listiteminput");
   const addItemBtn = document.querySelector(".additembtn");
 
   listItemInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-      if(containsSpecialChars(listItemInput.value)){
-        alert("No special characters are allowed")
+      if (containsSpecialChars(listItemInput.value)) {
+        alert("No special characters are allowed");
       } else {
         addItem();
+      }
     }
-}});
- 
-let listItemsUl = document.createElement("ul");
-outputElement.append(listItemsUl);
+  });
+
+  let listItemsUl = document.createElement("ul");
+  outputElement.append(listItemsUl);
 
   //plus-knappen lägger till ett item i den "lokala" listan som gör att man kan redigera den innan den sparas till api
   // change-event körs när man trycker på knappen för inputfältet tappar fokus
-  addItemBtn.addEventListener("click", () => { addItem(); });
-  
+  addItemBtn.addEventListener("click", () => {
+    addItem();
+  });
+
   function addItem() {
     if (containsSpecialChars(listItemInput.value)) {
       alert("No special characters are allowed");
@@ -146,9 +149,11 @@ outputElement.append(listItemsUl);
           <input type="text" value="${listItemInput.value}" id="item_${listItemInput.value}"></input>`;
           listItemsUl.append(li);
           let removeBtn = document.getElementById(`${listItemInput.value}`);
-          let inputfields = document.getElementById(`item_${listItemInput.value}`)
+          let inputfields = document.getElementById(
+            `item_${listItemInput.value}`
+          );
           console.log(inputfields);
-                     
+
           //Funktion för att hitta rätt object i arrayen och ta bort den samtidigt som den tar bort utskriften
           function deleteObject(title) {
             let index = itemListArray.findIndex(
@@ -157,7 +162,7 @@ outputElement.append(listItemsUl);
             itemListArray.splice(index, 1);
             li.remove();
           }
-          
+
           itemListArray.push({ title: listItemInput.value, checked: false });
           console.log(itemListArray);
 
@@ -166,22 +171,25 @@ outputElement.append(listItemsUl);
             console.log(itemListArray);
           });
 
-          function updateListItemLocally(previoustitle){
+          function updateListItemLocally(previoustitle) {
             let index = itemListArray.findIndex(
               (object) => object.title === previoustitle
             );
-            itemListArray.splice(index, 1)
-            itemListArray.splice(index, 0, {title: changeValue, checked: false});
+            itemListArray.splice(index, 1);
+            itemListArray.splice(index, 0, {
+              title: changeValue,
+              checked: false,
+            });
           }
 
-          let changeValue = '';
-          li.addEventListener('change', event => {
-              if(containsSpecialChars(event.target.value)) {
-                alert("No special characters are allowed");
-              } else {
-            changeValue = event.target.value;
-              }
-            
+          let changeValue = "";
+          li.addEventListener("change", (event) => {
+            if (containsSpecialChars(event.target.value)) {
+              alert("No special characters are allowed");
+            } else {
+              changeValue = event.target.value;
+            }
+
             let previousValue = event.target.id;
             let previousVal = previousValue.replace("item_", "");
             updateListItemLocally(previousVal);
@@ -195,7 +203,6 @@ outputElement.append(listItemsUl);
     }
   }
 
-
   let saveBtnDiv = document.createElement("div");
   outputElement.append(saveBtnDiv);
   //Spara-knapp som ska ha eventlistener/funktion att skicka datan till api:et
@@ -206,14 +213,13 @@ outputElement.append(listItemsUl);
 
   saveToAPIBtn.addEventListener("click", () => {
     saveList();
-    listItemsUl.innerHTML = '';
+    listItemsUl.innerHTML = "";
     let p = document.createElement("p");
     p.innerText = "Your list have been saved!";
     p.style.color = "green";
-    saveBtnDiv.append(p);    //töm fälten och meddela att listan sparats
+    saveBtnDiv.append(p); //töm fälten och meddela att listan sparats
   });
 });
-
 
 function containsSpecialChars(str) {
   const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;

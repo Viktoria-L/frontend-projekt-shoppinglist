@@ -48,7 +48,6 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     }
 
     selectedList.itemList.forEach((item) => {
-      console.log(listNamn);
       let listItem = document.createElement("li");
 
       /* const checkboxInput = document.createElement("input"); */

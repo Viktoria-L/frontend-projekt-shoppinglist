@@ -56,22 +56,3 @@ function editFunc() {
 }
 
 editFunc();
-// GAMMAL DELETE FUNCTION -------------------
-//Hitta id för listan som ska tas bort
-// let listView = document.querySelectorAll(".preview-object");
-
-// listView.onclick = (e) => {
-//   let currentList = e.target.parentElement.parentElement;
-//   e.stopPropagation();
-//   console.log(currentList.id);
-//   if (currentList.id === "" || currentList.id === "list-output") {
-//     console.log("missed")
-//   } else {
-//     // deleteListUsingID(currentList.id);
-//     console.log("delete")
-//   }
-// };
-
-
-
-

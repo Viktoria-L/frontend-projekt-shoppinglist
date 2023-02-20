@@ -68,11 +68,10 @@ export async function deleteListUsingID(id) {
 //  funktion som deletear list-item
 
 export async function deleteListItem(listId, listItemId) {
-  const res = await fetch(
+  await fetch(
     `https://nackademin-item-tracker.herokuapp.com/lists/${listId}/items/${listItemId}`,
     {
       method: "DELETE",
     }
   );
-  const { list } = await res.json();
 }

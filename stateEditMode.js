@@ -38,6 +38,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       itemListArray.push(item);
     });
     console.log("editing list" + JSON.stringify(itemListArray));
+    console.log(selectedList);
 
     let listNamn = selectedList.listname;
 
@@ -63,10 +64,13 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       const labelA = document.createElement("label");
       labelA.setAttribute("for", item._id);
       labelA.classList.add("itemContainer", "editing");
-      labelA.innerHTML = `<span class="iconspans"><img src="assets/trash.svg" id="${item.title.replaceAll(" ", "-")}" width="12px"></span>
-    <input type="text" value="${item.title}" id="item_${listItemInput.value}"></input>`;
+      labelA.innerHTML = `<span class="iconspans"><img src="assets/trash.svg" id="${item.title.replaceAll(
+        " ",
+        "-"
+      )}" width="12px"></span>
+    <input type="text" value="${item.title}" id="item_${item._id}"></input>`;
 
-      console.log(labelA);
+      // console.log(labelA);
 
       item.checked
         ? listItem.classList.add("checkedItem")
@@ -95,6 +99,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         <button id="button-editmode"><img class="hover" src="assets/three-dots-vertical.svg" alt=""></button>
         `;
     console.log(selectedList._id);
+    console.log(selectedList.itemList[0]._id,selectedList.itemList[0].title);
   } else {
     console.log("creating list");
   }

@@ -24,7 +24,7 @@ let bottomButton = document.querySelector("#newListBtn");
       labelA.classList.add("itemContainer")
       labelA.innerHTML = `<input type="checkbox" name=${item.title} id=${item._id} value=${item.checked} /><span class="checkmark"></span>` + item.title;
 
-      console.log(labelA)
+      // console.log(labelA)
 
       item.checked
         ? listItem.classList.add("checkedItem")

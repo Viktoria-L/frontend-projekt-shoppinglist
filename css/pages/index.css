@@ -295,3 +295,60 @@ li {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+
+/* color picker */
+
+.color-select-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+  margin: 12px;
+}
+
+.color-select {
+  display: none;
+}
+
+.color-select-label {
+  padding: 16px;
+  border-radius: 100%;
+}
+
+.color-is-selected {
+  padding: 16px;
+  border: black 1px solid;
+  border-radius: 100%;
+}
+
+.color-select-label-default {
+  /* TODO ersätt med CSS-variabler*/
+  background-color: #999;
+}
+
+.color-select-label-red {
+  background-color: red;
+}
+
+.color-select-label-orange {
+  background-color: orange;
+}
+
+.color-select-label-yellow {
+  background-color: yellow;
+}
+
+.color-select-label-green {
+  background-color: green;
+}
+
+.color-select-label-blue {
+  background-color: blue;
+}
+
+.color-select-label-purple {
+  background-color: purple;
+}
+

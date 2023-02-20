@@ -183,7 +183,6 @@ export async function displayListsAlt() {
     headerName.innerHTML = `
     <span class="backBtn"><img src="assets/back-arrow.svg" alt=""></span>
     <input type="text" class="nameinput" value="New List"></input>
-    <button><img src="assets/three-dots-vertical.svg" alt=""></button>
     `;
 
     //Eventlistener för "gå tillbaka-knappen"

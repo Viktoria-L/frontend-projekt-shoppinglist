@@ -37,7 +37,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       // console.log("ITEM IS" + item.title)
       itemListArray.push(item);
     });
-    console.log("editing list");
+    console.log("editing list" + JSON.stringify(itemListArray));
 
     let listNamn = selectedList.listname;
 

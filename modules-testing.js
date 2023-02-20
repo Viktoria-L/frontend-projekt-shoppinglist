@@ -1,5 +1,6 @@
 import { viewMode } from "./stateViewMode.js";
 import { editMode } from "./stateEditMode.js";
+import { deleteListUsingID } from "./module-api.js";
 
 export async function displayListsAlt() {
   const currentContentContainer = document.getElementById("current-content");
@@ -121,6 +122,7 @@ export async function displayListsAlt() {
         if (currentList.getAttribute("data-list-id") !== "null") {
           console.log(
             `du tog bort lista ${currentList.getAttribute("data-list-id")}`
+            deleteListUsingID(currentList.getAttribute("data-list-id"));
           );
           currentList.remove();
         }

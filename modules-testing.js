@@ -47,19 +47,19 @@ export async function displayListsAlt() {
 
     fetchedLists.forEach((list) => {
       //For each list item in the fetched array
-      const previewObjekt = document.createElement("div");
-      previewContainer.append(previewObjekt);
-      previewObjekt.classList.add("preview-object");
+      const previewObject = document.createElement("div");
+      previewContainer.append(previewObject);
+      previewObject.classList.add("preview-object");
 
-      previewObjekt.dataset.listId = list._id;
+      previewObject.dataset.listId = list._id;
 
       //   EXTRA UL SOM INTE ANVÄNDS
 
       //   let listUL = document.createElement("ul");
-      //   previewObjekt.append(listUL);
+      //   previewObject.append(listUL);
 
       //event listener för klickad lista
-      previewObjekt.addEventListener("click", async function () {
+      previewObject.addEventListener("click", async function () {
         try {
           const listResponse = await fetch(
             `https://nackademin-item-tracker.herokuapp.com/lists/${list._id}`
@@ -74,49 +74,58 @@ export async function displayListsAlt() {
       });
 
       let count = 0;
-      let trashcan = document.createElement("span");
-      trashcan.classList.add("remove-container", "hidden", "hover");
-      trashcan.innerHTML =
-        '<img class="remove hover" src="assets/trash.svg" alt="">';
-      trashcan.addEventListener("click", (e) => {
-        e.stopPropagation();
-        console.log("du tryckte");
-      });
-      previewObjekt.appendChild(trashcan);
-      previewObjekt.innerHTML += `<h2>${list.listname} </h2> `;
+      previewObject.innerHTML += `<h2>${list.listname} </h2> `;
       if (list.itemList && Array.isArray(list.itemList)) {
-        // previewObjekt.innerHTML += `<ul>`;
-
+        // previewObject.innerHTML += `<ul>`;
+        
         let listUl = document.createElement("ul");
-        previewObjekt.appendChild(listUl);
-
+        previewObject.appendChild(listUl);
+        
         list.itemList.forEach((item) => {
           if (count >= 3) {
-            if (!previewObjekt.innerHTML.includes("...")) {
-              previewObjekt.innerHTML += `...`;
+            if (!previewObject.innerHTML.includes("...")) {
+              previewObject.innerHTML += `...`;
             }
             return;
           }
-
+          
           console.log(item.checked);
-
+          
           let listItemet = document.createElement("li");
           listItemet.innerHTML = item.title ? `${item.title}` : "no title ";
           item.checked
-            ? listItemet.classList.add("checkedItem")
-            : listItemet.classList.remove("checkedItem");
+          ? listItemet.classList.add("checkedItem")
+          : listItemet.classList.remove("checkedItem");
           listUl.appendChild(listItemet);
-
-          // previewObjekt.innerHTML += (item.title) ? `<li> ${item.title}  </li> ` : "no title ";
-
-          // previewObjekt.innerHTML += (item.title) ? `<li> ${item.title}  </li> ` : "no title ";
-          // previewObjekt.innerHTML += (item.checked) ? `<span class="bold">checked:</span>${item.checked} ` : "";
-
+          
+          // previewObject.innerHTML += (item.title) ? `<li> ${item.title}  </li> ` : "no title ";
+          
+          // previewObject.innerHTML += (item.title) ? `<li> ${item.title}  </li> ` : "no title ";
+          // previewObject.innerHTML += (item.checked) ? `<span class="bold">checked:</span>${item.checked} ` : "";
+          
           count++;
         });
-        // previewObjekt.innerHTML += + list.itemList.length - 5
+        // previewObject.innerHTML += + list.itemList.length - 5
         console.log();
       } else console.log("not an Array");
+
+      let trashcan = document.createElement("span");
+      trashcan.classList.add("remove-container", "hidden", "hover");
+      trashcan.innerHTML =
+        '<img class="remove hover" src="assets/trash.svg" alt="trash icon">';
+      // ---------- DELETE-FUNCTION ----------
+      trashcan.addEventListener("click", (e) => {
+        e.stopPropagation();
+        let currentList = e.target.parentElement.parentElement;
+        console.log(`du klickar på ${currentList.getAttribute("data-list-id")}`);
+        if (currentList.getAttribute("data-list-id") !== "null") {
+          console.log(
+            `du tog bort lista ${currentList.getAttribute("data-list-id")}`
+          );
+          currentList.remove();
+        }
+      });
+      previewObject.appendChild(trashcan);
     });
   }
 
@@ -128,9 +137,9 @@ export async function displayListsAlt() {
 
   function addItemToList(listItem) {}
   // const listItemsUl = document.querySelector("#listItems");
-  
+
   let currentState = "viewOneList";
-  
+
   async function showSelectedList(selectedList) {
     currentContentContainer.innerHTML = "";
     let ulContainer = document.createElement("article");

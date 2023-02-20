@@ -285,6 +285,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         body: JSON.stringify({
           listname: listname,
           customfield: "grupp_e",
+          color: selectedColor
         }),
       }
     );

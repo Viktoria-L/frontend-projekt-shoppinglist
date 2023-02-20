@@ -65,10 +65,8 @@ export async function deleteListUsingID(id) {
   );
 }
 
-export async function createCustomList() {
-  const listname = "testlista";
+export async function createCustomList(listname, color) {
   const customfield = "grupp_e";
-  const color = "red";
   const res = await fetch(`https://nackademin-item-tracker.herokuapp.com/lists`, {
   method: "POST",
   headers: {

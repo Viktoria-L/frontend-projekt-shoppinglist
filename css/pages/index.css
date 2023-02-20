@@ -352,3 +352,48 @@ li {
   background-color: purple;
 }
 
+.list-color-red {
+  background-color: hsla(0, 60%, 50%, 1);
+}
+.list-color-red:hover {
+  background-color: hsla(0, 60%, 55%, 1);
+}
+
+.list-color-orange {
+  background-color: hsla(20, 60%, 50%, 1);
+}
+.list-color-orange:hover {
+  background-color: hsla(20, 60%, 55%, 1);
+}
+
+.list-color-yellow {
+  background-color: hsla(60, 60%, 50%, 1);
+}
+.list-color-yellow:hover {
+  background-color: hsla(60, 60%, 55%, 1);
+}
+
+.list-color-green {
+  background-color: hsla(120, 60%, 50%, 1);
+}
+.list-color-green:hover {
+  background-color: hsla(120, 60%, 55%, 1);
+}
+
+.list-color-blue {
+  background-color: hsla(190, 60%, 50%, 1);
+}
+.list-color-blue:hover {
+  background-color: hsla(190, 60%, 55%, 1);
+}
+
+.list-color-purple {
+  background-color: hsla(260, 60%, 50%, 1);
+}
+.list-color-purple:hover {
+  background-color: hsla(260, 60%, 55%, 1);
+}
+
+
+
+

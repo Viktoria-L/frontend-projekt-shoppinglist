@@ -122,8 +122,8 @@ export async function displayListsAlt() {
         if (currentList.getAttribute("data-list-id") !== "null") {
           console.log(
             `du tog bort lista ${currentList.getAttribute("data-list-id")}`
-            deleteListUsingID(currentList.getAttribute("data-list-id"));
-          );
+            );
+            deleteListUsingID(currentList.getAttribute("data-list-id"))
           currentList.remove();
         }
       });

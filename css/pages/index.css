@@ -2,6 +2,10 @@ body {
   margin: 0;
 }
 
+main {
+  padding: 0;
+}
+
 /* HOVER CLASS */
 .hover {
   cursor: pointer;
@@ -22,7 +26,7 @@ body {
   width: 20px;
 }
 .headerNameEdit {
-  padding: 5px 20px 0px 20px;
+  padding: 5px 10px 0px 10px;
   position: relative;
 }
 .headerNameEdit h1 {
@@ -32,12 +36,18 @@ body {
   all: unset;
   position: absolute;
   top: 50%;
-  right: 20px;
+  right: 10px;
 }
 .headerNameEdit img {
   width: 6px;
   padding: 0 1rem;
 }
+
+#button-editmode {
+  top: 40%;
+}
+
+
 
 /* CALL-TO-ACTION */
 .call-to-action {
@@ -48,9 +58,7 @@ body {
 }
 
 /* LIST DIVS */
-main {
-  padding: 0;
-}
+
 
 /*
 ITEM STRUCTURE
@@ -221,12 +229,9 @@ li {
   position: absolute;
   opacity: 0;
   cursor: pointer;
-  /* height: 0; */
-  /* width: 0; */
 }
 
 .itemContainer.editing input {
-  /* position: absolute; */
   opacity: 1;
   cursor: pointer;
 }
@@ -242,17 +247,10 @@ li {
   border-radius: 100%;
 }
 
-/* On mouse-over, add a grey background color */
-/* .itemContainer:hover input */ /* .checkedItem > .checkmark {
-} */
-
 /* When the checkbox is checked, add background */
-/* .itemContainer input:checked */.checkedItem .checkmark {
+.checkedItem .checkmark {
   background-color: black;
 }
-/* .itemContainer input:checked ~ p {
-  text-decoration: line-through;
-} */
 
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
@@ -262,7 +260,7 @@ li {
 }
 
 /* Show the checkmark when checked */
-/* .itemContainer input:checked */ .checkedItem .checkmark:after {
+.checkedItem .checkmark:after {
   display: block;
 }
 

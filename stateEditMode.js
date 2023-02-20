@@ -63,8 +63,13 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       const labelA = document.createElement("label");
       labelA.setAttribute("for", item._id);
       labelA.classList.add("itemContainer", "editing");
-      labelA.innerHTML = `<span class="iconspans"><img src="assets/trash.svg" id="${item.title.replaceAll(" ", "-")}" width="12px"></span>
-    <input type="text" value="${item.title}" id="item_${listItemInput.value}"></input>`;
+      labelA.innerHTML = `<span class="iconspans"><img src="assets/trash.svg" id="${item.title.replaceAll(
+        " ",
+        "-"
+      )}" width="12px"></span>
+    <input type="text" value="${item.title}" id="item_${
+        listItemInput.value
+      }"></input>`;
 
       console.log(labelA);
 
@@ -81,7 +86,9 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
 
       listItemsUl.append(listItem);
 
-      let removeBtn = document.querySelector(`#${item.title.replaceAll(" ", "-")}`);
+      let removeBtn = document.querySelector(
+        `#${item.title.replaceAll(" ", "-")}`
+      );
       console.log(removeBtn);
       removeBtn.addEventListener("click", (event) => {
         deleteObject(removeBtn.id, labelA);
@@ -183,6 +190,54 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       }
     }
   }
+  // color select för lista här
+
+  function resetSelectedColorClass() {
+    let labels = document.querySelectorAll(".color-select-label")
+    labels.forEach(label => {
+      label.classList.remove("color-is-selected");
+    })
+  }
+
+  let colors = [
+    "default",
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "blue",
+    "purple",
+  ];
+  let selectedColor;
+
+  let colorSelectDiv = document.createElement("div");
+  colorSelectDiv.className = "color-select-div";
+  colors.forEach((color) => {
+    let colorButton = document.createElement("input");
+    colorButton.className = `color-select color-select-${color}`;
+    colorButton.id = `color-select-${color}`;
+    colorButton.type = "radio";
+    colorButton.name = "selectAColor";
+    colorButton.value = color;
+
+    let colorButtonLabel = document.createElement("label");
+    colorButtonLabel.className = `color-select-label color-select-label-${color}`;
+    colorButtonLabel.htmlFor = `color-select-${color}`;
+    // colorButtonLabel.innerText = color;
+
+    colorButton.addEventListener("click", (e) => {
+      selectedColor = color;
+      resetSelectedColorClass();
+      colorButtonLabel.classList.add("color-is-selected");
+      console.log(`selected color: ${selectedColor}`);
+    });
+    colorSelectDiv.append(colorButtonLabel);
+    colorButtonLabel.append(colorButton);
+  });
+
+  outputElement.append(colorSelectDiv);
+
+  // color select slut
 
   let saveBtnDiv = document.createElement("div");
   outputElement.append(saveBtnDiv);
@@ -230,6 +285,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         body: JSON.stringify({
           listname: listname,
           customfield: "grupp_e",
+          color: selectedColor
         }),
       }
     );

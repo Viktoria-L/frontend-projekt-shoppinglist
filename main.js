@@ -1,4 +1,6 @@
 import { createDebugElements } from "./module-debug.js";
+
+import { displayListsAlt } from "./modules-testing.js";
 import {
   filterByName,
   getAllLists,
@@ -6,6 +8,7 @@ import {
   deleteListUsingID,
   getListsUsingCustomField,
 } from "./module-api.js";
+import { triggerDisplay, display } from "./module-display-lists.js";
 
 // inte använd men länken till början av APIt
 const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
@@ -20,6 +23,12 @@ if (debugMode) {
   console.log(lists);
 }
 
+// Visa index-funktioner här
+
+// triggerDisplay();
+
+displayListsAlt();
+
 // om man vill skriva ut
 // let stringifiedLists = JSON.stringify(lists);
 // console.log("All lists:\n" + stringifiedLists);
@@ -27,56 +36,42 @@ if (debugMode) {
 // skapar debugelement om debugMode är true
 createDebugElements(debugMode);
 
-const createListBtn = document.getElementById("newListBtn");
-const currentContentDiv = document.getElementById("current-content");
-
-const addAnItemDiv = document.querySelector(".addAnItemDiv");
-const headerName = document.querySelector(".headerNameEdit");
-const listItemsUl = document.querySelector("#listItems");
-const saveBtnDiv = document.querySelector(".saveToApi");
-
-//Plus-knappen på index-sidan som ska ta en till skapa lista-vyn.
-createListBtn.addEventListener("click", (event) => {
-  //Bygger listans namninput-fält med fältet för namnet i headern
-  headerName.innerHTML = `
-    <span class="backBtn"><img src="assets/back-arrow.svg" alt=""></span>
-    <input type="text" class="nameinput" placeholder="New List" onfocus="this.placeholder=''"></input>
-    <button><img src="assets/three-dots-vertical.svg" alt=""></button>
-    `;
-  //Eventlistener för "gå tillbaka-knappen"
-  const backBtn = document.querySelector(".backBtn");
-  backBtn.addEventListener("click", () => {
-    window.location.href = "index.html";
-  });
-
-  //Element för inputfält där man skriver list-item + lägg till-knapp
-  addAnItemDiv.innerHTML = `
-    <input type="text" class="listiteminput" placeholder="Add an item..."></input>
-    <button class="additembtn">+</button>
-    `;
-  const listItemInput = document.querySelector(".listiteminput");
-  const addItemBtn = document.querySelector(".additembtn");
-
-  //plus-knappen lägger till ett item i den "lokala" listan som gör att man kan redigera den innan den sparas till api
-  addItemBtn.addEventListener("click", () => {
-    if (listItemInput.value !== null && listItemInput.value !== "") {
-      let li = document.createElement("li");
-      li.innerHTML = `<span class="iconspans"><img src="assets/trash.svg" alt=""></span><input type="text" value="${listItemInput.value}"></input>
-            `;
-      listItemsUl.append(li);
-      listItemInput.value = "";
+//Funktion för edit-knapp
+function editFunc() {
+  let editBtn = document.getElementById("editBtn");
+  editBtn.addEventListener("click", () => {
+    let remove = document.querySelectorAll(".remove-container");
+    if (!editBtn.classList.contains("on")) {
+      editBtn.classList.add("on");
+      remove.forEach((element) => {
+        element.classList.remove("hidden");
+      });
     } else {
-      alert("Fyll i ett item för att lägga till");
+      editBtn.classList.remove("on");
+      remove.forEach((element) => {
+        element.classList.add("hidden");
+      });
     }
-
-    //FRÅGA:: Ska man skicka in värdet på list-itemet här i en lokal lista/objekt?
   });
+}
 
-  //Spara-knapp som ska ha eventlistener/funktion att skicka datan till api:et
-  let saveToAPIBtn = document.createElement("button");
-  saveToAPIBtn.className = "saveBtn";
-  saveToAPIBtn.innerText = "Save List";
-  saveBtnDiv.append(saveToAPIBtn);
-});
+editFunc();
+// GAMMAL DELETE FUNCTION -------------------
+//Hitta id för listan som ska tas bort
+// let listView = document.querySelectorAll(".preview-object");
 
-//Man lär behöva ha en loop då som loopar igenom alla Li-items och tar deras value och skickar in via POST?
+// listView.onclick = (e) => {
+//   let currentList = e.target.parentElement.parentElement;
+//   e.stopPropagation();
+//   console.log(currentList.id);
+//   if (currentList.id === "" || currentList.id === "list-output") {
+//     console.log("missed")
+//   } else {
+//     // deleteListUsingID(currentList.id);
+//     console.log("delete")
+//   }
+// };
+
+
+
+

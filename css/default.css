@@ -74,7 +74,7 @@ body {
 
 @media (min-width: 600px) {
   .preview-container {
-    
+    margin: 0 25%;
   }
   .preview-container > div {
     

@@ -50,7 +50,7 @@ export async function displayListsAlt() {
       //For each list item in the fetched array
       const previewObject = document.createElement("div");
       previewContainer.append(previewObject);
-      previewObject.classList.add("preview-object");
+      previewObject.classList.add("preview-object", "hover");
 
       previewObject.dataset.listId = list._id;
 

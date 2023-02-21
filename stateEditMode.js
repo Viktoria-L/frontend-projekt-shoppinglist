@@ -1,3 +1,5 @@
+import { deleteListItem } from "./module-api.js";
+
 export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   const outputElement = document.querySelector("#current-content");
   let currentList = "";
@@ -91,12 +93,11 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       removeBtn.setAttribute("list_id", item._id);
       console.log(removeBtn);
       removeBtn.addEventListener("click", (event) => {
-        // deleteObject(removeBtn.id, labelA);
+        // removes item from DOM and api
+        deleteObject(removeBtn.id, labelA);
         console.log("pressed item", event.target.getAttribute("list_id"));
-        console.log("current list",selectedList._id)
-        console.log()
-        // console.log(itemListArray);
-        
+        console.log("current list", selectedList._id)
+        deleteListItem(selectedList._id, event.target.getAttribute("list_id"));
       });
     });
     headerName.innerHTML = "this is edit mode";

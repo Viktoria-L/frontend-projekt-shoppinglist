@@ -1,3 +1,5 @@
+import { deleteListItem } from "./module-api.js";
+
 export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   const outputElement = document.querySelector("#current-content");
   let currentList = "";
@@ -38,6 +40,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       itemListArray.push(item);
     });
     console.log("editing list" + JSON.stringify(itemListArray));
+    console.log(selectedList);
 
     let listNamn = selectedList.listname;
 
@@ -67,11 +70,9 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         " ",
         "-"
       )}" width="12px"></span>
-    <input type="text" value="${item.title}" id="item_${
-        listItemInput.value
-      }"></input>`;
+    <input type="text" value="${item.title}" id="item_${item._id}"></input>`;
 
-      console.log(labelA);
+      // console.log(labelA);
 
       item.checked
         ? listItem.classList.add("checkedItem")
@@ -89,10 +90,14 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       let removeBtn = document.querySelector(
         `#${item.title.replaceAll(" ", "-")}`
       );
+      removeBtn.setAttribute("list_id", item._id);
       console.log(removeBtn);
       removeBtn.addEventListener("click", (event) => {
+        // removes item from DOM and api
         deleteObject(removeBtn.id, labelA);
-        console.log(itemListArray);
+        console.log("pressed item", event.target.getAttribute("list_id"));
+        console.log("current list", selectedList._id)
+        deleteListItem(selectedList._id, event.target.getAttribute("list_id"));
       });
     });
     headerName.innerHTML = "this is edit mode";
@@ -101,7 +106,8 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         <input type="text" class="nameinput" value="${listNamn}" onfocus="this.placeholder=''"></input>
         <button id="button-editmode"><img class="hover" src="assets/three-dots-vertical.svg" alt=""></button>
         `;
-    console.log(selectedList._id);
+    console.log(selectedList._id, selectedList.listname);
+    console.log(selectedList.itemList[0]._id,selectedList.itemList[0].title);
   } else {
     console.log("creating list");
   }

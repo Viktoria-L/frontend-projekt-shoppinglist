@@ -76,6 +76,21 @@ export async function deleteListItem(listId, listItemId) {
   );
 }
 
+export async function updateListItem(listId, listItemId) {
+  await fetch(
+    `https://nackademin-item-tracker.herokuapp.com/lists/${listId}/items/${listItemId}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        checked: true,
+      }),
+    }
+  );
+}
+
 export async function createCustomList(listname, color) {
   const customfield = "grupp_e";
   const res = await fetch(`https://nackademin-item-tracker.herokuapp.com/lists`, {

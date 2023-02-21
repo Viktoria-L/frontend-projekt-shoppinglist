@@ -68,9 +68,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         " ",
         "-"
       )}" width="12px"></span>
-    <input type="text" value="${item.title}" id="item_${
-        listItemInput.value
-      }"></input>`;
+    <input type="text" value="${item.title}" id="item_${item._id}"></input>`;
 
       // console.log(labelA);
 
@@ -90,10 +88,14 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       let removeBtn = document.querySelector(
         `#${item.title.replaceAll(" ", "-")}`
       );
+      removeBtn.setAttribute("list_id", item._id);
       console.log(removeBtn);
       removeBtn.addEventListener("click", (event) => {
-        deleteObject(removeBtn.id, labelA);
-        console.log(itemListArray);
+        // deleteObject(removeBtn.id, labelA);
+        console.log("pressed item", event.target.getAttribute("list_id"));
+        console.log("current list",selectedList._id)
+        console.log()
+        // console.log(itemListArray);
         
       });
     });

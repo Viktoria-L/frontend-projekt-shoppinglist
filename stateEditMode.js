@@ -90,6 +90,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       removeBtn.addEventListener("click", (event) => {
         deleteObject(removeBtn.id, labelA);
         console.log(itemListArray);
+        
       });
     });
     headerName.innerHTML = "this is edit mode";
@@ -98,7 +99,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         <input type="text" class="nameinput" value="${listNamn}" onfocus="this.placeholder=''"></input>
         <button id="button-editmode"><img class="hover" src="assets/three-dots-vertical.svg" alt=""></button>
         `;
-    console.log(selectedList._id);
+    console.log(selectedList._id, selectedList.listname);
     console.log(selectedList.itemList[0]._id,selectedList.itemList[0].title);
   } else {
     console.log("creating list");

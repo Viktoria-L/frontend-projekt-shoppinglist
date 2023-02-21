@@ -50,7 +50,8 @@ export async function displayListsAlt() {
       //For each list item in the fetched array
       const previewObject = document.createElement("div");
       previewContainer.append(previewObject);
-      previewObject.classList.add("preview-object");
+      // ?? efter ett value är fancy sätt att säga "om undefined/null, ge värdet till höger om ?? istället för undefined/null"
+      previewObject.classList.add("preview-object", "hover", `list-color-${list.color ?? "default"}`);
 
       previewObject.dataset.listId = list._id;
 

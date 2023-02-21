@@ -142,9 +142,15 @@ ITEM STRUCTURE
   font-size: 4rem;
   height: 50px;
   border-radius: 100%;
-  border: 1px solid white;
+  background-color: #e0e0e0;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  border: 1px solid #e0e0e0;
   /* dunno vilken som är bäst */
   /* border: 1px solid black; */
+}
+
+#newListBtn:hover {
+  background-color: rgb(241, 239, 239);
 }
 
 /* Styling för inputfältet i headern */
@@ -289,3 +295,105 @@ li {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+
+/* color picker */
+
+.color-select-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+  margin: 12px;
+}
+
+.color-select {
+  display: none;
+}
+
+.color-select-label {
+  padding: 16px;
+  border-radius: 100%;
+}
+
+.color-is-selected {
+  padding: 16px;
+  border: black 1px solid;
+  border-radius: 100%;
+}
+
+.color-select-label-default {
+  /* TODO ersätt med CSS-variabler*/
+  background-color: #999;
+}
+
+.color-select-label-red {
+  background-color: red;
+}
+
+.color-select-label-orange {
+  background-color: orange;
+}
+
+.color-select-label-yellow {
+  background-color: yellow;
+}
+
+.color-select-label-green {
+  background-color: green;
+}
+
+.color-select-label-blue {
+  background-color: blue;
+}
+
+.color-select-label-purple {
+  background-color: purple;
+}
+
+.list-color-red {
+  background-color: hsla(0, 60%, 50%, 1);
+}
+.list-color-red:hover {
+  background-color: hsla(0, 60%, 55%, 1);
+}
+
+.list-color-orange {
+  background-color: hsla(20, 60%, 50%, 1);
+}
+.list-color-orange:hover {
+  background-color: hsla(20, 60%, 55%, 1);
+}
+
+.list-color-yellow {
+  background-color: hsla(60, 60%, 50%, 1);
+}
+.list-color-yellow:hover {
+  background-color: hsla(60, 60%, 55%, 1);
+}
+
+.list-color-green {
+  background-color: hsla(120, 60%, 50%, 1);
+}
+.list-color-green:hover {
+  background-color: hsla(120, 60%, 55%, 1);
+}
+
+.list-color-blue {
+  background-color: hsla(190, 60%, 50%, 1);
+}
+.list-color-blue:hover {
+  background-color: hsla(190, 60%, 55%, 1);
+}
+
+.list-color-purple {
+  background-color: hsla(260, 60%, 50%, 1);
+}
+.list-color-purple:hover {
+  background-color: hsla(260, 60%, 55%, 1);
+}
+
+
+
+

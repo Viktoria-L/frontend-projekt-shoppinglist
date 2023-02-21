@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.2](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/compare/v0.1.1...v0.1.2) (2023-02-20)
+
+
+### Features
+
+* :sparkles: actually add the selected color when creating a new list ([fef4303](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/fef43034facb15d51faa99b66323a55d1be4759e))
+* :sparkles: add function to add custom list with color ([18ba5b6](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/18ba5b614d439064b0673e67b07323739266a7af))
+* :sparkles: add label and radio button creation for list color selection ([d53d363](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/d53d3631681a7c4d8430532d97126e59542919d4))
+* :sparkles: add list-color-${list.color} class to the preview object (aka list on index page) ([37c593b](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/37c593b6143075ebc7166e88ffb2845b18838dac))
+* :sparkles: add name and color as parameters to the function ([432a798](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/432a798760468465316cd05695f1ab467d74da39))
+* **CSS:** :lipstick: add CSS for color select stuff ([3a8f8c2](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/3a8f8c2a388c9c16b01d68e6ec502861c6ce6728))
+* **CSS:** :lipstick: add some preset colors for the picked colors ([17d4491](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/17d4491caa7051eb7864f79408866544577630ef))
+
+
+### Bug Fixes
+
+* :memo: remove doublethingy ([dd9df4d](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/dd9df4dac4b19d9eea75497853ab2dc1baf0437e))
+
 ## [0.1.1](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/compare/v0.1.0...v0.1.1) (2023-02-18)
 
 

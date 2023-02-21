@@ -10,7 +10,7 @@ body {
 .headerLogoSettings {
   display: flex;
   justify-content: space-between;
-  background-color: lightgray;
+  background-color: #e0e0e0;
   padding: 14px;
 }
 .headerLogoSettings a {

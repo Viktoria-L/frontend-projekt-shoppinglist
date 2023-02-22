@@ -1,7 +1,6 @@
-import { viewMode } from "./stateViewMode.js";
 import { editMode } from "./stateEditMode.js";
-import { createSettingsButtonEventListener } from "./module-settings.js"
 import { deleteListUsingID } from "./module-api.js";
+import { showSelectedList } from "./module-show-selected-list.js"
 
 export async function displayListsAlt() {
   const currentContentContainer = document.getElementById("current-content");
@@ -69,7 +68,7 @@ export async function displayListsAlt() {
           );
           const listData = await listResponse.json();
           selectedList = listData;
-          showSelectedList(selectedList);
+          showSelectedList(selectedList, currentState);
           previewContainer.innerHTML = "";
         } catch (error) {
           console.log(error);
@@ -144,49 +143,7 @@ export async function displayListsAlt() {
 
   let currentState = "viewOneList";
 
-  async function showSelectedList(selectedList) {
-    currentContentContainer.innerHTML = "";
-    let ulContainer = document.createElement("article");
-    ulContainer.className = "ul-container";
-    currentContentContainer.appendChild(ulContainer);
-    const listItemsUl = document.createElement("ul");
-    ulContainer.append(listItemsUl);
-    if (currentState === "viewOneList") {
-      viewMode({
-        selectedList: selectedList,
-        listItemsUl: listItemsUl,
-        API_BASE: API_BASE,
-        headerName: headerName,
-      });
-    } else if (currentState === "editOneList") {
-      editMode({
-        selectedList: selectedList,
-        listItemsUl: listItemsUl,
-        API_BASE: API_BASE,
-        headerName: headerName,
-      });
-    }
-    createEditModeEventListener();
-    createSettingsButtonEventListener();
-    const settingsButton = document.querySelector("#settings-button");
-    settingsButton.currentState = currentState;
-    settingsButton.selectedList = selectedList;
-    // console.log("parameter selectedList:" + settingsButton.selected)
-    settingsButton.listItemsUl = listItemsUl;
-    settingsButton.API_BASE = API_BASE;
-    settingsButton.headerName = headerName;
-  }
-
-  function createEditModeEventListener() {
-    const editModeButton = document.querySelector("#button-editmode");
-    editModeButton.addEventListener("click", (e) => {
-      currentState === "viewOneList"
-        ? (currentState = "editOneList")
-        : (currentState = "viewOneList");
-      console.log("edit mode clicked    current state: " + currentState);
-      showSelectedList(selectedList);
-    });
-  }
+  
 
   // updateItem(item._id,)
 

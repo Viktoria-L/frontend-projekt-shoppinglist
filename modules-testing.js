@@ -167,7 +167,7 @@ export async function displayListsAlt() {
       });
     }
     createEditModeEventListener();
-    createSettingsButtonEventListener(currentState);
+    createSettingsButtonEventListener();
     const settingsButton = document.querySelector("#settings-button");
     settingsButton.currentState = currentState;
     settingsButton.selectedList = selectedList;

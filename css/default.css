@@ -13,11 +13,12 @@ body {
   background-color: #e0e0e0;
   padding: 14px;
 }
-.headerLogoSettings a {
+.headerLogoSettings button {
   align-self: center;
 }
-.headerLogoSettings a img {
+.headerLogoSettings button img {
   width: 20px;
+  padding: 5px 10px;
 }
 
 /* Hidden */
@@ -66,13 +67,7 @@ body {
 @media (min-width: 600px) {
   .preview-container {
     max-width: 600px;
-    margin: 0 auto;
-  }
-  .preview-object h2 {
-    font-size: 1.5rem;
-  }
-  .preview-object li {
-    font-size: 20px;
+    margin: 1rem auto;
   }
   .headerNameEdit {
     padding: 5px 20px 0px 20px;

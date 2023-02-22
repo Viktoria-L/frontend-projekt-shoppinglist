@@ -8,9 +8,17 @@
 /* Styling för inputfältet i headern */
 .nameinput {
     border: none;
-    font-size: 28px;
-    margin-left: 5px;
+    font-size: 1.5rem;
+    text-align: center;
     margin: 20px 0px 20px 5px;
+}
+input.nameinput{
+    max-width: 90vw;
+}
+@media (min-width: 600px) {
+    .nameinput {
+        font-size: 1.8rem;
+    }
 }
 
 .listiteminput {
@@ -34,6 +42,13 @@
 
 .backBtn {
     padding: 5px;
+    position: absolute;
+    top: 35%;
+    left: 10px;
+}
+
+.backBtn img {
+    width: 12px;
 }
 
 .additembtn {
@@ -51,4 +66,11 @@ input {
     padding: 5px;
 }
 
-
+/* EDIT VIEW */
+p.thisIsEdit {
+    position: absolute;
+    top: -2px;
+    left: 8px;
+    font-size: 10px;
+    color: #808080;
+}

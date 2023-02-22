@@ -201,12 +201,6 @@ export async function displayListsAlt() {
     <input type="text" class="nameinput" value="New List"></input>
     `;
 
-    //Eventlistener för "gå tillbaka-knappen"
-    const backBtn = document.querySelector(".backBtn");
-    backBtn.addEventListener("click", () => {
-      window.location.href = "index.html";
-    });
-
     currentContentContainer.innerHTML = "";
     let ulContainer = document.createElement("article");
     ulContainer.className = "ul-container";

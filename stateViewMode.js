@@ -66,7 +66,7 @@ let bottomButton = document.querySelector("#newListBtn");
     const backBtn = document.querySelector(".backBtn");
     backBtn.addEventListener("click", () => {
     bottomButton.classList.remove("hidden");
-      window.location.href = "index.html";
+      window.location.href = "/";
     });
   
     async function updateCheckedState(currentListId, item_id, checked_state) {

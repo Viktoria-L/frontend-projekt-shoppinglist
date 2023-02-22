@@ -170,6 +170,11 @@ export async function displayListsAlt() {
     createSettingsButtonEventListener();
     const settingsButton = document.querySelector("#settings-button");
     settingsButton.currentState = currentState;
+    settingsButton.selectedList = selectedList;
+    // console.log("parameter selectedList:" + settingsButton.selected)
+    settingsButton.listItemsUl = listItemsUl;
+    settingsButton.API_BASE = API_BASE;
+    settingsButton.headerName = headerName;
   }
 
   function createEditModeEventListener() {
@@ -200,12 +205,6 @@ export async function displayListsAlt() {
     <span class="backBtn"><img src="assets/back-arrow.svg" alt=""></span>
     <input type="text" class="nameinput" value="New List"></input>
     `;
-
-    //Eventlistener för "gå tillbaka-knappen"
-    const backBtn = document.querySelector(".backBtn");
-    backBtn.addEventListener("click", () => {
-      window.location.href = "index.html";
-    });
 
     currentContentContainer.innerHTML = "";
     let ulContainer = document.createElement("article");

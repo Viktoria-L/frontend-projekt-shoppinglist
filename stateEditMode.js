@@ -132,7 +132,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   const backBtn = document.querySelector(".backBtn");
   backBtn.addEventListener("click", () => {
     bottomButton.classList.remove("hidden");
-    window.location.href = "index.html";
+    window.location.href = "/";
   });
 
   outputElement.append(listItemsUl);

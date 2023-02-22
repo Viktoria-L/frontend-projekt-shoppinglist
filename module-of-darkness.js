@@ -1,4 +1,4 @@
-// För att kolla om system föredrar dark eller lightmode 
+
 
 // --------Import statement-------- //
 
@@ -13,13 +13,13 @@
 
 //--------Kod för att pröva att allt funkar, --------//
 
-darkmodeToLocal()
-console.log(systemPrefersDark(), "Hejsan")
-let something = darkmodeFromLocal();
-console.log(something)
+// darkmodeToLocal()
+// console.log(systemPrefersDark(), "Hejsan")
+// let something = darkmodeFromLocal();
+// console.log(something)
 //-------- verkar funka :)-------------------------------- //
 
-
+// För att kolla om system föredrar dark eller lightmode 
 export function systemPrefersDark() {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         // Användaren föredrar Dark mode
@@ -35,14 +35,18 @@ export function systemPrefersDark() {
 
 //---Kod gällande Local storage, svårt att pröva här, gör det till små funktioner då det kanske blir lättare att se till en början--//
 
-export function darkmodeToLocal() {
-    //true eller false beroende på om system föredrar dark eller ej
-    let darkPreference = systemPrefersDark()
+//--------Testkod---------
+// let darkPreference = systemPrefersDark()
+// darkmodeToLocal(darkPreference)
+//-------------------------//
 
-    console.log("Sätter detta value till localStorage: ", darkPreference)
+//--Funktion som sätter darkmodevalue till local, tar true eller false som argument//
+export function darkmodeToLocal(darkValue) {
+    //true eller false beroende på om system föredrar dark eller ej
+    console.log("Sätter detta value till localStorage: ", darkValue)
 
     //sätter key och value till local storage, prefersDarkness och dess value
-    localStorage.setItem("prefersDarkness", darkPreference)
+    localStorage.setItem("prefersDarkness", darkValue)
 }
 
 export function darkmodeFromLocal() {

@@ -26,7 +26,7 @@ main {
   width: 20px;
 }
 .headerNameEdit {
-  padding: 5px 10px 5px 10px;
+  padding: 5px 20px 5px 20px;
   position: relative;
   border-bottom: solid 0.5px black;
 }
@@ -168,7 +168,7 @@ ITEM STRUCTURE
 .listiteminput {
   border: none;
   border-bottom: 2px solid black;
-  margin: 5px 5px 0 20px;
+  margin: 5px 5px 0 px;
 }
 .saveBtn {
   margin: 5px 0px 0 20px;
@@ -176,9 +176,6 @@ ITEM STRUCTURE
   padding: 5px;
   border-radius: 10px;
   border: none;
-}
-.backBtn {
-  padding: 5px;
 }
 .additembtn {
   border: none;

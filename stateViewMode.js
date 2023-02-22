@@ -57,7 +57,7 @@ let bottomButton = document.querySelector("#newListBtn");
 
     headerName.innerHTML = `
     <span class="backBtn"><img src="assets/back-arrow.svg" alt=""></span>
-    <input type="text" class="nameinput list-color-header-${selectedList.color ?? 'default'}" value="${listNamn}" onfocus="this.placeholder=''"></input>
+    <h1 class="nameinput list-color-header-${selectedList.color ?? 'default'}">${listNamn}</h1>
     <button id="button-editmode"><img class="hover" src="assets/three-dots-vertical.svg" alt=""></button>
     `;
     headerName.classList.add(`list-color-header-${selectedList.color ?? 'default'}`)

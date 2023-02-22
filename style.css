@@ -12,6 +12,10 @@
     margin-left: 5px;
     margin: 20px 0px 20px 5px;
 }
+input.nameinput{
+    max-width: 90vw;
+    margin-left: 4rem;
+}
 @media (min-width: 600px) {
     .nameinput {
         font-size: 1.8rem;
@@ -39,6 +43,13 @@
 
 .backBtn {
     padding: 5px;
+    position: absolute;
+    top: 35%;
+    left: 10px;
+}
+
+.backBtn img {
+    width: 12px;
 }
 
 .additembtn {
@@ -56,4 +67,10 @@ input {
     padding: 5px;
 }
 
-
+/* EDIT VIEW */
+p.thisIsEdit {
+    position: absolute;
+    top: -2px;
+    font-size: 10px;
+    color: #808080;
+}

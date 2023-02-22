@@ -170,6 +170,11 @@ export async function displayListsAlt() {
     createSettingsButtonEventListener(currentState);
     const settingsButton = document.querySelector("#settings-button");
     settingsButton.currentState = currentState;
+    settingsButton.selectedList = selectedList;
+    // console.log("parameter selectedList:" + settingsButton.selected)
+    settingsButton.listItemsUl = listItemsUl;
+    settingsButton.API_BASE = API_BASE;
+    settingsButton.headerName = headerName;
   }
 
   function createEditModeEventListener() {

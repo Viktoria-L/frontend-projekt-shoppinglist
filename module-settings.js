@@ -12,6 +12,7 @@ function settingsButtonFunction(e) {
   if (e.currentTarget.currentState === "index") {
     console.log(`settings button clicked from our beautiful index page`);
     hideIndexHeader();
+    addBackButton();
   } else if (e.currentTarget.currentState === "viewOneList") {
     console.log(`settings button clicked from our amazing view list view`);
     hideListViewTitle();
@@ -49,12 +50,24 @@ function hideListViewTitle() {
 }
 
 function addHeaderTitle() {
+  const headerName = document.querySelector(".headerNameEdit");
   let headerNameTitle = document.createElement("h1");
   headerNameTitle.id = "settings-title";
   headerNameTitle.innerHTML = "Settings";
-  const headerName = document.querySelector(".headerNameEdit");
   let oldSettingsTitle = document.querySelector("#settings-title");
   if (!oldSettingsTitle) {
     headerName.append(headerNameTitle);
   }
+}
+
+function addBackButton() {
+  const headerName = document.querySelector(".headerNameEdit");
+  const backBtn = document.createElement("span");
+  backBtn.className = "backBtn";
+  backBtn.innerHTML += `<img src="assets/back-arrow.svg" alt="">`;
+  headerName.prepend(backBtn);
+
+  backBtn.addEventListener("click", () => {
+    window.location.href = "/";
+  });
 }

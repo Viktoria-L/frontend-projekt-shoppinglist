@@ -1,5 +1,6 @@
 import { viewMode } from "./stateViewMode.js";
 import { editMode } from "./stateEditMode.js";
+import { createSettingsButtonEventListener } from "./module-settings.js"
 import { deleteListUsingID } from "./module-api.js";
 
 export async function displayListsAlt() {
@@ -166,7 +167,9 @@ export async function displayListsAlt() {
       });
     }
     createEditModeEventListener();
-    createSettingsButtonEventListener();
+    createSettingsButtonEventListener(currentState);
+    const settingsButton = document.querySelector("#settings-button");
+    settingsButton.currentState = currentState;
   }
 
   function createEditModeEventListener() {
@@ -178,18 +181,6 @@ export async function displayListsAlt() {
       console.log("edit mode clicked    current state: " + currentState);
       showSelectedList(selectedList);
     });
-  }
-
-  function createSettingsButtonEventListener() {
-    const settingsButton = document.querySelector("#settings-button");
-    // lite skumt men om man inte har skapas flera eventlisteners
-    // så tar bort om det redan finns en!
-    settingsButton.removeEventListener("click", settingsButtonFunction);
-    settingsButton.addEventListener("click", settingsButtonFunction);
-  }
-
-  function settingsButtonFunction() {
-    console.log(`settings button clicked from ${currentState}`);
   }
 
   // updateItem(item._id,)

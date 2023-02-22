@@ -25,6 +25,14 @@ main {
 .headerLogoSettings a img {
   width: 20px;
 }
+.headerLogoSettings img {
+  width: 20px;
+}
+.headerLogoSettings button {
+  all: unset;
+  position: absolute;
+  right: 10px;
+}
 .headerNameEdit {
   padding: 5px 20px 5px 20px;
   position: relative;

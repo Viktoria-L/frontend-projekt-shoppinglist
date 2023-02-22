@@ -19,14 +19,14 @@ main {
   background-color: lightgray;
   padding: 14px;
 }
-.headerLogoSettings a {
+.headerLogoSettings button {
   align-self: center;
 }
-.headerLogoSettings a img {
+.headerLogoSettings button img {
   width: 20px;
 }
 .headerLogoSettings img {
-  width: 20px;
+  width: 30px;
 }
 .headerLogoSettings button {
   all: unset;

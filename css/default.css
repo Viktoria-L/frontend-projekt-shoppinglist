@@ -13,11 +13,12 @@ body {
   background-color: #e0e0e0;
   padding: 14px;
 }
-.headerLogoSettings a {
+.headerLogoSettings button {
   align-self: center;
 }
-.headerLogoSettings a img {
+.headerLogoSettings button img {
   width: 20px;
+  padding: 5px 10px;
 }
 
 /* Hidden */

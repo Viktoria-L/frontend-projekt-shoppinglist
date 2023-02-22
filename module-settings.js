@@ -1,4 +1,4 @@
-export function createSettingsButtonEventListener(currentState) {
+export function createSettingsButtonEventListener() {
   const settingsButton = document.querySelector("#settings-button");
   // lite skumt men om man inte har skapas flera eventlisteners
   // så tar bort om det redan finns en!

@@ -1,4 +1,4 @@
-import { viewMode } from "./stateViewMode.js";
+import { showSelectedList } from "./module-show-selected-list.js";
 
 export function createSettingsButtonEventListener() {
   const settingsButton = document.querySelector("#settings-button");
@@ -9,35 +9,31 @@ export function createSettingsButtonEventListener() {
   settingsButton.currentState = "default value";
 }
 
-function settingsButtonFunction(e) {
-  // console.log(`settings button clicked from ${e.currentTarget.currentState}`);
+export function settingsButtonFunction(e) {
+  clearCurrentContent();
+  hideCreateListButton();
+
   if (e.currentTarget.currentState === "index") {
     console.log(`settings button clicked from our beautiful index page`);
     hideIndexHeader();
-    clearCurrentContent();
-    hideCreateListButton();
-    addHeaderTitle();
     addBackButton();
   } else if (e.currentTarget.currentState === "viewOneList") {
     console.log(`settings button clicked from our amazing view list view`);
     hideListViewTitle();
-    clearCurrentContent();
-    hideCreateListButton();
-    addHeaderTitle();
     replaceBackButton({
       selectedList: e.currentTarget.selectedList,
-      listItemsUl: e.currentTarget.listItemsUl,
-      API_BASE: e.currentTarget.API_BASE,
-      headerName: e.currentTarget.headerName,
+      currentState: e.currentTarget.currentState,
     });
   } else if (e.currentTarget.currentState === "editOneList") {
     console.log(`settings button clicked from our spectacular edit list view`);
     hideListViewTitle();
-    clearCurrentContent();
-    hideCreateListButton();
-    addHeaderTitle();
-    replaceBackButton();
+    replaceBackButton({
+      selectedList: e.currentTarget.selectedList,
+      currentState: e.currentTarget.currentState,
+    });
   }
+
+  addHeaderTitle();
 }
 
 function clearCurrentContent() {
@@ -64,17 +60,6 @@ function hideListViewTitle() {
   }
 }
 
-function addHeaderTitle() {
-  const headerName = document.querySelector(".headerNameEdit");
-  let headerNameTitle = document.createElement("h1");
-  headerNameTitle.id = "settings-title";
-  headerNameTitle.innerHTML = "Settings";
-  let oldSettingsTitle = document.querySelector("#settings-title");
-  if (!oldSettingsTitle) {
-    headerName.append(headerNameTitle);
-  }
-}
-
 function addBackButton() {
   const headerName = document.querySelector(".headerNameEdit");
   const backBtn = document.createElement("span");
@@ -89,7 +74,7 @@ function addBackButton() {
   });
 }
 
-function replaceBackButton({ selectedList, listItemsUl, API_BASE }) {
+function replaceBackButton({ selectedList, currentState }) {
   const oldBackBtn = document.querySelector(".backBtn");
   const headerName = document.querySelector(".headerNameEdit");
   headerName.removeChild(oldBackBtn);
@@ -101,17 +86,19 @@ function replaceBackButton({ selectedList, listItemsUl, API_BASE }) {
   backBtn.innerHTML += `<img src="assets/back-arrow.svg" alt="">`;
   headerName.prepend(backBtn);
 
-  // TODO fixa :)
+  backBtn.addEventListener("click", () => {
+    console.log("selected list: " + JSON.stringify(selectedList));
+    showSelectedList(selectedList, currentState);
+  });
+}
 
-  // backBtn.addEventListener("click", ( selectedList, listItemsUl, API_BASE) => {
-  //   // window.location.href = "/aaaaaaaa";
-  //   console.log("selected list: " + selectedList);
-  //   console.log("listItemsUl: " + listItemsUl);
-  //   viewMode({
-  //     selectedList: selectedList,
-  //     listItemsUl: listItemsUl,
-  //     API_BASE: API_BASE,
-  //     headerName: headerName,
-  //   });
-  // });
+function addHeaderTitle() {
+  const headerName = document.querySelector(".headerNameEdit");
+  let headerNameTitle = document.createElement("h1");
+  headerNameTitle.id = "settings-title";
+  headerNameTitle.innerHTML = "Settings";
+  let oldSettingsTitle = document.querySelector("#settings-title");
+  if (!oldSettingsTitle) {
+    headerName.append(headerNameTitle);
+  }
 }

@@ -76,7 +76,7 @@ export async function deleteListItem(listId, listItemId) {
   );
 }
 
-export async function updateListItem(listId, listItemId) {
+export async function updateListItem(itemTitle, listId, listItemId) {
   await fetch(
     `https://nackademin-item-tracker.herokuapp.com/lists/${listId}/items/${listItemId}`,
     {
@@ -85,7 +85,7 @@ export async function updateListItem(listId, listItemId) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        checked: true,
+        title: itemTitle,
       }),
     }
   );

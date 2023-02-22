@@ -335,27 +335,27 @@ li {
 }
 
 .color-select-label-red {
-  background-color: red;
+  background-color: hsla(0, 75%, 55%, 1);
 }
 
 .color-select-label-orange {
-  background-color: orange;
+  background-color: hsla(20, 75%, 55%, 1);
 }
 
 .color-select-label-yellow {
-  background-color: yellow;
+  background-color: hsla(50, 90%, 65%, 1);
 }
 
 .color-select-label-green {
-  background-color: green;
+  background-color: hsla(125, 60%, 60%, 1);
 }
 
 .color-select-label-blue {
-  background-color: blue;
+  background-color: hsla(200, 80%, 60%, 1);
 }
 
 .color-select-label-purple {
-  background-color: purple;
+  background-color: hsla(270, 60%, 65%, 1);
 }
 
 .list-color-red {
@@ -407,7 +407,7 @@ li {
   background-color: hsla(200, 80%, 60%, 1);
 }
 .list-color-header-blue {
-  background-color: hsla(190, 60%, 50%, 1);
+  background-color: hsla(200, 70%, 70%, 1);
 }
 
 .list-color-purple {

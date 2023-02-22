@@ -66,7 +66,7 @@ body {
 @media (min-width: 600px) {
   .preview-container {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 1rem auto;
   }
   .headerNameEdit {
     padding: 5px 20px 0px 20px;

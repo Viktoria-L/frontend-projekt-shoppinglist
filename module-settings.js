@@ -1,4 +1,6 @@
-export function createSettingsButtonEventListener(currentState) {
+import { viewMode } from "./stateViewMode.js";
+
+export function createSettingsButtonEventListener() {
   const settingsButton = document.querySelector("#settings-button");
   // lite skumt men om man inte har skapas flera eventlisteners
   // så tar bort om det redan finns en!
@@ -12,17 +14,30 @@ function settingsButtonFunction(e) {
   if (e.currentTarget.currentState === "index") {
     console.log(`settings button clicked from our beautiful index page`);
     hideIndexHeader();
+    clearCurrentContent();
+    hideCreateListButton();
+    addHeaderTitle();
     addBackButton();
   } else if (e.currentTarget.currentState === "viewOneList") {
     console.log(`settings button clicked from our amazing view list view`);
     hideListViewTitle();
+    clearCurrentContent();
+    hideCreateListButton();
+    addHeaderTitle();
+    replaceBackButton({
+      selectedList: e.currentTarget.selectedList,
+      listItemsUl: e.currentTarget.listItemsUl,
+      API_BASE: e.currentTarget.API_BASE,
+      headerName: e.currentTarget.headerName,
+    });
   } else if (e.currentTarget.currentState === "editOneList") {
     console.log(`settings button clicked from our spectacular edit list view`);
     hideListViewTitle();
+    clearCurrentContent();
+    hideCreateListButton();
+    addHeaderTitle();
+    replaceBackButton();
   }
-  clearCurrentContent();
-  hideCreateListButton();
-  addHeaderTitle();
 }
 
 function clearCurrentContent() {
@@ -70,4 +85,31 @@ function addBackButton() {
   backBtn.addEventListener("click", () => {
     window.location.href = "/";
   });
+}
+
+function replaceBackButton({ selectedList, listItemsUl, API_BASE }) {
+  const oldBackBtn = document.querySelector(".backBtn");
+  const headerName = document.querySelector(".headerNameEdit");
+  headerName.removeChild(oldBackBtn);
+
+  console.log("SELECTEDLIST " + JSON.stringify(selectedList));
+
+  const backBtn = document.createElement("span");
+  backBtn.className = "backBtn";
+  backBtn.innerHTML += `<img src="assets/back-arrow.svg" alt="">`;
+  headerName.prepend(backBtn);
+
+  // TODO fixa :)
+
+  // backBtn.addEventListener("click", ( selectedList, listItemsUl, API_BASE) => {
+  //   // window.location.href = "/aaaaaaaa";
+  //   console.log("selected list: " + selectedList);
+  //   console.log("listItemsUl: " + listItemsUl);
+  //   viewMode({
+  //     selectedList: selectedList,
+  //     listItemsUl: listItemsUl,
+  //     API_BASE: API_BASE,
+  //     headerName: headerName,
+  //   });
+  // });
 }

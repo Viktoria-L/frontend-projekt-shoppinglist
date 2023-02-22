@@ -1,5 +1,6 @@
 import { viewMode } from "./stateViewMode.js";
 import { editMode } from "./stateEditMode.js";
+import { createSettingsButtonEventListener } from "./module-settings.js"
 import { deleteListUsingID } from "./module-api.js";
 
 export async function displayListsAlt() {
@@ -166,6 +167,9 @@ export async function displayListsAlt() {
       });
     }
     createEditModeEventListener();
+    createSettingsButtonEventListener(currentState);
+    const settingsButton = document.querySelector("#settings-button");
+    settingsButton.currentState = currentState;
   }
 
   function createEditModeEventListener() {

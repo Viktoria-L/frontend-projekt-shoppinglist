@@ -212,54 +212,6 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       }
     }
   }
-  // color select för lista här
-
-  function resetSelectedColorClass() {
-    let labels = document.querySelectorAll(".color-select-label");
-    labels.forEach((label) => {
-      label.classList.remove("color-is-selected");
-    });
-  }
-
-  let colors = [
-    "default",
-    "red",
-    "orange",
-    "yellow",
-    "green",
-    "blue",
-    "purple",
-  ];
-  let selectedColor;
-
-  let colorSelectDiv = document.createElement("div");
-  colorSelectDiv.className = "color-select-div";
-  colors.forEach((color) => {
-    let colorButton = document.createElement("input");
-    colorButton.className = `color-select color-select-${color}`;
-    colorButton.id = `color-select-${color}`;
-    colorButton.type = "radio";
-    colorButton.name = "selectAColor";
-    colorButton.value = color;
-
-    let colorButtonLabel = document.createElement("label");
-    colorButtonLabel.className = `color-select-label color-select-label-${color}`;
-    colorButtonLabel.htmlFor = `color-select-${color}`;
-    // colorButtonLabel.innerText = color;
-
-    colorButton.addEventListener("click", (e) => {
-      selectedColor = color;
-      resetSelectedColorClass();
-      colorButtonLabel.classList.add("color-is-selected");
-      console.log(`selected color: ${selectedColor}`);
-    });
-    colorSelectDiv.append(colorButtonLabel);
-    colorButtonLabel.append(colorButton);
-  });
-
-  outputElement.append(colorSelectDiv);
-
-  // color select slut
 
   let saveBtnDiv = document.createElement("div");
   outputElement.append(saveBtnDiv);
@@ -286,6 +238,62 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       saveBtnDiv.append(p); //töm fälten och meddela att listan sparats
     }
   });
+
+    // color select för lista här
+
+    function resetSelectedColorClass() {
+      let labels = document.querySelectorAll(".color-select-label");
+      labels.forEach((label) => {
+        label.classList.remove("color-is-selected");
+      });
+    }
+  
+    let colors = [
+      "default",
+      "red",
+      "orange",
+      "yellow",
+      "green",
+      "blue",
+      "purple",
+    ];
+    let selectedColor;
+  
+    let colorSelectDiv = document.createElement("div");
+    colorSelectDiv.className = "color-select-div";
+    colors.forEach((color) => {
+      let colorButton = document.createElement("input");
+      colorButton.className = `color-select color-select-${color}`;
+      colorButton.id = `color-select-${color}`;
+      colorButton.type = "radio";
+      colorButton.name = "selectAColor";
+      colorButton.value = color;
+  
+      let colorButtonLabel = document.createElement("label");
+      colorButtonLabel.className = `color-select-label color-select-label-${color}`;
+      colorButtonLabel.htmlFor = `color-select-${color}`;
+      // colorButtonLabel.innerText = color;
+  
+      colorButton.addEventListener("click", (e) => {
+        selectedColor = color;
+        resetSelectedColorClass();
+        colorButtonLabel.classList.add("color-is-selected");
+        console.log(`selected color: ${selectedColor}`);
+      });
+      colorSelectDiv.append(colorButtonLabel);
+      colorButtonLabel.append(colorButton);
+    });
+  
+    
+
+    let colorSelectFrame = document.createElement("div");
+    colorSelectFrame.className = "color-select-frame";
+    colorSelectFrame.innerHTML = `<h2 class="color-select-h2">Choose a color for your list:</h2>`;
+    colorSelectFrame.append(colorSelectDiv);
+    outputElement.append(colorSelectFrame);
+
+  
+    // color select slut
 
   function containsSpecialChars(str) {
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;

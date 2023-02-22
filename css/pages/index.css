@@ -34,6 +34,8 @@ main {
   right: 10px;
 }
 .headerNameEdit {
+  display: flex;
+  justify-content: center;
   padding: 5px 20px 5px 20px;
   position: relative;
   border-bottom: solid 0.5px black;
@@ -171,7 +173,6 @@ ITEM STRUCTURE
 .nameinput {
   border: none;
   font-size: 28px;
-  margin-left: 5px;
 }
 .listiteminput {
   border: none;
@@ -309,14 +310,29 @@ li {
 
 
 /* color picker */
+.color-select-frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding-bottom: 20px;
+  bottom: 0;
+  width: 100vw;
+  background-color: #e0e0e0;
+}
 
 .color-select-div {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   gap: 12px;
-  margin: 12px;
+  margin: 12px 0;
+}
+
+.color-select-h2 {
+  font-size: 1rem;
 }
 
 .color-select {
@@ -326,6 +342,7 @@ li {
 .color-select-label {
   padding: 16px;
   border-radius: 100%;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 .color-is-selected {

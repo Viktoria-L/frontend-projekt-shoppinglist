@@ -9,12 +9,11 @@
 .nameinput {
     border: none;
     font-size: 1.5rem;
-    margin-left: 5px;
+    text-align: center;
     margin: 20px 0px 20px 5px;
 }
 input.nameinput{
     max-width: 90vw;
-    margin-left: 4rem;
 }
 @media (min-width: 600px) {
     .nameinput {
@@ -71,6 +70,7 @@ input {
 p.thisIsEdit {
     position: absolute;
     top: -2px;
+    left: 8px;
     font-size: 10px;
     color: #808080;
 }

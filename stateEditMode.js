@@ -1,4 +1,4 @@
-import { deleteListItem } from "./module-api.js";
+import { deleteListItem, updateListItem } from "./module-api.js";
 
 export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   const outputElement = document.querySelector("#current-content");
@@ -39,8 +39,8 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       // console.log("ITEM IS" + item.title)
       itemListArray.push(item);
     });
-    console.log("editing list" + JSON.stringify(itemListArray));
-    console.log(selectedList);
+    // console.log("editing list" + JSON.stringify(itemListArray));
+    // console.log(selectedList);
 
     let listNamn = selectedList.listname;
 
@@ -72,20 +72,35 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       )}" width="12px"></span>
     <input type="text" value="${item.title}" id="item_${item._id}"></input>`;
 
-      // console.log(labelA);
-
       item.checked
         ? listItem.classList.add("checkedItem")
         : listItem.classList.remove("checkedItem");
 
       /* listItem.appendChild(checkboxInput); */
       listItem.appendChild(labelA);
+      console.log(labelA);
 
       /* labelA.innerHTML += item.qty ? ` ${item.qty}` : " :1"; */
 
       // Funktion som ändrar om itemet är checked eller inte
 
       listItemsUl.append(listItem);
+
+      let currentListItem = document.getElementById(`item_${item._id}`);
+
+      // EDIT LIST-ITEM AND PUT NEW VALUE TO API
+      // WHEN TEXTINPUT LOSES FOCUS
+      currentListItem.addEventListener("focusout", (e) => {
+        updateListItem(e.target.value, selectedList._id, item._id);
+      });
+      // WHEN KEYUP ENTER
+      currentListItem.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          updateListItem(e.target.value, selectedList._id, item._id);
+          currentListItem.blur();
+        }
+      });
+
 
       let removeBtn = document.querySelector(
         `#${item.title.replaceAll(" ", "-")}`
@@ -96,7 +111,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         // removes item from DOM and api
         deleteObject(removeBtn.id, labelA);
         console.log("pressed item", event.target.getAttribute("list_id"));
-        console.log("current list", selectedList._id)
+        console.log("current list", selectedList._id);
         deleteListItem(selectedList._id, event.target.getAttribute("list_id"));
       });
     });
@@ -107,7 +122,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         <button id="button-editmode"><img class="hover" src="assets/three-dots-vertical.svg" alt=""></button>
         `;
     console.log(selectedList._id, selectedList.listname);
-    console.log(selectedList.itemList[0]._id,selectedList.itemList[0].title);
+    console.log(selectedList.itemList[0]._id, selectedList.itemList[0].title);
   } else {
     console.log("creating list");
   }
@@ -199,10 +214,10 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   // color select för lista här
 
   function resetSelectedColorClass() {
-    let labels = document.querySelectorAll(".color-select-label")
-    labels.forEach(label => {
+    let labels = document.querySelectorAll(".color-select-label");
+    labels.forEach((label) => {
       label.classList.remove("color-is-selected");
-    })
+    });
   }
 
   let colors = [
@@ -291,7 +306,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         body: JSON.stringify({
           listname: listname,
           customfield: "grupp_e",
-          color: selectedColor
+          color: selectedColor,
         }),
       }
     );

@@ -8,9 +8,14 @@
 /* Styling för inputfältet i headern */
 .nameinput {
     border: none;
-    font-size: 28px;
+    font-size: 1.5rem;
     margin-left: 5px;
     margin: 20px 0px 20px 5px;
+}
+@media (min-width: 600px) {
+    .nameinput {
+        font-size: 1.8rem;
+    }
 }
 
 .listiteminput {

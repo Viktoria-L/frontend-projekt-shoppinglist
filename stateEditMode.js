@@ -103,7 +103,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     headerName.innerHTML = "this is edit mode";
     headerName.innerHTML += `
         <span class="backBtn"><img src="assets/back-arrow.svg" alt=""></span>
-        <input type="text" class="nameinput" value="${listNamn}" onfocus="this.placeholder=''"></input>
+        <input type="text" class="nameinput list-color-header-${selectedList.color ?? 'default'}" value="${listNamn}" onfocus="this.placeholder=''"></input>
         <button id="button-editmode"><img class="hover" src="assets/three-dots-vertical.svg" alt=""></button>
         `;
     console.log(selectedList._id, selectedList.listname);

@@ -26,8 +26,9 @@ main {
   width: 20px;
 }
 .headerNameEdit {
-  padding: 5px 10px 0px 10px;
+  padding: 5px 10px 5px 10px;
   position: relative;
+  border-bottom: solid 0.5px black;
 }
 .headerNameEdit h1 {
   text-align: center;
@@ -36,7 +37,7 @@ main {
 .headerNameEdit button {
   all: unset;
   position: absolute;
-  top: 50%;
+  top: 35%;
   right: 10px;
 }
 .headerNameEdit img {
@@ -359,11 +360,19 @@ li {
   background-color: hsla(0, 60%, 55%, 1);
 }
 
+.list-color-header-red {
+  background-color: hsla(0, 60%, 50%, 1);
+}
+
 .list-color-orange {
   background-color: hsla(20, 60%, 50%, 1);
 }
 .list-color-orange:hover {
   background-color: hsla(20, 60%, 55%, 1);
+}
+
+.list-color-header-orange {
+  background-color: hsla(20, 60%, 50%, 1);
 }
 
 .list-color-yellow {
@@ -372,12 +381,18 @@ li {
 .list-color-yellow:hover {
   background-color: hsla(60, 60%, 55%, 1);
 }
+.list-color-header-yellow {
+  background-color: hsla(60, 60%, 50%, 1);
+}
 
 .list-color-green {
   background-color: hsla(120, 60%, 50%, 1);
 }
 .list-color-green:hover {
   background-color: hsla(120, 60%, 55%, 1);
+}
+.list-color-header-green {
+  background-color: hsla(120, 60%, 50%, 1);
 }
 
 .list-color-blue {
@@ -386,12 +401,18 @@ li {
 .list-color-blue:hover {
   background-color: hsla(190, 60%, 55%, 1);
 }
+.list-color-header-blue {
+  background-color: hsla(190, 60%, 50%, 1);
+}
 
 .list-color-purple {
   background-color: hsla(260, 60%, 50%, 1);
 }
 .list-color-purple:hover {
   background-color: hsla(260, 60%, 55%, 1);
+}
+.list-color-header-purple {
+  background-color: hsla(260, 60%, 50%, 1);
 }
 
 

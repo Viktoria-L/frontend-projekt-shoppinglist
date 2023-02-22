@@ -80,7 +80,9 @@ function addBackButton() {
   const backBtn = document.createElement("span");
   backBtn.className = "backBtn";
   backBtn.innerHTML += `<img src="assets/back-arrow.svg" alt="">`;
-  headerName.prepend(backBtn);
+  if (!document.querySelector(".backBtn")) {
+    headerName.prepend(backBtn);
+  }
 
   backBtn.addEventListener("click", () => {
     window.location.href = "/";

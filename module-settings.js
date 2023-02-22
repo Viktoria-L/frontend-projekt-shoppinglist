@@ -70,7 +70,7 @@ function addBackButton() {
   }
 
   backBtn.addEventListener("click", () => {
-    window.location.href = "/";
+    window.location.href = "";
   });
 }
 

@@ -78,7 +78,7 @@ function addHeaderTitle() {
 function addBackButton() {
   const headerName = document.querySelector(".headerNameEdit");
   const backBtn = document.createElement("span");
-  backBtn.className = "backBtn";
+  backBtn.className = "backBtn hover";
   backBtn.innerHTML += `<img src="assets/back-arrow.svg" alt="">`;
   if (!document.querySelector(".backBtn")) {
     headerName.prepend(backBtn);
@@ -97,7 +97,7 @@ function replaceBackButton({ selectedList, listItemsUl, API_BASE }) {
   console.log("SELECTEDLIST " + JSON.stringify(selectedList));
 
   const backBtn = document.createElement("span");
-  backBtn.className = "backBtn";
+  backBtn.className = "backBtn hover";
   backBtn.innerHTML += `<img src="assets/back-arrow.svg" alt="">`;
   headerName.prepend(backBtn);
 

@@ -89,13 +89,18 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       let currentListItem = document.getElementById(`item_${item._id}`);
 
       // EDIT LIST-ITEM AND PUT NEW VALUE TO API
+      // WHEN TEXTINPUT LOSES FOCUS
       currentListItem.addEventListener("focusout", (e) => {
-        console.log(
-          `you clicked a list-item with value: ${e.target.value}, id: ${item._id}, currentlist: ${selectedList._id}`
-        );
-          
-        updateListItem(e.target.value, item._id, selectedList._id);
+        updateListItem(e.target.value, selectedList._id, item._id);
       });
+      // WHEN KEYUP ENTER
+      currentListItem.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          updateListItem(e.target.value, selectedList._id, item._id);
+          currentListItem.blur();
+        }
+      });
+
 
       let removeBtn = document.querySelector(
         `#${item.title.replaceAll(" ", "-")}`

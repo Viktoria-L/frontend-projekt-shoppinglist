@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.3](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/compare/v0.1.2...v0.1.3) (2023-02-22)
+
+
+### Features
+
+* :art: ([f9f00ba](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/f9f00bab8cf17c8463c9eda7a116b0fe33ed28e7))
+* :art: finding right id when pressing trashcan on list item ([5831226](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/583122612a042ffb761baf6e3f3688833e5afea9))
+* :sparkles: add an event listener for the settings button and a function ([998ecbd](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/998ecbd480ea50ea1a279c7b889aa34009358e55))
+* :sparkles: add and call settings module in index page as well, setting currentState to "index" ([465ee04](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/465ee04da217116d6c54958e0a5a9bf252497f68))
+* :sparkles: add id header-name-title to index page h1 ([86dfe0b](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/86dfe0b47018632131a963ebd75c0c407e0a5fb7))
+* :sparkles: add module modules-testing.js that can add an event listener and a function to the settings button ([0438357](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/04383572f67e43cdf6cd6bc3e27ec5347178e81c))
+* :sparkles: add some parameters for settingsButton (not working yet) ([977328c](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/977328c5efd0be173b8c6dd14c5c4893a5be0c50))
+* :sparkles: change list-item at api is online ([b92017c](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/b92017cc11661c8dc3e240904fd2f301af3571ad))
+* :sparkles: delete list item online ([d4d4c10](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/d4d4c102a0dd2113206cf2520b3f7322f4646c19))
+* :sparkles: import createSettingsButtonEventListener function from settings module ([19f51e9](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/19f51e96a42662bd2aca31f85ab9a9c2fef5d502))
+* :sparkles: last commit was other stuff:   now, add some parameters for settingsButton ([4f0be1c](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/4f0be1cd99b7d8506e07951ecbeceacb1ce318dd))
+* :zap: delete list item in progress ([ae550ca](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/ae550ca83e1048fee7875a241bc52f88f5c8d3f0))
+* **CSS:** :lipstick: add hover class to backBtn ([951d943](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/951d943f757df60593eba7be7d91c22847df13b0))
+* **CSS:** :lipstick: add hover class to settings-button ([b327776](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/b3277760dd103e2483f130940cff353a497182d0))
+* **CSS:** :lipstick: add styling for settings button ([7399ad8](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/7399ad86d2d8bbea953e976cb700674aa160a741))
+* **DOM output:** :sparkles: add back button to index page version of settings page ([0bdbe38](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/0bdbe385d5af415d552518ff1ad8fd7af7e48959))
+* **DOM output:** :sparkles: add some functionality to settings button ([a001fef](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/a001feffd5715153bb4a5aa82e3008030f95473b))
+* **DOM output:** :sparkles: import and use showSelectedList function to make it work ([0007110](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/00071106a175904ae72645d0c928fdc1273c4f04))
+
+
+### Bug Fixes
+
+* :bug: change link tag into button for settings button ([0628afc](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/0628afc646d94985f0241ca0c3902b88a62cb4e5))
+* :fire: remove unused code ([3cfbec1](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/3cfbec1829e750678e382fc836bfc3e10410b456))
+* :fire: remove unused parameter from the settings eventlistener functions ([a4cb6bb](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/a4cb6bb4015aa455b6c249b3a4aded07ca5ab62c))
+* :recycle: move showSelectedList function to its own module (is used in 2 places now) ([66f93d2](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/66f93d21015db09766ae77169eebb6676c3a2d64))
+* :zap: change index.html to / in backBtn ([ab1c8bc](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/ab1c8bc33a42e5e9246472002a7972ee0366e874))
+* **DOM output:** :bug: fix infinite backBtn adding in index page ([8c836df](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/8c836df08919b840dd4f582bbe14fe5068e1fc69))
+
 ## [0.1.2](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/compare/v0.1.1...v0.1.2) (2023-02-20)
 
 

@@ -63,13 +63,17 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         console.log(checkboxInput)  */
       /* checked=${item.checked} */
 
+      let trashId = () =>{
+        let trash = item.title.replaceAll(" ", "-").replaceAll(".", "").replaceAll(",", "");
+        return trash;
+      }
+      let trashName = trashId();
+      console.log(trashName)
+
       const labelA = document.createElement("label");
       labelA.setAttribute("for", item._id);
       labelA.classList.add("itemContainer", "editing");
-      labelA.innerHTML = `<span class="iconspans"><img src="assets/trash.svg" id="${item.title.replaceAll(
-        " ",
-        "-"
-      )}" width="12px"></span>
+      labelA.innerHTML = `<span class="iconspans"><img src="assets/trash.svg" id="${trashName}" width="12px"></span>
     <input type="text" value="${item.title}" id="item_${item._id}"></input>`;
 
       item.checked
@@ -102,11 +106,11 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       });
 
 
-      let removeBtn = document.querySelector(
-        `#${item.title.replaceAll(" ", "-")}`
-      );
-      removeBtn.setAttribute("list_id", item._id);
+      let removeBtn = document.getElementById(`${trashName}`);
       console.log(removeBtn);
+      
+        console.log("ny info",item._id);
+      removeBtn.setAttribute("list_id", item._id);
       removeBtn.addEventListener("click", (event) => {
         // removes item from DOM and api
         deleteObject(removeBtn.id, labelA);
@@ -296,7 +300,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     // color select slut
 
   function containsSpecialChars(str) {
-    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|<>\/?~]/;
     return specialChars.test(str);
   }
 

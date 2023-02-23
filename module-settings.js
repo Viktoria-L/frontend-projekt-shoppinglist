@@ -1,9 +1,11 @@
 import { showSelectedList } from "./module-show-selected-list.js";
-import { 
-      systemPrefersDark,
-      darkmodeToLocal,
-      darkmodeFromLocal,
-  } from "./module-of-darkness.js";
+import {
+  systemPrefersDark,
+  darkmodeToLocal,
+  darkmodeFromLocal,
+} from "./module-of-darkness.js";
+
+let body = document.querySelector("body");
 
 export function createSettingsButtonEventListener() {
   const settingsButton = document.querySelector("#settings-button");
@@ -124,26 +126,37 @@ function renderSettingView() {
 </div>
   `;
   currentContent.append(settingDiv);
+
+  checkUserMode();
+}
+
+function checkUserMode() {
+  let checkbox = document.querySelector('.theme-switch input[type="checkbox"]');
+
+  if (systemPrefersDark()) {
+    checkbox.checked = true;
+    console.log("dark mode preferred");
+  } else if (!systemPrefersDark()) {
+    console.log("No dark mode preferred");
+    if (darkmodeFromLocal() === "true") {
+      checkbox.checked = true;
+      body.classList.add("darkmode");
+    }
+  }
 }
 
 function toogleDarkmode() {
-  let body = document.querySelector("body");
   let tooglemodeBtn = document.querySelector(
     '.theme-switch input[type="checkbox"]'
   );
-  console.log(tooglemodeBtn.checked);
+
   tooglemodeBtn.addEventListener("click", () => {
-    if (tooglemodeBtn.checked === true) {
+    if (tooglemodeBtn.checked) {
       body.classList.add("darkmode");
-      darkmodeToLocal(true);
-      console.log("checked: " + body.classList);
-      console.log(tooglemodeBtn.checked);
-      console.log(darkmodeFromLocal());
+      darkmodeToLocal("true");
     } else {
       body.classList.remove("darkmode");
-      console.log(body.classList);
-      darkmodeToLocal(false);
-      console.log(darkmodeFromLocal());
+      darkmodeToLocal("false");
     }
   });
 }

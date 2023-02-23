@@ -1,4 +1,4 @@
-import { deleteListItem, updateListItem, updateListTitle, updateColor } from "./module-api.js";
+import { deleteListItem, updateListItem } from "./module-api.js";
 
 export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   const outputElement = document.querySelector("#current-content");
@@ -43,7 +43,6 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     // console.log(selectedList);
 
     let listNamn = selectedList.listname;
-    console.log("listNamn",listNamn)
 
     function deleteObject(title, element) {
       let index = itemListArray.findIndex((object) => object.title === title);
@@ -92,6 +91,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       listItemsUl.append(listItem);
 
 
+
       let currentListItem = document.getElementById(`item_${item._id}`);
 
       // EDIT LIST-ITEM AND PUT NEW VALUE TO API
@@ -99,7 +99,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       currentListItem.addEventListener("focusout", (e) => {
         updateListItem(e.target.value, selectedList._id, item._id);
       });
-      // WHEN KEYPRESS ENTER
+      // WHEN KEYUP ENTER
       currentListItem.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
           updateListItem(e.target.value, selectedList._id, item._id);
@@ -130,23 +130,6 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         `;
     console.log(selectedList._id, selectedList.listname);
     console.log(selectedList.itemList[0]._id, selectedList.itemList[0].title);
-    let listNameInput = document.querySelector(".nameinput");
-
-    // UPDATING LIST-TITLE TO API
-    // WHEN INPUTFIELD LOSES FOCUS
-    listNameInput.addEventListener("focusout", () => {
-      updateListTitle(listNameInput.value, selectedList._id);
-    })
-    // ON KEYPRESS ENTER
-    listNameInput.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        // console.log("new value", listNameInput.value);
-        // console.log("list id", selectedList._id);
-        updateListTitle(listNameInput.value, selectedList._id);     
-        listNameInput.blur();
-      }
-    })
-
   } else {
     console.log("creating list");
   }
@@ -293,7 +276,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       colorButton.value = color;
   
       let colorButtonLabel = document.createElement("label");
-      colorButtonLabel.className = `hover color-select-label color-select-label-${color}`;
+      colorButtonLabel.className = `color-select-label color-select-label-${color}`;
       colorButtonLabel.htmlFor = `color-select-${color}`;
       // colorButtonLabel.innerText = color;
   
@@ -301,16 +284,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         selectedColor = color;
         resetSelectedColorClass();
         colorButtonLabel.classList.add("color-is-selected");
-        // UPDATE COLOR IF YOUR IN A LIST
-        if (selectedList !== null) {
-          updateColor(color, selectedList._id)
-          // UPDATES WHEN CLICKED
-          headerName.className = `headerNameEdit list-color-header-${selectedColor}`
-          let nameInput = document.querySelector(".nameinput")
-          nameInput.className = `nameinput list-color-header-${selectedColor}`;
-        }
         console.log(`selected color: ${selectedColor}`);
-        console.log(selectedList)
       });
       colorSelectDiv.append(colorButtonLabel);
       colorButtonLabel.append(colorButton);

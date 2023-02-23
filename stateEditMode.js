@@ -1,4 +1,4 @@
-import { deleteListItem } from "./module-api.js";
+import { deleteListItem, updateListItem } from "./module-api.js";
 
 export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   const outputElement = document.querySelector("#current-content");
@@ -39,8 +39,8 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       // console.log("ITEM IS" + item.title)
       itemListArray.push(item);
     });
-    console.log("editing list" + JSON.stringify(itemListArray));
-    console.log(selectedList);
+    // console.log("editing list" + JSON.stringify(itemListArray));
+    // console.log(selectedList);
 
     let listNamn = selectedList.listname;
 
@@ -76,20 +76,35 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       labelA.innerHTML = `<span class="iconspans"><img src="assets/trash.svg" id="${trashName}" width="12px"></span>
     <input type="text" value="${item.title}" id="item_${item._id}"></input>`;
 
-      // console.log(labelA);
-
       item.checked
         ? listItem.classList.add("checkedItem")
         : listItem.classList.remove("checkedItem");
 
       /* listItem.appendChild(checkboxInput); */
       listItem.appendChild(labelA);
+      console.log(labelA);
 
       /* labelA.innerHTML += item.qty ? ` ${item.qty}` : " :1"; */
 
       // Funktion som ändrar om itemet är checked eller inte
 
       listItemsUl.append(listItem);
+
+      let currentListItem = document.getElementById(`item_${item._id}`);
+
+      // EDIT LIST-ITEM AND PUT NEW VALUE TO API
+      // WHEN TEXTINPUT LOSES FOCUS
+      currentListItem.addEventListener("focusout", (e) => {
+        updateListItem(e.target.value, selectedList._id, item._id);
+      });
+      // WHEN KEYUP ENTER
+      currentListItem.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          updateListItem(e.target.value, selectedList._id, item._id);
+          currentListItem.blur();
+        }
+      });
+
 
       let removeBtn = document.getElementById(`${trashName}`);
       console.log(removeBtn);
@@ -100,18 +115,19 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         // removes item from DOM and api
         deleteObject(removeBtn.id, labelA);
         console.log("pressed item", event.target.getAttribute("list_id"));
-        console.log("current list", selectedList._id)
+        console.log("current list", selectedList._id);
         deleteListItem(selectedList._id, event.target.getAttribute("list_id"));
       });
     });
-    headerName.innerHTML = "this is edit mode";
-    headerName.innerHTML += `
+    /* headerName.innerHTML = "this is edit mode"; */
+    headerName.innerHTML = `
+        <p class="thisIsEdit">this is edit mode</p>
         <span class="backBtn"><img src="assets/back-arrow.svg" alt=""></span>
-        <input type="text" class="nameinput" value="${listNamn}" onfocus="this.placeholder=''"></input>
+        <input type="text" class="nameinput list-color-header-${selectedList.color ?? 'default'}" value="${listNamn}" onfocus="this.placeholder=''"></input>
         <button id="button-editmode"><img class="hover" src="assets/three-dots-vertical.svg" alt=""></button>
         `;
     console.log(selectedList._id, selectedList.listname);
-    console.log(selectedList.itemList[0]._id,selectedList.itemList[0].title);
+    console.log(selectedList.itemList[0]._id, selectedList.itemList[0].title);
   } else {
     console.log("creating list");
   }
@@ -120,7 +136,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   const backBtn = document.querySelector(".backBtn");
   backBtn.addEventListener("click", () => {
     bottomButton.classList.remove("hidden");
-    window.location.href = "index.html";
+    window.location.href = "";
   });
 
   outputElement.append(listItemsUl);
@@ -200,54 +216,6 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       }
     }
   }
-  // color select för lista här
-
-  function resetSelectedColorClass() {
-    let labels = document.querySelectorAll(".color-select-label")
-    labels.forEach(label => {
-      label.classList.remove("color-is-selected");
-    })
-  }
-
-  let colors = [
-    "default",
-    "red",
-    "orange",
-    "yellow",
-    "green",
-    "blue",
-    "purple",
-  ];
-  let selectedColor;
-
-  let colorSelectDiv = document.createElement("div");
-  colorSelectDiv.className = "color-select-div";
-  colors.forEach((color) => {
-    let colorButton = document.createElement("input");
-    colorButton.className = `color-select color-select-${color}`;
-    colorButton.id = `color-select-${color}`;
-    colorButton.type = "radio";
-    colorButton.name = "selectAColor";
-    colorButton.value = color;
-
-    let colorButtonLabel = document.createElement("label");
-    colorButtonLabel.className = `color-select-label color-select-label-${color}`;
-    colorButtonLabel.htmlFor = `color-select-${color}`;
-    // colorButtonLabel.innerText = color;
-
-    colorButton.addEventListener("click", (e) => {
-      selectedColor = color;
-      resetSelectedColorClass();
-      colorButtonLabel.classList.add("color-is-selected");
-      console.log(`selected color: ${selectedColor}`);
-    });
-    colorSelectDiv.append(colorButtonLabel);
-    colorButtonLabel.append(colorButton);
-  });
-
-  outputElement.append(colorSelectDiv);
-
-  // color select slut
 
   let saveBtnDiv = document.createElement("div");
   outputElement.append(saveBtnDiv);
@@ -275,6 +243,62 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     }
   });
 
+    // color select för lista här
+
+    function resetSelectedColorClass() {
+      let labels = document.querySelectorAll(".color-select-label");
+      labels.forEach((label) => {
+        label.classList.remove("color-is-selected");
+      });
+    }
+  
+    let colors = [
+      "default",
+      "red",
+      "orange",
+      "yellow",
+      "green",
+      "blue",
+      "purple",
+    ];
+    let selectedColor;
+  
+    let colorSelectDiv = document.createElement("div");
+    colorSelectDiv.className = "color-select-div";
+    colors.forEach((color) => {
+      let colorButton = document.createElement("input");
+      colorButton.className = `color-select color-select-${color}`;
+      colorButton.id = `color-select-${color}`;
+      colorButton.type = "radio";
+      colorButton.name = "selectAColor";
+      colorButton.value = color;
+  
+      let colorButtonLabel = document.createElement("label");
+      colorButtonLabel.className = `color-select-label color-select-label-${color}`;
+      colorButtonLabel.htmlFor = `color-select-${color}`;
+      // colorButtonLabel.innerText = color;
+  
+      colorButton.addEventListener("click", (e) => {
+        selectedColor = color;
+        resetSelectedColorClass();
+        colorButtonLabel.classList.add("color-is-selected");
+        console.log(`selected color: ${selectedColor}`);
+      });
+      colorSelectDiv.append(colorButtonLabel);
+      colorButtonLabel.append(colorButton);
+    });
+  
+    
+
+    let colorSelectFrame = document.createElement("div");
+    colorSelectFrame.className = "color-select-frame";
+    colorSelectFrame.innerHTML = `<h2 class="color-select-h2">Choose a color for your list:</h2>`;
+    colorSelectFrame.append(colorSelectDiv);
+    outputElement.append(colorSelectFrame);
+
+  
+    // color select slut
+
   function containsSpecialChars(str) {
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|<>\/?~]/;
     return specialChars.test(str);
@@ -295,7 +319,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         body: JSON.stringify({
           listname: listname,
           customfield: "grupp_e",
-          color: selectedColor
+          color: selectedColor,
         }),
       }
     );

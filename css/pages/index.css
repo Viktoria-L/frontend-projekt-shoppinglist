@@ -19,14 +19,14 @@ main {
   background-color: lightgray;
   padding: 14px;
 }
-.headerLogoSettings a {
+.headerLogoSettings button {
   align-self: center;
 }
-.headerLogoSettings a img {
+.headerLogoSettings button img {
   width: 20px;
 }
 .headerLogoSettings img {
-  width: 20px;
+  width: 30px;
 }
 .headerLogoSettings button {
   all: unset;
@@ -34,17 +34,25 @@ main {
   right: 10px;
 }
 .headerNameEdit {
-  padding: 5px 10px 0px 10px;
+  display: flex;
+  justify-content: center;
+  padding: 5px 20px 5px 20px;
   position: relative;
+  border-bottom: solid 0.5px black;
 }
 .headerNameEdit h1 {
   text-align: center;
-  font-size: 24px;
+  font-size: 1.5rem;
+}
+@media (min-width: 600px) {
+  .headerNameEdit h1 {
+    font-size: 1.8rem;
+  }
 }
 .headerNameEdit button {
   all: unset;
   position: absolute;
-  top: 50%;
+  top: 35%;
   right: 10px;
 }
 .headerNameEdit img {
@@ -165,12 +173,11 @@ ITEM STRUCTURE
 .nameinput {
   border: none;
   font-size: 28px;
-  margin-left: 5px;
 }
 .listiteminput {
   border: none;
   border-bottom: 2px solid black;
-  margin: 5px 5px 0 20px;
+  margin: 5px 5px 0 px;
 }
 .saveBtn {
   margin: 5px 0px 0 20px;
@@ -178,9 +185,6 @@ ITEM STRUCTURE
   padding: 5px;
   border-radius: 10px;
   border: none;
-}
-.backBtn {
-  padding: 5px;
 }
 .additembtn {
   border: none;
@@ -306,14 +310,29 @@ li {
 
 
 /* color picker */
+.color-select-frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding-bottom: 20px;
+  bottom: 0;
+  width: 100vw;
+  background-color: #e0e0e0;
+}
 
 .color-select-div {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   gap: 12px;
-  margin: 12px;
+  margin: 12px 0;
+}
+
+.color-select-h2 {
+  font-size: 1rem;
 }
 
 .color-select {
@@ -323,6 +342,7 @@ li {
 .color-select-label {
   padding: 16px;
   border-radius: 100%;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 .color-is-selected {
@@ -337,69 +357,89 @@ li {
 }
 
 .color-select-label-red {
-  background-color: red;
+  background-color: hsla(0, 75%, 55%, 1);
 }
 
 .color-select-label-orange {
-  background-color: orange;
+  background-color: hsla(20, 75%, 55%, 1);
 }
 
 .color-select-label-yellow {
-  background-color: yellow;
+  background-color: hsla(50, 90%, 65%, 1);
 }
 
 .color-select-label-green {
-  background-color: green;
+  background-color: hsla(125, 60%, 60%, 1);
 }
 
 .color-select-label-blue {
-  background-color: blue;
+  background-color: hsla(200, 80%, 60%, 1);
 }
 
 .color-select-label-purple {
-  background-color: purple;
+  background-color: hsla(270, 60%, 65%, 1);
 }
 
 .list-color-red {
-  background-color: hsla(0, 60%, 50%, 1);
+  background-color: hsla(0, 60%, 60%, 1);
 }
 .list-color-red:hover {
   background-color: hsla(0, 60%, 55%, 1);
 }
 
+.list-color-header-red {
+  background-color: hsla(0, 60%, 60%, 1);
+}
+
 .list-color-orange {
-  background-color: hsla(20, 60%, 50%, 1);
+  background-color: hsla(24, 70%, 60%, 1);
 }
 .list-color-orange:hover {
-  background-color: hsla(20, 60%, 55%, 1);
+  background-color: hsla(20, 75%, 55%, 1);
+}
+
+.list-color-header-orange {
+  background-color: hsla(24, 80%, 60%, 1);
 }
 
 .list-color-yellow {
-  background-color: hsla(60, 60%, 50%, 1);
+  background-color: hsla(50, 80%, 75%, 1);
 }
 .list-color-yellow:hover {
-  background-color: hsla(60, 60%, 55%, 1);
+  background-color: hsla(50, 90%, 65%, 1);
+}
+.list-color-header-yellow {
+  background-color: hsla(50, 80%, 75%, 1);
 }
 
 .list-color-green {
-  background-color: hsla(120, 60%, 50%, 1);
+  background-color: hsla(125, 50%, 70%, 1);
 }
 .list-color-green:hover {
-  background-color: hsla(120, 60%, 55%, 1);
+  background-color: hsla(125, 60%, 60%, 1);
+}
+.list-color-header-green {
+  background-color: hsla(125, 60%, 70%, 1);
 }
 
 .list-color-blue {
-  background-color: hsla(190, 60%, 50%, 1);
+  background-color: hsla(200, 70%, 70%, 1);
 }
 .list-color-blue:hover {
-  background-color: hsla(190, 60%, 55%, 1);
+  background-color: hsla(200, 80%, 60%, 1);
+}
+.list-color-header-blue {
+  background-color: hsla(200, 70%, 70%, 1);
 }
 
 .list-color-purple {
-  background-color: hsla(260, 60%, 50%, 1);
+  background-color: hsla(270, 50%, 75%, 1);
 }
 .list-color-purple:hover {
-  background-color: hsla(260, 60%, 55%, 1);
+  background-color: hsla(270, 60%, 65%, 1);
+}
+.list-color-header-purple {
+  background-color: hsla(270, 50%, 75%, 1);
 }
 
 

@@ -270,14 +270,17 @@ body {
   margin: 0;
 }
 
-.darkmode {
+/* DARK-MODE SETTINGS*/
+/* .darkmode {
   background: #121212;
   color: white;
 }
 .darkmode .headerNameEdit {
   border-bottom: solid 0.5px white;
 }
-
+.darkmode .settingdiv{
+  background: #121212;
+} */
 
 main {
   padding: 0;

@@ -1,5 +1,8 @@
 :root {
   --main: #fff;
+  --headerLogoSettings: #e0e0e0;
+  --preview-object: #e0e0e0;
+  --preview-object-hover: rgb(241, 241, 241);
 
   --color-select-label-default: #999;
   --color-select-label-red: hsla(0, 75%, 55%, 1);
@@ -39,6 +42,9 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --main: #111;
+    --headerLogoSettings: #e0e0e0;
+    --preview-object: #e0e0e0;
+    --preview-object-hover: rgb(241, 241, 241);
 
     --color-select-label-default: #999;
     --color-select-label-red: hsla(0, 75%, 55%, 1);

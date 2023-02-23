@@ -1,4 +1,9 @@
 import { showSelectedList } from "./module-show-selected-list.js";
+import { 
+      systemPrefersDark,
+      darkmodeToLocal,
+      darkmodeFromLocal,
+  } from "./module-of-darkness.js";
 
 export function createSettingsButtonEventListener() {
   const settingsButton = document.querySelector("#settings-button");
@@ -17,6 +22,8 @@ export function settingsButtonFunction(e) {
     console.log(`settings button clicked from our beautiful index page`);
     hideIndexHeader();
     addBackButton();
+    renderSettingView();
+    toogleDarkmode();
   } else if (e.currentTarget.currentState === "viewOneList") {
     console.log(`settings button clicked from our amazing view list view`);
     hideListViewTitle();
@@ -101,4 +108,42 @@ function addHeaderTitle() {
   if (!oldSettingsTitle) {
     headerName.append(headerNameTitle);
   }
+}
+
+function renderSettingView() {
+  const currentContent = document.querySelector("#current-content");
+  let settingDiv = document.createElement("div");
+  settingDiv.className = "settingdiv";
+  settingDiv.innerHTML = `
+  <p>Dark-mode:<p> 
+  <div class="switch">
+  <label class="theme-switch" for="checkbox">
+      <input type="checkbox" id="checkbox" />
+      <div class="slider round"></div>
+  </label>
+</div>
+  `;
+  currentContent.append(settingDiv);
+}
+
+function toogleDarkmode() {
+  let body = document.querySelector("body");
+  let tooglemodeBtn = document.querySelector(
+    '.theme-switch input[type="checkbox"]'
+  );
+  console.log(tooglemodeBtn.checked);
+  tooglemodeBtn.addEventListener("click", () => {
+    if (tooglemodeBtn.checked === true) {
+      body.classList.add("darkmode");
+      darkmodeToLocal(true);
+      console.log("checked: " + body.classList);
+      console.log(tooglemodeBtn.checked);
+      console.log(darkmodeFromLocal());
+    } else {
+      body.classList.remove("darkmode");
+      console.log(body.classList);
+      darkmodeToLocal(false);
+      console.log(darkmodeFromLocal());
+    }
+  });
 }

@@ -90,6 +90,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
 
       listItemsUl.append(listItem);
 
+
       let currentListItem = document.getElementById(`item_${item._id}`);
 
       // EDIT LIST-ITEM AND PUT NEW VALUE TO API

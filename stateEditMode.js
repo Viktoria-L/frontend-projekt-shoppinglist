@@ -303,6 +303,10 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         // UPDATE COLOR IF YOUR IN A LIST
         if (selectedList !== null) {
           updateColor(color, selectedList._id)
+          // UPDATES WHEN CLICKED
+          headerName.className = `headerNameEdit list-color-header-${selectedColor}`
+          let nameInput = document.querySelector(".nameinput")
+          nameInput.className = `nameinput list-color-header-${selectedColor}`;
         }
         console.log(`selected color: ${selectedColor}`);
         console.log(selectedList)

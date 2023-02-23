@@ -12,6 +12,7 @@ body {
 
 main {
   padding: 0;
+  background-color: var(--main);
 }
 
 /* HOVER CLASS */
@@ -365,89 +366,87 @@ li {
 }
 
 .color-select-label-red {
-  background-color: hsla(0, 75%, 55%, 1);
+  background-color: var(--color-select-label-red);
 }
 
 .color-select-label-orange {
-  background-color: hsla(20, 75%, 55%, 1);
+  background-color: var(--color-select-label-orange)
 }
 
 .color-select-label-yellow {
-  background-color: hsla(50, 90%, 65%, 1);
+  background-color: var(--color-select-label-yellow)
 }
 
 .color-select-label-green {
-  background-color: hsla(125, 60%, 60%, 1);
+  background-color: var(--color-select-label-green);
 }
 
 .color-select-label-blue {
-  background-color: hsla(200, 80%, 60%, 1);
+  background-color: var(--color-select-label-blue);
 }
 
 .color-select-label-purple {
-  background-color: hsla(270, 60%, 65%, 1);
+  background-color: var(--color-select-label-purple);
 }
 
 .list-color-red {
-  background-color: hsla(0, 60%, 60%, 1);
+  background-color: var(--list-color-red);
 }
 .list-color-red:hover {
-  background-color: hsla(0, 60%, 55%, 1);
+  background-color: var(--list-color-red-hover)
 }
-
 .list-color-header-red {
-  background-color: hsla(0, 60%, 60%, 1);
+  background-color: var(--list-color-header-red);
 }
 
 .list-color-orange {
-  background-color: hsla(24, 70%, 60%, 1);
+  background-color: var(--list-color-orange);
 }
 .list-color-orange:hover {
-  background-color: hsla(20, 75%, 55%, 1);
+  background-color: var(--list-color-orange-hover)
 }
-
 .list-color-header-orange {
-  background-color: hsla(24, 80%, 60%, 1);
+  background-color: var(--list-color-header-orange);
 }
 
 .list-color-yellow {
-  background-color: hsla(50, 80%, 75%, 1);
+  background-color: var(--list-color-yellow);
 }
 .list-color-yellow:hover {
-  background-color: hsla(50, 90%, 65%, 1);
+  background-color: var(--list-color-yellow-hover)
 }
 .list-color-header-yellow {
-  background-color: hsla(50, 80%, 75%, 1);
+  background-color: var(--list-color-header-yellow);
 }
 
 .list-color-green {
-  background-color: hsla(125, 50%, 70%, 1);
+  background-color: var(--list-color-green);
 }
 .list-color-green:hover {
-  background-color: hsla(125, 60%, 60%, 1);
+  background-color: var(--list-color-green-hover)
 }
 .list-color-header-green {
-  background-color: hsla(125, 60%, 70%, 1);
+  background-color: var(--list-color-header-green);
 }
 
 .list-color-blue {
-  background-color: hsla(200, 70%, 70%, 1);
+  background-color: var(--list-color-blue);
 }
 .list-color-blue:hover {
-  background-color: hsla(200, 80%, 60%, 1);
+  background-color: var(--list-color-blue-hover)
 }
 .list-color-header-blue {
-  background-color: hsla(200, 70%, 70%, 1);
+  background-color: var(--list-color-header-blue);
 }
 
 .list-color-purple {
-  background-color: hsla(270, 50%, 75%, 1);
+  background-color: var(--list-color-purple);
 }
 .list-color-purple:hover {
-  background-color: hsla(270, 60%, 65%, 1);
+  background-color: var(--list-color-purple-hover)
 }
 .list-color-header-purple {
-  background-color: hsla(270, 50%, 75%, 1);
+  background-color: var(--list-color-header-purple);
 }
 
 

@@ -2,6 +2,14 @@ body {
   margin: 0;
 }
 
+.darkmode {
+  background: #121212;
+  color: white;
+}
+.darkmode .headerNameEdit {
+  border-bottom: solid 0.5px white;
+}
+
 main {
   padding: 0;
 }
@@ -127,15 +135,15 @@ ITEM STRUCTURE
   margin-bottom: 0.5em;
 }
 
-.item-container input[type="checkbox"] {
-  /* 
+/* .item-container input[type="checkbox"] {
+
 	Impossible to modify directly. If you want to make
 	any kind of customization, you'll have to hide the checkbox
 	and have other elements reflect its changes.
 
 	:before, :after
-	*/
-}
+	
+} */
 
 .item-container input[type="text"] {
   padding: 0.25em;

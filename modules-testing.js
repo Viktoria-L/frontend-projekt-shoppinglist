@@ -6,11 +6,9 @@ export async function displayListsAlt() {
   const currentContentContainer = document.getElementById("current-content");
 
   let eGroupLists = await getOurLists();
-  const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
+  const API_BASE = "https://nackademin-item-tracker.herokuapp.com/"
 
   printLists(eGroupLists);
-
-  console.log(eGroupLists);
 
   let selectedList = null;
 
@@ -45,8 +43,14 @@ export async function displayListsAlt() {
     //------ ---- ---- ---- ---- ---- ---- ----
 
     previewContainer.innerHTML = ""; //clearing the container of content
+    
+    //REVERSING FETCHEDLISTS AND PRINTING REVERSED ARRAY 
+    let reversedFetchedLists = [...fetchedLists].reverse();
 
-    fetchedLists.forEach((list) => {
+    console.log("original", fetchedLists);
+    console.log("reversed", reversedFetchedLists);
+    
+    reversedFetchedLists.forEach((list) => {
       //For each list item in the fetched array
       const previewObject = document.createElement("div");
       previewContainer.append(previewObject);

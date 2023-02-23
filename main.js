@@ -17,6 +17,20 @@ const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
 // Globala variabler (for now)
 let debugMode = false;
 
+//TEST DARKMODE
+let body = document.querySelector("body");
+let darkMode = localStorage.getItem("dark-mode");
+localStorage.setItem("dark-mode", "disabled")
+
+console.log("EMMA: " + darkMode)
+const enableDarkMode = () => {
+  body.classList.add("darkmode");
+  localStorage.setItem("dark-mode", "enabled");
+};
+if (darkMode === "enabled") {
+  enableDarkMode(); // set state of darkMode on page load
+}
+
 // variabel med alla listor
 let lists;
 if (debugMode) {
@@ -63,3 +77,4 @@ function editFunc() {
 }
 
 editFunc();
+

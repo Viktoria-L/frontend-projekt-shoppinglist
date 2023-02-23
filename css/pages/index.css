@@ -362,7 +362,7 @@ li {
 
 .color-select-label-default {
   /* TODO ersätt med CSS-variabler*/
-  background-color: #999;
+  background-color: var(--color-select-label-default);
 }
 
 .color-select-label-red {

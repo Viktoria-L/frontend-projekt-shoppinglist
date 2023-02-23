@@ -131,19 +131,37 @@ function toogleDarkmode() {
   let tooglemodeBtn = document.querySelector(
     '.theme-switch input[type="checkbox"]'
   );
+  let darkMode = localStorage.getItem("dark-mode");
+  /* localStorage.setItem("dark-mode", "disabled") */
+  console.log("Is checked: " + tooglemodeBtn.checked)
+console.log(tooglemodeBtn)
+  const enableDarkMode = () => {
+    tooglemodeBtn.checked = true;
+    body.classList.add("darkmode");
+    localStorage.setItem("dark-mode", "enabled");
+  };
+  const disableDarkMode = () => {
+    body.classList.remove("darkmode");
+    localStorage.setItem("dark-mode", "disabled");
+  };
+  if (darkMode === "enabled") {
+    enableDarkMode(); // set state of darkMode on page load
+  }
+
   console.log(tooglemodeBtn.checked);
   tooglemodeBtn.addEventListener("click", () => {
-    if (tooglemodeBtn.checked === true) {
-      body.classList.add("darkmode");
-      darkmodeToLocal(true);
+    darkMode = localStorage.getItem("dark-mode");
+    console.log("Is checked: " + tooglemodeBtn.checked)
+    if (darkMode === "disabled") {
+      enableDarkMode()
+      /* body.classList.add("darkmode");
+      darkmodeToLocal(true);*/
       console.log("checked: " + body.classList);
-      console.log(tooglemodeBtn.checked);
-      console.log(darkmodeFromLocal());
+      /* console.log(tooglemodeBtn.checked);
+      console.log(darkmodeFromLocal()); */
     } else {
-      body.classList.remove("darkmode");
-      console.log(body.classList);
-      darkmodeToLocal(false);
-      console.log(darkmodeFromLocal());
+      disableDarkMode()
     }
   });
 }
+

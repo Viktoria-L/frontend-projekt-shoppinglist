@@ -16,7 +16,7 @@ body {
 .headerLogoSettings button {
   align-self: center;
 }
-.headerLogoSettings button img {
+.headerLogoSettings button svg {
   width: 20px;
   padding: 5px 10px;
 }
@@ -84,7 +84,7 @@ body {
 .selected-item {
 }
 
-.trashBtn img {
+.trashBtn svg {
   height: 1rem;
 }
 

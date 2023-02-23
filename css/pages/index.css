@@ -31,16 +31,21 @@ main {
 .headerLogoSettings button {
   align-self: center;
 }
-.headerLogoSettings button img {
+/* gjorde den här något? */
+/* .headerLogoSettings button svg {
   width: 20px;
-}
-.headerLogoSettings img {
+} */
+.headerLogoSettings svg {
   width: 30px;
 }
 .headerLogoSettings button {
   all: unset;
   position: absolute;
   right: 10px;
+}
+/* fill för logo-svg */
+.headerLogoSettings #logo-85 {
+  fill: #5417D7;
 }
 .headerNameEdit {
   display: flex;
@@ -64,7 +69,7 @@ main {
   top: 35%;
   right: 10px;
 }
-.headerNameEdit img {
+.headerNameEdit svg {
   width: 6px;
   padding: 0 1rem;
 }

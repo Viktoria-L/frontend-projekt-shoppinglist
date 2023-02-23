@@ -1,4 +1,4 @@
-import { deleteListItem, updateListItem, updateListTitle } from "./module-api.js";
+import { deleteListItem, updateListItem, updateListTitle, updateColor } from "./module-api.js";
 
 export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   const outputElement = document.querySelector("#current-content");
@@ -292,7 +292,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       colorButton.value = color;
   
       let colorButtonLabel = document.createElement("label");
-      colorButtonLabel.className = `color-select-label color-select-label-${color}`;
+      colorButtonLabel.className = `hover color-select-label color-select-label-${color}`;
       colorButtonLabel.htmlFor = `color-select-${color}`;
       // colorButtonLabel.innerText = color;
   
@@ -300,7 +300,16 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         selectedColor = color;
         resetSelectedColorClass();
         colorButtonLabel.classList.add("color-is-selected");
+        // UPDATE COLOR IF YOUR IN A LIST
+        if (selectedList !== null) {
+          updateColor(color, selectedList._id)
+          // UPDATES WHEN CLICKED
+          headerName.className = `headerNameEdit list-color-header-${selectedColor}`
+          let nameInput = document.querySelector(".nameinput")
+          nameInput.className = `nameinput list-color-header-${selectedColor}`;
+        }
         console.log(`selected color: ${selectedColor}`);
+        console.log(selectedList)
       });
       colorSelectDiv.append(colorButtonLabel);
       colorButtonLabel.append(colorButton);

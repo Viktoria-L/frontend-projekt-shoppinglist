@@ -79,3 +79,42 @@
     --list-color-header-purple: hsla(270, 50%, 75%, 1);
   }
 }
+
+.darkmode {
+  --main: #111;
+  --headerLogoSettings: #e0e0e0;
+  --preview-object: #e0e0e0;
+  --preview-object-hover: rgb(241, 241, 241);
+
+  --color-select-label-default: #999;
+  --color-select-label-red: hsla(0, 75%, 55%, 1);
+  --color-select-label-orange: hsla(20, 75%, 55%, 1);
+  --color-select-label-yellow: hsla(50, 90%, 65%, 1);
+  --color-select-label-green: hsla(125, 60%, 60%, 1);
+  --color-select-label-blue: hsla(200, 80%, 60%, 1);
+  --color-select-label-purple: hsla(270, 60%, 65%, 1);
+
+  --list-color-red: hsla(0, 60%, 60%, 1);
+  --list-color-red-hover: hsla(0, 60%, 55%, 1);
+  --list-color-header-red: hsla(0, 60%, 60%, 1);
+
+  --list-color-orange: hsla(24, 70%, 60%, 1);
+  --list-color-orange-hover: hsla(20, 75%, 55%, 1);
+  --list-color-header-orange: hsla(24, 80%, 60%, 1);
+
+  --list-color-yellow: hsla(50, 80%, 75%, 1);
+  --list-color-yellow-hover: hsla(50, 90%, 65%, 1);
+  --list-color-header-yellow: hsla(50, 80%, 75%, 1);
+
+  --list-color-green: hsla(125, 50%, 70%, 1);
+  --list-color-green-hover: hsla(125, 60%, 60%, 1);
+  --list-color-header-green: hsla(125, 60%, 70%, 1);
+
+  --list-color-blue: hsla(200, 70%, 70%, 1);
+  --list-color-blue-hover: hsla(200, 80%, 60%, 1);
+  --list-color-header-blue: hsla(200, 70%, 70%, 1);
+
+  --list-color-purple: hsla(270, 50%, 75%, 1);
+  --list-color-purple-hover: hsla(270, 60%, 65%, 1);
+  --list-color-header-purple: hsla(270, 50%, 75%, 1);
+}

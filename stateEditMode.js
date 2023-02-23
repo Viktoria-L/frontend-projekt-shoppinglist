@@ -1,4 +1,4 @@
-import { deleteListItem, updateListItem } from "./module-api.js";
+import { deleteListItem, updateListItem, updateListTitle } from "./module-api.js";
 
 export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   const outputElement = document.querySelector("#current-content");
@@ -43,6 +43,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     // console.log(selectedList);
 
     let listNamn = selectedList.listname;
+    console.log("listNamn",listNamn)
 
     function deleteObject(title, element) {
       let index = itemListArray.findIndex((object) => object.title === title);
@@ -97,7 +98,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       currentListItem.addEventListener("focusout", (e) => {
         updateListItem(e.target.value, selectedList._id, item._id);
       });
-      // WHEN KEYUP ENTER
+      // WHEN KEYPRESS ENTER
       currentListItem.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
           updateListItem(e.target.value, selectedList._id, item._id);
@@ -128,6 +129,23 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         `;
     console.log(selectedList._id, selectedList.listname);
     console.log(selectedList.itemList[0]._id, selectedList.itemList[0].title);
+    let listNameInput = document.querySelector(".nameinput");
+
+    // UPDATING LIST-TITLE TO API
+    // WHEN INPUTFIELD LOSES FOCUS
+    listNameInput.addEventListener("focusout", () => {
+      updateListTitle(listNameInput.value, selectedList._id);
+    })
+    // ON KEYPRESS ENTER
+    listNameInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        // console.log("new value", listNameInput.value);
+        // console.log("list id", selectedList._id);
+        updateListTitle(listNameInput.value, selectedList._id);     
+        listNameInput.blur();
+      }
+    })
+
   } else {
     console.log("creating list");
   }

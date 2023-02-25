@@ -267,7 +267,13 @@ body {
   color: var(--text-color);
 }
 /* body > header > div.headerNameEdit.list-color-header-purple */
-
+.darkmode .headerLogoSettings{
+  background-color: var(--main);
+  border-bottom: solid 1px var(--text-color);
+}
+.darkmode .headerLogoSettings svg{
+  fill: var(--text-color);
+}
 .darkmode .headerNameEdit {
   border-bottom: solid 0.5px white;
 }

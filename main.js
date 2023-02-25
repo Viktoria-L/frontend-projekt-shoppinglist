@@ -11,7 +11,6 @@ import {
 import { triggerDisplay, display } from "./module-display-lists.js";
 import { createSettingsButtonEventListener } from "./module-settings.js"
 import { darkmodeFromLocal } from "./module-of-darkness.js";
-import { showUpdateModal } from "./module-animations.js";
 
 // inte använd men länken till början av APIt
 const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
@@ -40,8 +39,6 @@ checkMode();
 
 displayListsAlt();
 
-// test för animation
-showUpdateModal();
 
 // settings-knapp för index-vyn
 

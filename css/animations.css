@@ -1,0 +1,17 @@
+/* The animation code */
+@keyframes update {
+  from {
+    background-color: hsla(120, 50, 50, 1);
+  }
+  to {
+    background-color: hsla(120, 50, 50, 1);
+  }
+}
+
+/* The element to apply the animation to */
+.update-modal {
+  width: 100px;
+  height: 100px;
+  animation-name: update;
+  animation-duration: 2s;
+}

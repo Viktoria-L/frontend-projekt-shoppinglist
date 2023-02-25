@@ -252,9 +252,7 @@ ul {
   justify-content: flex-start;
   align-items: center;
 }
-.ul-container li {
-  padding: 4px;
-}
+
 .ul-container li label {
   padding-left: 40px;
   padding-top: 2px;
@@ -266,17 +264,19 @@ body {
   margin: 0;
 }
 
-/* DARK-MODE SETTINGS*/
-/* .darkmode {
-  background: #121212;
-  color: white;
+/*------------- DARK-MODE SETTINGS BELOW---------------------------------*/
+ .darkmode {
+  background: var(--main);
+  color: var(--text-color);
 }
+/* body > header > div.headerNameEdit.list-color-header-purple */
+
 .darkmode .headerNameEdit {
   border-bottom: solid 0.5px white;
 }
 .darkmode .settingdiv{
   background: #121212;
-} */
+}
 
 .darkmode li {
   color: var(--text-color);
@@ -285,6 +285,11 @@ body {
   background-color: var(--main);
   color: var(--text-color);
 }
+.darkmode div.headerNameEdit > input {
+  background: inherit;
+  color: var(--text-color);
+}
+
 .darkmode .settingdiv{
   color: var(--text-color);
 }
@@ -297,13 +302,21 @@ body {
   
   }
   
-  .darkmode .itemContainer .checkmark:after{
+.darkmode .itemContainer .checkmark:after{
   color: var(--text-color);
   }
   
-  .darkmode .checkedItem .checkmark {
+.darkmode .checkedItem .checkmark {
     background-color: var(--main);
   }
+
+.darkmode .backBtn svg{
+  fill: var(--text-color);
+}
+.darkmode #button-editmode svg,
+.darkmode #editBtn svg{
+  fill: var(--text-color);
+}
 .darkmode .iconspans svg {
   fill: var(--text-color);
 }
@@ -311,7 +324,7 @@ body {
   color: var(--text-color);
 }
 
-/*---------------------*/
+/*--------------------------DARKMODE SETTINGS ABOVE--------------------------------*/
 
 main {
   padding: 0;
@@ -364,6 +377,9 @@ main {
 }
 @media (min-width: 600px) {
   .headerNameEdit h1 {
+    font-size: 1.8rem;
+  }
+  .nameinput {
     font-size: 1.8rem;
   }
 }
@@ -489,7 +505,7 @@ ITEM STRUCTURE
 /* Styling för inputfältet i headern */
 .nameinput {
   border: none;
-  font-size: 28px;
+  font-size: 1.5rem;
 }
 .listiteminput {
   border: none;
@@ -510,9 +526,7 @@ ITEM STRUCTURE
 #listItems li {
   list-style: none;
 }
-input {
-  border: none;
-}
+
 .iconspans {
   padding: 5px;
 }
@@ -570,7 +584,6 @@ li {
 .itemContainer {
   display: block;
   position: relative;
-  padding-left: 35px;
   margin-bottom: 12px;
 }
 
@@ -584,6 +597,13 @@ li {
 .itemContainer.editing input {
   opacity: 1;
   cursor: pointer;
+}
+/* Denna gör så att alla items, oavsett om man lägger till ett nytt hamnar på samma ställe*/
+#current-content > ul > li{
+  padding-left: 12px;
+}
+#current-content > ul > li > label > input{
+  font-size: 16px;
 }
 
 /* Create a custom checkbox */

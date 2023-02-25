@@ -1,9 +1,10 @@
-export async function showUpdateModal() {
+export function showUpdateModal(text) {
   let modal = document.createElement("div");
-  modal.innerText = "Updated!"
-  document.body.append(modal);
+  let main = document.querySelector("main");
+  modal.innerText = text;
   modal.className = "update-modal";
+  main.prepend(modal);
   setTimeout(() => {
-    document.body.remove(modal);
-  }, 2000);
+    main.removeChild(modal);
+  }, 1400);
 }

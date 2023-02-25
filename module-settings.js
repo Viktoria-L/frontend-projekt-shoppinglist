@@ -24,8 +24,7 @@ export function settingsButtonFunction(e) {
     console.log(`settings button clicked from our beautiful index page`);
     hideIndexHeader();
     addBackButton();
-    renderSettingView();
-    toogleDarkmode();
+   
   } else if (e.currentTarget.currentState === "viewOneList") {
     console.log(`settings button clicked from our amazing view list view`);
     hideListViewTitle();
@@ -43,6 +42,8 @@ export function settingsButtonFunction(e) {
   }
 
   addHeaderTitle();
+  renderSettingView();
+  toogleDarkmode();
 }
 
 function clearCurrentContent() {

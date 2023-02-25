@@ -1,4 +1,5 @@
 import { deleteListItem, updateListItem } from "./module-api.js";
+import { showUpdateModal } from "./module-animations.js";
 
 export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   const outputElement = document.querySelector("#current-content");
@@ -98,12 +99,14 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       // WHEN TEXTINPUT LOSES FOCUS
       currentListItem.addEventListener("focusout", (e) => {
         updateListItem(e.target.value, selectedList._id, item._id);
+        showUpdateModal("Updated text!");
       });
       // WHEN KEYUP ENTER
       currentListItem.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
           updateListItem(e.target.value, selectedList._id, item._id);
           currentListItem.blur();
+          showUpdateModal("Updated text!");
         }
       });
 

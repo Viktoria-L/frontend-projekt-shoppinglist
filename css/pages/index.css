@@ -23,12 +23,6 @@ input.nameinput {
   }
 }
 
-.listiteminput {
-  border: none;
-  border-bottom: 2px solid black;
-  margin: 5px 5px 0 20px;
-}
-
 .saveBtn {
   margin: 10px 0px 0 20px;
   background: rgb(138, 216, 138);
@@ -150,6 +144,8 @@ input:checked + .slider:before {
 body {
   margin: 0;
 }
+
+
 
 /* Header */
 .headerLogoSettings {
@@ -282,10 +278,46 @@ body {
   background: #121212;
 } */
 
+.darkmode li {
+  color: var(--text-color);
+}
+.darkmode input:not(input.nameinput) {
+  background-color: var(--main);
+  color: var(--text-color);
+}
+.darkmode .settingdiv{
+  color: var(--text-color);
+}
+.darkmode .listiteminput {
+  border-bottom: 2px solid var(--text-color);
+}
+
+.darkmode .checkmark {
+  border: solid 1px var(--text-color);
+  
+  }
+  
+  .darkmode .itemContainer .checkmark:after{
+  color: var(--text-color);
+  }
+  
+  .darkmode .checkedItem .checkmark {
+    background-color: var(--main);
+  }
+.darkmode .iconspans svg {
+  fill: var(--text-color);
+}
+.darkmode .additembtn{
+  color: var(--text-color);
+}
+
+/*---------------------*/
+
 main {
   padding: 0;
   background-color: var(--main);
 }
+
 
 /* HOVER CLASS */
 .hover {
@@ -462,7 +494,7 @@ ITEM STRUCTURE
 .listiteminput {
   border: none;
   border-bottom: 2px solid black;
-  margin: 5px 5px 0 px;
+  margin: 5px 5px 0 20px;
 }
 .saveBtn {
   margin: 5px 0px 0 20px;
@@ -483,6 +515,9 @@ input {
 }
 .iconspans {
   padding: 5px;
+}
+li {
+  margin: 10px;
 }
 /*------------------------------------*/
 

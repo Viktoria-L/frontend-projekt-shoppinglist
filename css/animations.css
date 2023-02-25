@@ -1,0 +1,51 @@
+/* The animation code */
+@keyframes update {
+  0% {
+    color: black;
+    background-color: hsla(120, 50%, 70%, 1);
+    border: 1px solid green;
+    opacity: 0;
+  }
+
+  10% {
+    color: black;
+    background-color: hsla(120, 50%, 70%, 1);
+    border: 1px solid green;
+    opacity: 1;
+  }
+
+  75% {
+    color: black;
+    background-color: hsla(120, 50%, 70%, 1);
+    border: 1px solid green;
+    opacity: 1;
+  }
+  100% {
+    color: transparent;
+    background-color: hsla(120, 50%, 70%, 1);
+    border: 1px solid transparent;
+    opacity: 0;
+  }
+}
+
+/* The element to apply the animation to */
+.update-modal {
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  color: transparent;
+  z-index: 100;
+  position: fixed;
+  display: flex;
+  width: 150px;
+  height: 60px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.5rem;
+  /* background-color: hsla(120, 50, 50, 1); */
+  animation-name: update;
+  animation-duration: 1.5s;
+}
+
+

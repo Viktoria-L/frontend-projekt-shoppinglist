@@ -39,6 +39,7 @@ checkMode();
 
 displayListsAlt();
 
+
 // settings-knapp för index-vyn
 
 createSettingsButtonEventListener();

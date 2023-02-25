@@ -174,7 +174,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
-  grid-auto-rows: 30vh;
+  grid-auto-rows: 20vh;
   grid-gap: 0rem;
   /* grid-template-rows: repeat(5, 25%); */
   margin: 0.5rem;
@@ -221,9 +221,6 @@ body {
 
 .preview-object:hover {
   background-color: var(--preview-object-hover);
-}
-
-.selected-item {
 }
 
 .trashBtn svg {

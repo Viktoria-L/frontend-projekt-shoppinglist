@@ -174,7 +174,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
-  grid-auto-rows: 30vh;
+  grid-auto-rows: 20vh;
   grid-gap: 0rem;
   /* grid-template-rows: repeat(5, 25%); */
   margin: 0.5rem;
@@ -223,9 +223,6 @@ body {
   background-color: var(--preview-object-hover);
 }
 
-.selected-item {
-}
-
 .trashBtn svg {
   height: 1rem;
 }
@@ -270,7 +267,13 @@ body {
   color: var(--text-color);
 }
 /* body > header > div.headerNameEdit.list-color-header-purple */
-
+.darkmode .headerLogoSettings{
+  background-color: var(--main);
+  border-bottom: solid 1px var(--text-color);
+}
+.darkmode .headerLogoSettings svg{
+  fill: var(--text-color);
+}
 .darkmode .headerNameEdit {
   border-bottom: solid 0.5px white;
 }

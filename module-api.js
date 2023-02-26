@@ -107,6 +107,25 @@ export async function updateListTitle(listTitle, listId) {
     console.log("updateListTitle() done")
 }
 
+//Funktion för att lägga till nytt listitem i befintlig lista
+export async function addNewListItem(listId, listiteminput){
+const title = listiteminput;
+const res = await fetch(
+  `https://nackademin-item-tracker.herokuapp.com/lists/${listId}/items`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      title: title,
+      checked: false,
+    }),
+  }
+);
+const { list } = await res.json();
+}
+
 export async function updateColor(color, listId) {
   await fetch(
     `https://nackademin-item-tracker.herokuapp.com/lists/${listId}`,

@@ -86,10 +86,8 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
 
       /* listItem.appendChild(checkboxInput); */
       listItem.appendChild(labelA);
-      console.log(labelA);
 
       /* labelA.innerHTML += item.qty ? ` ${item.qty}` : " :1"; */
-
       // Funktion som ändrar om itemet är checked eller inte
 
       listItemsUl.append(listItem);
@@ -112,9 +110,9 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       });
 
       let removeBtn = document.getElementById(`${trashName}`);
-      console.log(removeBtn);
+      // console.log(removeBtn);
 
-      console.log("ny info", item._id);
+      // console.log("ny info", item._id);
       removeBtn.setAttribute("list_id", item._id);
       removeBtn.addEventListener("click", (event) => {
         // removes item from DOM and api
@@ -133,9 +131,10 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         }" value="${listNamn}" onfocus="this.placeholder=''"></input>
         <button id="button-editmode"><svg class="hover" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><use xlink:href="assets/three-dots-vertical.svg#three-dots-vertical"></use></button>
         `;
-    console.log(selectedList._id, selectedList.listname);
-    console.log(selectedList.itemList[0]._id, selectedList.itemList[0].title);
+    // console.log(selectedList._id, selectedList.listname);
+    // console.log(selectedList.itemList[0]._id, selectedList.itemList[0].title);
   } else {
+    //VAD ÄR DETTA FÖR IF-sats? med en tom else
     console.log("creating list");
   }
 

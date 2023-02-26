@@ -95,7 +95,6 @@ export async function displayListsAlt() {
             return;
           }
           
-          console.log(item.checked);
           
           let listItemet = document.createElement("li");
           listItemet.innerHTML = item.title ? `${item.title}` : "no title ";

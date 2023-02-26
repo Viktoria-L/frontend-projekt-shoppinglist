@@ -23,17 +23,6 @@ input.nameinput {
   }
 }
 
-.saveBtn {
-  margin: 10px 0px 0 20px;
-  background: rgb(138, 216, 138);
-  padding: 5px;
-  border-radius: 10px;
-  border: none;
-}
-
-.saveBtn:hover {
-  background: rgb(98, 192, 98);
-}
 
 .backBtn {
   padding: 5px;
@@ -516,12 +505,17 @@ ITEM STRUCTURE
   margin: 5px 5px 0 20px;
 }
 .saveBtn {
-  margin: 5px 0px 0 20px;
+  margin: 10px 0px 0 20px;
   background: rgb(138, 216, 138);
   padding: 5px;
   border-radius: 10px;
   border: none;
 }
+
+.saveBtn:hover {
+  background: rgb(98, 192, 98);
+}
+
 .additembtn {
   border: none;
 }

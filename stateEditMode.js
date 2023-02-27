@@ -145,7 +145,12 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     let currentState = "viewOneList";
     console.log("edit mode clicked    current state: " + currentState);
     console.log("current list:" + selectedList);
-    showSelectedList(selectedList, currentState);
+    if (selectedList === null) { 
+      window.location.href = "";
+    }
+    else {
+      showSelectedList(selectedList, currentState);
+    }
   });
 
   if (selectedList) {
@@ -247,12 +252,13 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     saveBtnDiv.append(saveToAPIBtn);
   }
   saveToAPIBtn.addEventListener("click", async () => {
-      selectedList = await saveList();
-      listItemsUl.innerHTML = "";
-      let p = document.createElement("p");
-      p.innerText = "Your list have been saved!";
-      p.style.color = "green";
-      saveBtnDiv.append(p);
+    selectedList = await saveList();
+    listItemsUl.innerHTML = "";
+    // let p = document.createElement("p");
+    // p.innerText = "Your list have been saved!";
+    // p.style.color = "green";
+    // saveBtnDiv.append(p);
+    showUpdateModal("Your list was saved!");
   });
 
   // color select för lista här

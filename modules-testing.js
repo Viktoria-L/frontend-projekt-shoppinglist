@@ -1,6 +1,7 @@
 import { editMode } from "./stateEditMode.js";
 import { deleteListUsingID } from "./module-api.js";
 import { showSelectedList } from "./module-show-selected-list.js";
+import { showCreateListButton } from "./module-settings.js";
 
 export async function displayListsAlt() {
   const currentContentContainer = document.getElementById("current-content");
@@ -116,6 +117,9 @@ export async function displayListsAlt() {
         // previewObject.innerHTML += + list.itemList.length - 5
         console.log();
       } else console.log("not an Array");
+      
+      // efter att saker har laddats in, visa plusknappen
+      showCreateListButton()  
 
       let trashcan = document.createElement("span");
       trashcan.classList.add("remove-container", "hidden", "hover");
@@ -175,6 +179,10 @@ export async function displayListsAlt() {
     currentContentContainer.appendChild(ulContainer);
     const listItemsUl = document.createElement("ul");
     ulContainer.append(listItemsUl);
+
+    // göm plusknappen
+    let bottomButton = document.querySelector("#newListBtn");
+    bottomButton.classList.add("hidden");
 
     editMode({
       selectedList: selectedList,

@@ -144,16 +144,15 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   backBtn.addEventListener("click", () => {
     let currentState = "viewOneList";
     console.log("edit mode clicked    current state: " + currentState);
-    console.log("current list:" + selectedList)
+    console.log("current list:" + selectedList);
     showSelectedList(selectedList, currentState);
   });
 
-  if(selectedList){
-  outputElement.prepend(listItemsUl);
+  if (selectedList) {
+    outputElement.prepend(listItemsUl);
   } else {
-    outputElement.append(listItemsUl)
+    outputElement.append(listItemsUl);
   }
-
 
   //plus-knappen lägger till ett item i den "lokala" listan som gör att man kan redigera den innan den sparas till api
   // change-event körs när man trycker på knappen för inputfältet tappar fokus

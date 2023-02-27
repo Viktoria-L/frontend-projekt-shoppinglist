@@ -577,6 +577,7 @@ li {
 .itemContainer.editing input {
   opacity: 1;
   cursor: pointer;
+  width: 90%;
 }
 /* Denna gör så att alla items, oavsett om man lägger till ett nytt hamnar på samma ställe*/
 #current-content > ul > li{

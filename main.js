@@ -9,6 +9,8 @@ import {
   getListsUsingCustomField,
 } from "./module-api.js";
 import { triggerDisplay, display } from "./module-display-lists.js";
+import { createSettingsButtonEventListener } from "./module-settings.js"
+import { darkmodeFromLocal } from "./module-of-darkness.js";
 
 // inte använd men länken till början av APIt
 const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
@@ -25,9 +27,24 @@ if (debugMode) {
 
 // Visa index-funktioner här
 
+//Kollar om darkmode är valt och sparat i localstorage
+function checkMode(){
+  let body = document.querySelector("body");
+  if(darkmodeFromLocal() === "true"){
+    body.classList.add("darkmode");
+  }
+}
+checkMode();
 // triggerDisplay();
 
 displayListsAlt();
+
+
+// settings-knapp för index-vyn
+
+createSettingsButtonEventListener();
+const settingsButton = document.querySelector("#settings-button");
+settingsButton.currentState = "index";
 
 // om man vill skriva ut
 // let stringifiedLists = JSON.stringify(lists);

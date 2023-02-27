@@ -7,24 +7,23 @@
     <title>Mina listor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/default.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/pages/index.css">
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="icon" type="image/x-icon" href="/assets/logo_favicon.svg">
     <script src="main.js" type="module" defer></script>
 </head>
 <body>
     <header>
         <div class="headerLogoSettings">
-            <img src="assets/logo.svg" alt="">
-            <a href=""><img src="assets/gear.svg" alt=""></a>
+          <svg id="logo-85" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><use xlink:href="assets/logo.svg#logo" /></svg>
+            <button id="settings-button"><svg class="hover" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --> <use xlink:href="assets/gear.svg#gear"></use></svg></button>
         </div>
         <div class="headerNameEdit">
-            <h1>My shopping lists</h1>
-            <button id="editBtn"><img class="hover" src="assets/three-dots-vertical.svg" alt=""></button>
+            <h1 id="header-name-title">My shopping lists</h1>
+            <button id="editBtn"><svg class="hover" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><use xlink:href="assets/three-dots-vertical.svg#three-dots-vertical"></use></svg></button>
         </div>
-        <hr>
     </header>
 
     <main>

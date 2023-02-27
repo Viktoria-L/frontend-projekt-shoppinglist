@@ -3,7 +3,6 @@ export function viewMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   
 let bottomButton = document.querySelector("#newListBtn");
     bottomButton.classList.add("hidden");
-    console.log(selectedList._id);
 
     let listNamn = selectedList.listname;
     selectedList.itemList.forEach((item) => {
@@ -24,7 +23,7 @@ let bottomButton = document.querySelector("#newListBtn");
       labelA.classList.add("itemContainer")
       labelA.innerHTML = `<input type="checkbox" name=${item.title} id=${item._id} value=${item.checked} /><span class="checkmark"></span>` + item.title;
 
-      console.log(labelA)
+      // console.log(labelA)
 
       item.checked
         ? listItem.classList.add("checkedItem")
@@ -42,12 +41,12 @@ let bottomButton = document.querySelector("#newListBtn");
         item.checked
           ? listItem.classList.add("checkedItem")
           : listItem.classList.remove("checkedItem");
-        console.log(item.checked);
-        console.log("item changed state");
+        // console.log(item.checked);
+        // console.log("item changed state");
 
-        console.log(selectedList._id);
-        console.log(item._id, "list item id", item.title);
-        console.log(item.checked);
+        // console.log(selectedList._id);
+        // console.log(item._id, "list item id", item.title);
+        // console.log(item.checked);
 
         updateCheckedState(selectedList._id, item._id, item.checked);
       });
@@ -56,16 +55,17 @@ let bottomButton = document.querySelector("#newListBtn");
     });
 
     headerName.innerHTML = `
-    <span class="backBtn"><img src="assets/back-arrow.svg" alt=""></span>
-    <input type="text" class="nameinput" value="${listNamn}" onfocus="this.placeholder=''"></input>
-    <button id="button-editmode"><img class="hover" src="assets/three-dots-vertical.svg" alt=""></button>
+    <span class="backBtn hover"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg></span>
+    <h1 class="nameinput list-color-header-${selectedList.color ?? 'default'}">${listNamn}</h1>
+    <button id="button-editmode"><svg class="hover" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><use xlink:href="assets/three-dots-vertical.svg#three-dots-vertical"></use></button>
     `;
+    headerName.classList.add(`list-color-header-${selectedList.color ?? 'default'}`)
 
     //Eventlistener för "gå tillbaka-knappen"
     const backBtn = document.querySelector(".backBtn");
     backBtn.addEventListener("click", () => {
     bottomButton.classList.remove("hidden");
-      window.location.href = "index.html";
+      window.location.href = "";
     });
   
     async function updateCheckedState(currentListId, item_id, checked_state) {

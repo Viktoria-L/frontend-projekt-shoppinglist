@@ -242,11 +242,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   outputElement.append(saveBtnDiv);
   //Spara-knapp som ska ha eventlistener/funktion att skicka datan till api:et
   let saveToAPIBtn = document.createElement("button");
-  if (selectedList) {
-    saveToAPIBtn.className = "saveBtn";
-    saveToAPIBtn.innerText = "Add or update items by pressing enter/ +";
-    saveBtnDiv.append(saveToAPIBtn);
-  } else {
+  if (!selectedList) {
     saveToAPIBtn.className = "saveBtn";
     saveToAPIBtn.innerText = "Save List";
     saveBtnDiv.append(saveToAPIBtn);

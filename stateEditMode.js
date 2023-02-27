@@ -45,8 +45,6 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     }
   });
 
-  let bottomButton = document.querySelector("#newListBtn");
-  bottomButton.classList.add("hidden");
   if (selectedList) {
     selectedList.itemList.forEach((item) => {
       // console.log("ITEM IS" + item.title)

@@ -131,6 +131,12 @@ body {
 
 
 /* Header */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
 .headerLogoSettings {
   display: flex;
   justify-content: space-between;
@@ -304,7 +310,7 @@ body {
 /*--------------------------DARKMODE SETTINGS ABOVE--------------------------------*/
 
 main {
-  padding: 0;
+  padding: 16vw 0 0 0;
   background-color: var(--main);
 }
 
@@ -346,6 +352,7 @@ main {
   justify-content: center;
   padding: 5px 20px 5px 20px;
   position: relative;
+  background-color: var(--main);
   border-bottom: solid 0.5px black;
 }
 .headerNameEdit h1 {

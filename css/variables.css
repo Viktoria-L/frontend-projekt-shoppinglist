@@ -1,6 +1,9 @@
 :root {
-  --main: #fff;
-  --headerLogoSettings: #e0e0e0;
+  --main-bg: #fff;
+  --main-color: #000;
+
+  --header-top-bg: #e0e0e0;
+
   --preview-object: #e0e0e0;
   --preview-object-hover: rgb(241, 241, 241);
   --color-select-frame: #e0e0e0;
@@ -40,8 +43,9 @@
 }
 
 .darkmode {
-  --main: #111;
-  --color: #fff;
+  --main-bg: #111;
+  --main-color: #fff;
+
   --headerLogoSettings: #e0e0e0;
   --preview-object: rgb(36, 36, 36);
   --preview-object-hover: rgb(20, 20, 20);

@@ -58,6 +58,8 @@ export function hideCreateListButton() {
 export function showCreateListButton() {
   const createListBtn = document.getElementById("newListBtn");
   createListBtn.classList.remove("hidden");
+
+  console.log('Hidding button!')
 }
 
 function hideIndexHeader() {

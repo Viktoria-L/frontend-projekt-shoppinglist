@@ -191,9 +191,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     console.log("edit mode clicked    current state: " + currentState);
     console.log("current list:" + selectedList);
     if (selectedList === null) {
-    if (selectedList === null) {
       window.location.href = "";
-    } else {
     } else {
       showSelectedList(selectedList, currentState);
     }

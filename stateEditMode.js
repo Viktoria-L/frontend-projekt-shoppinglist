@@ -100,8 +100,10 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       // WHEN TEXTINPUT LOSES FOCUS
       currentListItem.addEventListener("focusout", (e) => {
         if (currentListItem.value !== null && currentListItem.value !== "") {
-          updateListItem(e.target.value, selectedList._id, item._id);
-          showUpdateModal("Updated text!");
+          if (item.title !== currentListItem.value) {
+            updateListItem(e.target.value, selectedList._id, item._id);
+            showUpdateModal("Updated text!");
+          }
         } else {
           alert("You cant add empty items, try again!");
           currentListItem.blur();
@@ -116,7 +118,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
             currentListItem.blur();
             showUpdateModal("Updated text!");
           } else {
-            // alert("You cant add empty items, try again!");
+            alert("You cant add empty items, try again!");
             currentListItem.blur();
             currentListItem.value = item.title;
           }
@@ -189,7 +191,9 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     console.log("edit mode clicked    current state: " + currentState);
     console.log("current list:" + selectedList);
     if (selectedList === null) {
+    if (selectedList === null) {
       window.location.href = "";
+    } else {
     } else {
       showSelectedList(selectedList, currentState);
     }
@@ -205,6 +209,11 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   // change-event körs när man trycker på knappen för inputfältet tappar fokus
   addItemBtn.addEventListener("click", () => {
     if (selectedList) {
+      if (listItemInput.value !== null && listItemInput.value !== "") {
+        console.log(selectedList._id);
+        addNewListItem(selectedList._id, listItemInput.value);
+        addItem();
+        showUpdateModal("New item added!");
       if (listItemInput.value !== null && listItemInput.value !== "") {
         console.log(selectedList._id);
         addNewListItem(selectedList._id, listItemInput.value);
@@ -301,13 +310,13 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     if (itemListArray.length > 0) {
       selectedList = await saveList();
       listItemsUl.innerHTML = "";
+      showUpdateModal("Your list was saved!");
       // let p = document.createElement("p");
       // p.innerText = "Your list have been saved!";
       // p.style.color = "green";
       // saveBtnDiv.append(p);
     } else {
       alert("You need to add items to save list!");
-      showUpdateModal("Your list was saved!");
     }
   });
 

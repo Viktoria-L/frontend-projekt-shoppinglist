@@ -7,7 +7,7 @@
 }
 input.nameinput {
   max-width: 90vw;
-  padding:0;
+  padding: 0;
 }
 @media (min-width: 600px) {
   .nameinput {
@@ -128,8 +128,6 @@ body {
   margin: 0;
 }
 
-
-
 /* Header */
 header {
   position: fixed;
@@ -241,7 +239,6 @@ ul {
 
 .ul-container li label {
   padding-left: 38px;
-
 }
 
 /* index.css */
@@ -251,61 +248,60 @@ body {
 }
 
 /*------------- DARK-MODE SETTINGS BELOW---------------------------------*/
- .darkmode {
+.darkmode {
   background: var(--main);
-  color: var(--text-color);
+  color: var(--color);
 }
 
-.darkmode .headerLogoSettings{
+.darkmode .headerLogoSettings {
   background-color: var(--main);
-  border-bottom: solid 1px var(--text-color);
+  border-bottom: solid 1px var(--color);
 }
-.darkmode .headerLogoSettings svg{
-  fill: var(--text-color);
+.darkmode .headerLogoSettings svg {
+  fill: var(--color);
 }
 .darkmode .headerNameEdit {
   border-bottom: solid 0.5px white;
 }
-.darkmode .settingdiv{
+.darkmode .settingdiv {
   background: var(--main);
 }
 
 .darkmode li {
-  color: var(--text-color);
+  color: var(--color);
 }
 .darkmode input:not(input.nameinput) {
   background-color: var(--main);
-  color: var(--text-color);
+  color: var(--color);
 }
 .darkmode div.headerNameEdit > input {
   background: inherit;
-  color: var(--text-color);
+  color: var(--color);
 }
 
 .darkmode .settingdiv,
 .darkmode .additembtn,
-.darkmode .itemContainer .checkmark:after{
-  color: var(--text-color);
+.darkmode .itemContainer .checkmark:after {
+  color: var(--color);
 }
 .darkmode .listiteminput {
-  border-bottom: 2px solid var(--text-color);
+  border-bottom: 2px solid var(--color);
 }
 
 .darkmode .checkmark {
-  border: solid 1px var(--text-color);
+  border: solid 1px var(--color);
 }
-    
+
 .darkmode .checkedItem .checkmark {
-    background-color: var(--main);
-  }
+  background-color: var(--main);
+}
 
 .darkmode #button-editmode svg,
 .darkmode #editBtn svg,
 .darkmode .iconspans svg,
-.darkmode .backBtn svg{
-  fill: var(--text-color);
+.darkmode .backBtn svg {
+  fill: var(--color);
 }
-
 
 /*--------------------------DARKMODE SETTINGS ABOVE--------------------------------*/
 
@@ -313,7 +309,6 @@ main {
   padding: 20vh 0 0 0;
   background-color: var(--main);
 }
-
 
 /* HOVER CLASS */
 .hover {
@@ -374,7 +369,6 @@ main {
 .headerNameEdit .backBtn svg {
   width: 12px;
 }
-
 
 /* CALL-TO-ACTION */
 .call-to-action {
@@ -467,7 +461,7 @@ ITEM STRUCTURE
   font-size: 4rem;
   height: 50px;
   border-radius: 100%;
-  color: var(--text-color);
+  color: var(--color);
   background-color: var(--newListBtn);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
     rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
@@ -580,19 +574,18 @@ li {
   width: 250px;
 }
 /* Denna gör så att alla items, oavsett om man lägger till ett nytt hamnar på samma ställe*/
-#current-content > ul > li{
+#current-content > ul > li {
   height: 21px;
   padding-left: 16px;
 }
 
 #current-content > ul {
-  margin-top: 32px 
+  margin-top: 32px;
 }
-#current-content > ul > li > label > input{
+#current-content > ul > li > label > input {
   font-size: 16px;
   height: 19px;
-margin-left: 8px;
-
+  margin-left: 8px;
 }
 
 /* Create a custom checkbox */
@@ -765,7 +758,6 @@ margin-left: 8px;
 .list-color-header-purple {
   background-color: var(--list-color-header-purple);
 }
-
 
 @media (min-width: 600px) {
   .headerNameEdit h1 {

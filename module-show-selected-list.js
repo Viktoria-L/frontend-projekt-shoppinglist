@@ -44,7 +44,7 @@ export async function showSelectedList(selectedList, currentState) {
 }
 
 function createEditModeEventListener(selectedList, currentState) {
-  const editModeButton = document.querySelector("#button-editmode");
+  const editModeButton = document.querySelector("#editBtn");
   editModeButton.addEventListener("click", async (e) => {
     currentState === "viewOneList"
       ? (currentState = "editOneList")

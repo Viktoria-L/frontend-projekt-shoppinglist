@@ -19,6 +19,7 @@ export function createSettingsButtonEventListener() {
 export function settingsButtonFunction(e) {
   clearCurrentContent();
   hideCreateListButton();
+  hideEditButton();
 
   if (e.currentTarget.currentState === "index") {
     console.log(`settings button clicked from our beautiful index page`);
@@ -48,6 +49,11 @@ export function settingsButtonFunction(e) {
 function clearCurrentContent() {
   const currentContent = document.querySelector("#current-content");
   currentContent.innerHTML = "";
+}
+
+function hideEditButton() {
+  const editBtn = document.getElementById("editBtn");
+  editBtn.firstChild.classList.add("hidden");
 }
 
 export function hideCreateListButton() {

@@ -296,7 +296,6 @@ body {
   background-color: var(--main);
 }
 
-.darkmode #button-editmode svg,
 .darkmode #editBtn svg,
 .darkmode .iconspans svg,
 .darkmode .backBtn svg {

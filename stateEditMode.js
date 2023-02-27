@@ -73,7 +73,9 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         let trash = item.title
           .replaceAll(" ", "-")
           .replaceAll(".", "")
-          .replaceAll(",", "");
+          .replaceAll(",", "")
+          .replaceAll("!", "")
+          .replaceAll("?", "");
         return trash;
       };
       let trashName = trashId();

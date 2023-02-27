@@ -5,6 +5,7 @@ import {
   updateColor,
 } from "./module-api.js";
 import { showUpdateModal } from "./module-animations.js";
+import { showSelectedList } from "./module-show-selected-list.js";
 
 export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   const outputElement = document.querySelector("#current-content");
@@ -141,8 +142,10 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   //Eventlistener för "gå tillbaka-knappen"
   const backBtn = document.querySelector(".backBtn");
   backBtn.addEventListener("click", () => {
-    bottomButton.classList.remove("hidden");
-    window.location.href = "";
+    let currentState = "viewOneList";
+    console.log("edit mode clicked    current state: " + currentState);
+    console.log("current list:" + selectedList)
+    showSelectedList(selectedList, currentState);
   });
 
   if(selectedList){

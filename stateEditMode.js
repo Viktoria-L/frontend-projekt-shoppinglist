@@ -143,9 +143,6 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         `;
     // console.log(selectedList._id, selectedList.listname);
     // console.log(selectedList.itemList[0]._id, selectedList.itemList[0].title);
-  } else {
-    //VAD ÄR DETTA FÖR IF-sats? med en tom else
-    console.log("creating list");
   }
 
   //Eventlistener för "gå tillbaka-knappen"

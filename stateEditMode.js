@@ -50,8 +50,6 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     }
   });
 
-  let bottomButton = document.querySelector("#newListBtn");
-  bottomButton.classList.add("hidden");
   if (selectedList) {
     selectedList.itemList.forEach((item) => {
       // console.log("ITEM IS" + item.title)
@@ -149,7 +147,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         <input type="text" onClick="this.setSelectionRange(0, this.value.length)" class="nameinput list-color-header-${
           selectedList.color ?? "default"
         }" value="${listNamn}" onfocus="this.placeholder=''"></input>
-        <button id="button-editmode"><svg class="hover" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><use xlink:href="assets/three-dots-vertical.svg#three-dots-vertical"></use></button>
+        <button id="editBtn"><svg class="hover" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><use xlink:href="assets/three-dots-vertical.svg#three-dots-vertical"></use></button>
         `;
     // console.log(selectedList._id, selectedList.listname);
     // console.log(selectedList.itemList[0]._id, selectedList.itemList[0].title);

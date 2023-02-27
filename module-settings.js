@@ -19,6 +19,7 @@ export function createSettingsButtonEventListener() {
 export function settingsButtonFunction(e) {
   clearCurrentContent();
   hideCreateListButton();
+  hideEditButton();
 
   if (e.currentTarget.currentState === "index") {
     console.log(`settings button clicked from our beautiful index page`);
@@ -50,9 +51,19 @@ function clearCurrentContent() {
   currentContent.innerHTML = "";
 }
 
-function hideCreateListButton() {
+function hideEditButton() {
+  const editBtn = document.getElementById("editBtn");
+  editBtn.firstChild.classList.add("hidden");
+}
+
+export function hideCreateListButton() {
   const createListBtn = document.getElementById("newListBtn");
-  createListBtn.style = `display: none`;
+  createListBtn.classList.add("hidden");
+}
+
+export function showCreateListButton() {
+  const createListBtn = document.getElementById("newListBtn");
+  createListBtn.classList.remove("hidden");
 }
 
 function hideIndexHeader() {

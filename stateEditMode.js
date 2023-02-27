@@ -251,11 +251,11 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     saveToAPIBtn.innerText = "Save List";
     saveBtnDiv.append(saveToAPIBtn);
   }
-  saveToAPIBtn.addEventListener("click", () => {
+  saveToAPIBtn.addEventListener("click", async () => {
     if (selectedList) {
       console.log("denna knapp gör inget i denna view");
     } else {
-      saveList();
+      selectedList = await saveList();
       listItemsUl.innerHTML = "";
       let p = document.createElement("p");
       p.innerText = "Your list have been saved!";
@@ -356,6 +356,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     console.log(currentList);
 
     saveItems();
+    return list;
   }
 
   async function saveItems() {

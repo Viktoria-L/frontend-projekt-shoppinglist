@@ -3,7 +3,6 @@ export function viewMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   
 let bottomButton = document.querySelector("#newListBtn");
     bottomButton.classList.add("hidden");
-    console.log(selectedList._id);
 
     let listNamn = selectedList.listname;
     selectedList.itemList.forEach((item) => {
@@ -42,12 +41,12 @@ let bottomButton = document.querySelector("#newListBtn");
         item.checked
           ? listItem.classList.add("checkedItem")
           : listItem.classList.remove("checkedItem");
-        console.log(item.checked);
-        console.log("item changed state");
+        // console.log(item.checked);
+        // console.log("item changed state");
 
-        console.log(selectedList._id);
-        console.log(item._id, "list item id", item.title);
-        console.log(item.checked);
+        // console.log(selectedList._id);
+        // console.log(item._id, "list item id", item.title);
+        // console.log(item.checked);
 
         updateCheckedState(selectedList._id, item._id, item.checked);
       });

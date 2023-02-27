@@ -69,11 +69,14 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     selectedList.itemList.forEach((item) => {
       let listItem = document.createElement("li");
 
+      // SORTING OUT SHIT-SIGNS
       let trashId = () => {
         let trash = item.title
           .replaceAll(" ", "-")
           .replaceAll(".", "")
-          .replaceAll(",", "");
+          .replaceAll(",", "")
+          .replaceAll("!", "")
+          .replaceAll("?", "");
         return trash;
       };
       let trashName = trashId();

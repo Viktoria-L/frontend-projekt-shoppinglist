@@ -24,7 +24,6 @@ export function settingsButtonFunction(e) {
     console.log(`settings button clicked from our beautiful index page`);
     hideIndexHeader();
     addBackButton();
-   
   } else if (e.currentTarget.currentState === "viewOneList") {
     console.log(`settings button clicked from our amazing view list view`);
     hideListViewTitle();
@@ -134,9 +133,10 @@ function renderSettingView() {
 function checkUserMode() {
   let checkbox = document.querySelector('.theme-switch input[type="checkbox"]');
 
-  if (systemPrefersDark()) {
+  if (systemPrefersDark() && (darkmodeFromLocal() === "true" || darkmodeFromLocal() === null)) {
+    body.classList.add("darkmode");
     checkbox.checked = true;
-    console.log("dark mode preferred");
+      console.log("dark mode preferred");
   } else if (!systemPrefersDark()) {
     console.log("No dark mode preferred");
     if (darkmodeFromLocal() === "true") {

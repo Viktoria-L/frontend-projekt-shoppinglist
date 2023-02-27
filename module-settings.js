@@ -53,7 +53,9 @@ function clearCurrentContent() {
 
 function hideEditButton() {
   const editBtn = document.getElementById("editBtn");
-  editBtn.firstChild.classList.add("hidden");
+  if (editBtn) {
+    editBtn.firstChild.classList.add("hidden");
+  }
 }
 
 export function hideCreateListButton() {
@@ -67,8 +69,12 @@ export function showCreateListButton() {
 }
 
 function hideIndexHeader() {
-  const oldHeader = document.getElementById("header-name-title");
+  let oldHeader = document.getElementById("header-name-title");
   if (oldHeader) {
+    oldHeader.style = `display: none`;
+  }
+  else {
+    let oldHeader = document.querySelector(".nameinput");
     oldHeader.style = `display: none`;
   }
 }

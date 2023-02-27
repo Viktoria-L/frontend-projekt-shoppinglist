@@ -98,17 +98,26 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       // EDIT LIST-ITEM AND PUT NEW VALUE TO API
       // WHEN TEXTINPUT LOSES FOCUS
       currentListItem.addEventListener("focusout", (e) => {
+        if(currentListItem.value !== null && currentListItem.value !== ""){
         updateListItem(e.target.value, selectedList._id, item._id);
         showUpdateModal("Updated text!");
+        } else {
+          alert("You cant add empty items, try again!");
+          currentListItem.blur();
+          currentListItem.value = item.title;
+        }
       });
       // WHEN KEYUP ENTER
       currentListItem.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
+          if(currentListItem.value !== null && currentListItem.value !== ""){
           updateListItem(e.target.value, selectedList._id, item._id);
           currentListItem.blur();
           showUpdateModal("Updated text!");
+        } else {
+          alert("You cant add empty items, try again!");
         }
-      });
+      }});
 
       let removeBtn = document.getElementById(`${trashName}`);
       // console.log(removeBtn);
@@ -125,7 +134,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     });
     /* headerName.innerHTML = "this is edit mode"; */
     headerName.innerHTML = `
-        <p class="thisIsEdit">this is edit mode</p>
+        <p class="thisIsEdit">Edit mode</p>
         <span class="backBtn hover"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg></span>
         <input type="text" class="nameinput list-color-header-${
           selectedList.color ?? "default"
@@ -144,25 +153,28 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   backBtn.addEventListener("click", () => {
     let currentState = "viewOneList";
     console.log("edit mode clicked    current state: " + currentState);
-    console.log("current list:" + selectedList)
+    console.log("current list:" + selectedList);
     showSelectedList(selectedList, currentState);
   });
 
-  if(selectedList){
-  outputElement.prepend(listItemsUl);
+  if (selectedList) {
+    outputElement.prepend(listItemsUl);
   } else {
-    outputElement.append(listItemsUl)
+    outputElement.append(listItemsUl);
   }
-
 
   //plus-knappen lägger till ett item i den "lokala" listan som gör att man kan redigera den innan den sparas till api
   // change-event körs när man trycker på knappen för inputfältet tappar fokus
   addItemBtn.addEventListener("click", () => {
     if (selectedList) {
+      if(listItemInput.value !== null && listItemInput.value !== ""){
       console.log(selectedList._id);
       addNewListItem(selectedList._id, listItemInput.value);
       addItem();
       showUpdateModal("New item added!");
+      } else {
+        alert("You cant add empty items, try again!");
+      }
     } else {
       addItem();
     }
@@ -248,14 +260,16 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     saveBtnDiv.append(saveToAPIBtn);
   }
   saveToAPIBtn.addEventListener("click", () => {
-   
+    if (itemListArray.length > 0) {
       saveList();
       listItemsUl.innerHTML = "";
       let p = document.createElement("p");
       p.innerText = "Your list have been saved!";
       p.style.color = "green";
       saveBtnDiv.append(p);
-    
+    } else {
+      alert("You need to add items to save list!");
+    }
   });
 
   // color select för lista här

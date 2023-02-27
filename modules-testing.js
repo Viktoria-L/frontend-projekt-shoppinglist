@@ -1,7 +1,7 @@
 import { editMode } from "./stateEditMode.js";
 import { deleteListUsingID } from "./module-api.js";
 import { showSelectedList } from "./module-show-selected-list.js";
-import { showCreateListButton } from "./module-settings.js";
+import { showCreateListButton, hideCreateListButton } from "./module-settings.js";
 
 export async function displayListsAlt() {
   const currentContentContainer = document.getElementById("current-content");
@@ -165,7 +165,6 @@ export async function displayListsAlt() {
 
   createListBtn.addEventListener("click", (event) => {
     outputElement.innerHTML = "";
-    createListBtn.style = `display: none`;
 
     //Bygger listans namninput-fält med fältet för namnet i headern
     headerName.innerHTML = `
@@ -180,9 +179,6 @@ export async function displayListsAlt() {
     const listItemsUl = document.createElement("ul");
     ulContainer.append(listItemsUl);
 
-    // göm plusknappen
-    let bottomButton = document.querySelector("#newListBtn");
-    bottomButton.classList.add("hidden");
 
     editMode({
       selectedList: selectedList,

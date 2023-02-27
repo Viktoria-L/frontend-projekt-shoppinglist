@@ -19,12 +19,12 @@ export function createSettingsButtonEventListener() {
 export function settingsButtonFunction(e) {
   clearCurrentContent();
   hideCreateListButton();
+  hideEditButton();
 
   if (e.currentTarget.currentState === "index") {
     console.log(`settings button clicked from our beautiful index page`);
     hideIndexHeader();
     addBackButton();
-   
   } else if (e.currentTarget.currentState === "viewOneList") {
     console.log(`settings button clicked from our amazing view list view`);
     hideListViewTitle();
@@ -51,9 +51,19 @@ function clearCurrentContent() {
   currentContent.innerHTML = "";
 }
 
-function hideCreateListButton() {
+function hideEditButton() {
+  const editBtn = document.getElementById("editBtn");
+  editBtn.firstChild.classList.add("hidden");
+}
+
+export function hideCreateListButton() {
   const createListBtn = document.getElementById("newListBtn");
-  createListBtn.style = `display: none`;
+  createListBtn.classList.add("hidden");
+}
+
+export function showCreateListButton() {
+  const createListBtn = document.getElementById("newListBtn");
+  createListBtn.classList.remove("hidden");
 }
 
 function hideIndexHeader() {
@@ -134,9 +144,10 @@ function renderSettingView() {
 function checkUserMode() {
   let checkbox = document.querySelector('.theme-switch input[type="checkbox"]');
 
-  if (systemPrefersDark()) {
+  if (systemPrefersDark() && (darkmodeFromLocal() === "true" || darkmodeFromLocal() === null)) {
+    body.classList.add("darkmode");
     checkbox.checked = true;
-    console.log("dark mode preferred");
+      console.log("dark mode preferred");
   } else if (!systemPrefersDark()) {
     console.log("No dark mode preferred");
     if (darkmodeFromLocal() === "true") {

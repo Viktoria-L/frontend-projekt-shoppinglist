@@ -1,6 +1,7 @@
 import { editMode } from "./stateEditMode.js";
 import { deleteListUsingID } from "./module-api.js";
 import { showSelectedList } from "./module-show-selected-list.js";
+import { showCreateListButton, hideCreateListButton } from "./module-settings.js";
 
 export async function displayListsAlt() {
   const currentContentContainer = document.getElementById("current-content");
@@ -81,6 +82,7 @@ export async function displayListsAlt() {
         } catch (error) {
           console.log(error);
         }
+        hideCreateListButton();
       });
 
       let count = 0;
@@ -116,6 +118,9 @@ export async function displayListsAlt() {
         // previewObject.innerHTML += + list.itemList.length - 5
         console.log();
       } else console.log("not an Array");
+      
+      // efter att saker har laddats in, visa plusknappen
+      showCreateListButton()  
 
       let trashcan = document.createElement("span");
       trashcan.classList.add("remove-container", "hidden", "hover");
@@ -160,8 +165,8 @@ export async function displayListsAlt() {
   const outputElement = document.querySelector("#current-content");
 
   createListBtn.addEventListener("click", (event) => {
+    hideCreateListButton();
     outputElement.innerHTML = "";
-    createListBtn.style = `display: none`;
 
     //Bygger listans namninput-fält med fältet för namnet i headern
     headerName.innerHTML = `
@@ -175,6 +180,7 @@ export async function displayListsAlt() {
     currentContentContainer.appendChild(ulContainer);
     const listItemsUl = document.createElement("ul");
     ulContainer.append(listItemsUl);
+
 
     editMode({
       selectedList: selectedList,

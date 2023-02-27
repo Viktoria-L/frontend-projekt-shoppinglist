@@ -81,7 +81,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       const labelA = document.createElement("label");
       labelA.setAttribute("for", item._id);
       labelA.classList.add("itemContainer", "editing");
-      labelA.innerHTML = `<span class="iconspans"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" id="${trashName}" width="14px"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></span>
+      labelA.innerHTML = `<span class="iconspans hover" id="span_${trashName}"><svg class="unclickable" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" id="${trashName}" width="14px"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path class="unclickable" d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></span>
     <input type="text" onClick="this.setSelectionRange(0, this.value.length)" value="${item.title}" id="item_${item._id}"></input>`;
 
       item.checked
@@ -127,17 +127,20 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         }
       });
 
-      let removeBtn = document.getElementById(`${trashName}`);
-      // console.log(removeBtn);
-
+      let removeSpan = document.querySelector(`#span_${trashName}`);
+      console.log("spannet", removeSpan);
       // console.log("ny info", item._id);
-      removeBtn.setAttribute("list_id", item._id);
-      removeBtn.addEventListener("click", (event) => {
+
+      removeSpan.setAttribute("list_id", item._id);
+      removeSpan.addEventListener("click", (event) => {
+        console.log("clicked trashspan")
+        // console.log("pressed item, id", event.target.getAttribute("list_id"));
+        // console.log("current list", selectedList._id);
+
         // removes item from DOM and api
-        deleteObject(removeBtn.id, labelA);
-        console.log("pressed item", event.target.getAttribute("list_id"));
-        console.log("current list", selectedList._id);
+        // deleteObject(removeSpan.id, labelA);
         deleteListItem(selectedList._id, event.target.getAttribute("list_id"));
+        labelA.parentElement.remove();
       });
     });
     /* headerName.innerHTML = "this is edit mode"; */
@@ -239,7 +242,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         } else {
           let li = document.createElement("li");
           li.innerHTML = `<span class="iconspans"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" id="${listItemInput.value}" width="14px"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></span>
-        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" value="${listItemInput.value}" id="item_${listItemInput.value}"></input>`;
+        <input type="text" onClick="this.setSelectionRange(0, this.value.length)"ö value="${listItemInput.value}" id="item_${listItemInput.value}"></input>`;
           listItemsUl.append(li);
           let removeBtn = document.getElementById(`${listItemInput.value}`);
           let inputfields = document.getElementById(

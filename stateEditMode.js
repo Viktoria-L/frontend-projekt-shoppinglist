@@ -36,9 +36,13 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         alert("No special characters are allowed");
       } else {
         if (selectedList) {
+          if(selectedList.itemList.some((object) => object.title === listItemInput.value)){
+            alert("That item already exists! Try again");
+          } else {
           addNewListItem(selectedList._id, listItemInput.value);
           addItem();
           showUpdateModal("New item added!");
+          }
         } else {
           addItem();
         }
@@ -206,11 +210,15 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   addItemBtn.addEventListener("click", () => {
     if (selectedList) {
       if (listItemInput.value !== null && listItemInput.value !== "") {
+        if(selectedList.itemList.some((object) => object.title === listItemInput.value)){
+          alert("That item already exists! Try again");
+        } else {
         console.log(selectedList._id);
         addNewListItem(selectedList._id, listItemInput.value);
         addItem();
         showUpdateModal("New item added!");
-      } else {
+      } 
+    } else {
         alert("You cant add empty items, try again!");
       }
     } else {

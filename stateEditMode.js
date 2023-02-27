@@ -1,6 +1,7 @@
 import {
   deleteListItem,
   updateListItem,
+  updateListTitle,
   addNewListItem,
   updateColor,
 } from "./module-api.js";
@@ -134,11 +135,23 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         `;
     // console.log(selectedList._id, selectedList.listname);
     // console.log(selectedList.itemList[0]._id, selectedList.itemList[0].title);
-  } else {
-    //VAD ÄR DETTA FÖR IF-sats? med en tom else
-    console.log("creating list");
-  }
+    let listNameInput = document.querySelector(".nameinput");
 
+    // UPDATING LIST-TITLE TO API
+    // WHEN INPUTFIELD LOSES FOCUS
+    listNameInput.addEventListener("focusout", () => {
+      updateListTitle(listNameInput.value, selectedList._id);
+    });
+    // ON KEYPRESS ENTER
+    listNameInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        // console.log("new value", listNameInput.value);
+        // console.log("list id", selectedList._id);
+        updateListTitle(listNameInput.value, selectedList._id);
+        listNameInput.blur();
+      }
+    });
+  }
   //Eventlistener för "gå tillbaka-knappen"
   const backBtn = document.querySelector(".backBtn");
   backBtn.addEventListener("click", () => {
@@ -247,12 +260,12 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     saveBtnDiv.append(saveToAPIBtn);
   }
   saveToAPIBtn.addEventListener("click", async () => {
-      selectedList = await saveList();
-      listItemsUl.innerHTML = "";
-      let p = document.createElement("p");
-      p.innerText = "Your list have been saved!";
-      p.style.color = "green";
-      saveBtnDiv.append(p);
+    selectedList = await saveList();
+    listItemsUl.innerHTML = "";
+    let p = document.createElement("p");
+    p.innerText = "Your list have been saved!";
+    p.style.color = "green";
+    saveBtnDiv.append(p);
   });
 
   // color select för lista här

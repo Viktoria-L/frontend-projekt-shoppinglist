@@ -124,7 +124,7 @@ export async function displayListsAlt() {
       // ---------- DELETE-FUNCTION ----------
       trashcan.addEventListener("click", (e) => {
         e.stopPropagation();
-        let currentList = e.target.parentElement.parentElement;
+        let currentList = e.target.parentElement;
         console.log(
           `du klickar på ${currentList.getAttribute("data-list-id")}`
         );
@@ -132,8 +132,8 @@ export async function displayListsAlt() {
           console.log(
             `du tog bort lista ${currentList.getAttribute("data-list-id")}`
           );
-          // deleteListUsingID(currentList.getAttribute("data-list-id"));
-          // currentList.remove();
+          deleteListUsingID(currentList.getAttribute("data-list-id"));
+          currentList.remove();
         }
       });
       previewObject.appendChild(trashcan);

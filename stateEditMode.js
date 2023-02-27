@@ -1,6 +1,7 @@
 import {
   deleteListItem,
   updateListItem,
+  updateListTitle,
   addNewListItem,
   updateColor,
 } from "./module-api.js";
@@ -118,6 +119,8 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
             showUpdateModal("Updated text!");
           } else {
             alert("You cant add empty items, try again!");
+            currentListItem.blur();
+            currentListItem.value = item.title;
           }
         }
       });
@@ -139,15 +142,48 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     headerName.innerHTML = `
         <p class="thisIsEdit">Edit mode</p>
         <span class="backBtn hover"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg></span>
-        <input type="text" class="nameinput list-color-header-${
+        <input type="text" onClick="this.setSelectionRange(0, this.value.length)" class="nameinput list-color-header-${
           selectedList.color ?? "default"
-        }" onClick="this.setSelectionRange(0, this.value.length)" value="${listNamn}" onfocus="this.placeholder=''"></input>
+        }" value="${listNamn}" onfocus="this.placeholder=''"></input>
         <button id="button-editmode"><svg class="hover" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><use xlink:href="assets/three-dots-vertical.svg#three-dots-vertical"></use></button>
         `;
     // console.log(selectedList._id, selectedList.listname);
     // console.log(selectedList.itemList[0]._id, selectedList.itemList[0].title);
-  }
+    let listNameInput = document.querySelector(".nameinput");
 
+    // UPDATING LIST-TITLE TO API
+    // WHEN INPUTFIELD LOSES FOCUS
+    listNameInput.addEventListener("focusout", () => {
+      if (listNameInput.value === selectedList.listname) {
+        listNameInput.blur();
+        console.log("same name");
+      } else if (listNameInput.value === (null || "")) {
+        alert("You can't leave this field empty");
+        listNameInput.blur();
+        listNameInput.value = selectedList.listname;
+      } else {
+        updateListTitle(listNameInput.value, selectedList._id);
+        showUpdateModal("Updated text!");
+      }
+    });
+    // ON KEYPRESS ENTER
+    listNameInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        if (listNameInput.value === selectedList.listname) {
+          listNameInput.blur();
+          console.log("same name");
+        } else if (listNameInput.value === (null || "")) {
+          alert("You can't leave this field empty");
+          listNameInput.blur();
+          listNameInput.value = selectedList.listname;
+        } else {
+          updateListTitle(listNameInput.value, selectedList._id);
+          showUpdateModal("Updated text!");
+          listNameInput.blur();
+        }
+      }
+    });
+  }
   //Eventlistener för "gå tillbaka-knappen"
   const backBtn = document.querySelector(".backBtn");
   backBtn.addEventListener("click", () => {
@@ -267,13 +303,13 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     if (itemListArray.length > 0) {
       selectedList = await saveList();
       listItemsUl.innerHTML = "";
-      showUpdateModal("Your list was saved!");
       // let p = document.createElement("p");
       // p.innerText = "Your list have been saved!";
       // p.style.color = "green";
       // saveBtnDiv.append(p);
     } else {
       alert("You need to add items to save list!");
+      showUpdateModal("Your list was saved!");
     }
   });
 

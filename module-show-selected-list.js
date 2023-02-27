@@ -15,7 +15,7 @@ export async function showSelectedList(selectedList, currentState) {
   currentContentContainer.appendChild(ulContainer);
   const listItemsUl = document.createElement("ul");
   ulContainer.append(listItemsUl);
-  console.log("new stuff: " + ulContainer);
+
   if (currentState === "viewOneList") {
     viewMode({
       selectedList: selectedList,
@@ -48,8 +48,6 @@ function createEditModeEventListener(selectedList, currentState) {
     currentState === "viewOneList"
       ? (currentState = "editOneList")
       : (currentState = "viewOneList");
-    console.log("edit mode clicked    current state: " + currentState);
-    console.log("current list:" + selectedList)
     
     showSelectedList(selectedList, currentState);
   });

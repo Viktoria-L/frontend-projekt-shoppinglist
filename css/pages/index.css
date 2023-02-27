@@ -548,6 +548,9 @@ li {
   background-color: lightgray;
   border-radius: 100%;
 }
+.unclickable {
+  pointer-events: none;
+}
 
 /* ---------------------------------- */
 

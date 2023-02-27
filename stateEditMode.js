@@ -267,13 +267,13 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     if (itemListArray.length > 0) {
       selectedList = await saveList();
       listItemsUl.innerHTML = "";
+      showUpdateModal("Your list was saved!");
       // let p = document.createElement("p");
       // p.innerText = "Your list have been saved!";
       // p.style.color = "green";
       // saveBtnDiv.append(p);
     } else {
       alert("You need to add items to save list!");
-      showUpdateModal("Your list was saved!");
     }
   });
 

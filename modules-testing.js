@@ -34,7 +34,7 @@ export async function displayListsAlt() {
     //------ Kod som försöker fixa status----
     const statusElement = document.querySelector("#output-status");
 
-    console.log(fetchedLists.length, "Antal Listor");
+    // console.log(fetchedLists.length, "Antal Listor");
     if (fetchedLists.length > 0) {
       statusElement.style = "display: none";
 
@@ -48,8 +48,8 @@ export async function displayListsAlt() {
     //REVERSING FETCHEDLISTS AND PRINTING REVERSED ARRAY
     let reversedFetchedLists = [...fetchedLists].reverse();
 
-    console.log("original", fetchedLists);
-    console.log("reversed", reversedFetchedLists);
+    // console.log("original", fetchedLists);
+    // console.log("reversed", reversedFetchedLists);
 
     reversedFetchedLists.forEach((list) => {
       //For each list item in the fetched array
@@ -80,7 +80,7 @@ export async function displayListsAlt() {
           showSelectedList(selectedList, currentState);
           previewContainer.innerHTML = "";
         } catch (error) {
-          console.log(error);
+          // console.log(error);
         }
         hideCreateListButton();
       });
@@ -116,8 +116,8 @@ export async function displayListsAlt() {
           count++;
         });
         // previewObject.innerHTML += + list.itemList.length - 5
-        console.log();
-      } else console.log("not an Array");
+        // console.log();
+      } else // console.log("not an Array");
       
       // efter att saker har laddats in, visa plusknappen
       showCreateListButton()  
@@ -130,11 +130,11 @@ export async function displayListsAlt() {
       trashcan.addEventListener("click", (e) => {
         e.stopPropagation();
         let currentList = e.target.parentElement;
-        console.log(
+        // console.log(
           `du klickar på ${currentList.getAttribute("data-list-id")}`
         );
         if (currentList.getAttribute("data-list-id") !== "null") {
-          console.log(
+          // console.log(
             `du tog bort lista ${currentList.getAttribute("data-list-id")}`
           );
           deleteListUsingID(currentList.getAttribute("data-list-id"));

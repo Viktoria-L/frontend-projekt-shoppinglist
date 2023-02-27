@@ -18,14 +18,14 @@ export function createDebugElements(bool) {
   let getAllListsButton = document.createElement("button");
   getAllListsButton.innerText = "Get all lists";
   getAllListsButton.addEventListener("click", async () =>
-    console.log(await getAllLists())
+    // console.log(await getAllLists())
   );
   body.append(getAllListsButton);
 
   let getAllListsOfflineButton = document.createElement("button");
   getAllListsOfflineButton.innerText = "Get all lists (offline)";
   getAllListsOfflineButton.addEventListener("click", async () =>
-    console.log(await getAllListsOffline(offlineList))
+    // console.log(await getAllListsOffline(offlineList))
   );
   body.append(getAllListsOfflineButton);
 
@@ -48,13 +48,13 @@ export function createDebugElements(bool) {
 }
 
 // exempel på att bara kalla funktionen som skriver ut i DOM
-// console.log(
+// // console.log(
 //   "här är ID för en listig lista: " + (await filterByNameOffline("ListigLista"))
 // );
 
 // spara listorna i en variabel lists
 // let lists = await getAllListsOffline(offlineList);
 // let stringifiedLists = JSON.stringify(lists);
-// console.log("All lists:\n" + stringifiedLists);
+// // console.log("All lists:\n" + stringifiedLists);
 
 // de här fungerar i main.js också!

@@ -13,7 +13,7 @@ export function viewMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       checkboxInput.value = item.checked; // chckbox value
       checkboxInput.checked = item.checked; //visas som checked/unchecked beroende på true false value från item
 
-      console.log(checkboxInput)  */
+      // console.log(checkboxInput)  */
     /* checked=${item.checked} */
 
     const labelA = document.createElement("label");
@@ -23,7 +23,7 @@ export function viewMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       `<input type="checkbox" name=${item.title} id=${item._id} value=${item.checked} /><span class="checkmark"></span>` +
       item.title;
 
-    // console.log(labelA)
+    // // console.log(labelA)
 
     item.checked
       ? listItem.classList.add("checkedItem")
@@ -41,12 +41,12 @@ export function viewMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       item.checked
         ? listItem.classList.add("checkedItem")
         : listItem.classList.remove("checkedItem");
-      // console.log(item.checked);
-      // console.log("item changed state");
+      // // console.log(item.checked);
+      // // console.log("item changed state");
 
-      // console.log(selectedList._id);
-      // console.log(item._id, "list item id", item.title);
-      // console.log(item.checked);
+      // // console.log(selectedList._id);
+      // // console.log(item._id, "list item id", item.title);
+      // // console.log(item.checked);
 
       updateCheckedState(selectedList._id, item._id, item.checked);
     });

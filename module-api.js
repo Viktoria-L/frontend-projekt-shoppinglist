@@ -6,7 +6,7 @@ export async function filterByName(name) {
   result.forEach((list) => {
     ids.push(list._id);
   });
-  console.log(ids);
+  // console.log(ids);
   return ids;
 }
 
@@ -18,11 +18,11 @@ export async function getAllLists() {
 
   // ser finare ut men kanske inte nödvändigtvis bättre
   let stringifiedData = JSON.stringify(data);
-  // console.log(stringifiedData);
+  // // console.log(stringifiedData);
 
   // om man vill loopa
   for (const list of data) {
-    // console.log(list.listname);
+    // // console.log(list.listname);
   }
   return data;
 }
@@ -54,7 +54,7 @@ export async function getListsUsingCustomField() {
 // ta inte bort fel 😄
 export async function deleteListUsingID(id) {
   if (id === null) {
-    console.log(id, "wrong");
+    // console.log(id, "wrong");
     return;
   }
   const res = await fetch(
@@ -92,68 +92,65 @@ export async function updateListItem(itemTitle, listId, listItemId) {
 }
 
 export async function updateListTitle(listTitle, listId) {
-  await fetch(
-    `https://nackademin-item-tracker.herokuapp.com/lists/${listId}`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        listname: listTitle,
-      }),
-    }
-    );
-    console.log("updateListTitle() done")
-}
-
-//Funktion för att lägga till nytt listitem i befintlig lista
-export async function addNewListItem(listId, listiteminput){
-const title = listiteminput;
-const res = await fetch(
-  `https://nackademin-item-tracker.herokuapp.com/lists/${listId}/items`,
-  {
-    method: "POST",
+  await fetch(`https://nackademin-item-tracker.herokuapp.com/lists/${listId}`, {
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      title: title,
-      checked: false,
+      listname: listTitle,
     }),
-  }
-);
-const { list } = await res.json();
+  });
+  // console.log("updateListTitle() done")
 }
 
-export async function updateColor(color, listId) {
-  await fetch(
-    `https://nackademin-item-tracker.herokuapp.com/lists/${listId}`,
+//Funktion för att lägga till nytt listitem i befintlig lista
+export async function addNewListItem(listId, listiteminput) {
+  const title = listiteminput;
+  const res = await fetch(
+    `https://nackademin-item-tracker.herokuapp.com/lists/${listId}/items`,
     {
-      method: "PUT",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        color: color
+        title: title,
+        checked: false,
       }),
     }
-    );
-    console.log("updateColor() done")
+  );
+  const { list } = await res.json();
+}
+
+export async function updateColor(color, listId) {
+  await fetch(`https://nackademin-item-tracker.herokuapp.com/lists/${listId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      color: color,
+    }),
+  });
+  // console.log("updateColor() done")
 }
 
 export async function createCustomList(listname, color) {
   const customfield = "grupp_e";
-  const res = await fetch(`https://nackademin-item-tracker.herokuapp.com/lists`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    listname: listname,
-    customfield: customfield,
-    color: color
-  }),
-});
-// const { list } = await res.json();
+  const res = await fetch(
+    `https://nackademin-item-tracker.herokuapp.com/lists`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        listname: listname,
+        customfield: customfield,
+        color: color,
+      }),
+    }
+  );
+  // const { list } = await res.json();
 }

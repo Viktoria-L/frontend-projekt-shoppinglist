@@ -22,18 +22,18 @@ export function settingsButtonFunction(e) {
   hideEditButton();
 
   if (e.currentTarget.currentState === "index") {
-    console.log(`settings button clicked from our beautiful index page`);
+    // console.log(`settings button clicked from our beautiful index page`);
     hideIndexHeader();
     addBackButton();
   } else if (e.currentTarget.currentState === "viewOneList") {
-    console.log(`settings button clicked from our amazing view list view`);
+    // console.log(`settings button clicked from our amazing view list view`);
     hideListViewTitle();
     replaceBackButton({
       selectedList: e.currentTarget.selectedList,
       currentState: e.currentTarget.currentState,
     });
   } else if (e.currentTarget.currentState === "editOneList") {
-    console.log(`settings button clicked from our spectacular edit list view`);
+    // console.log(`settings button clicked from our spectacular edit list view`);
     hideListViewTitle();
     replaceBackButton({
       selectedList: e.currentTarget.selectedList,
@@ -72,8 +72,7 @@ function hideIndexHeader() {
   let oldHeader = document.getElementById("header-name-title");
   if (oldHeader) {
     oldHeader.style = `display: none`;
-  }
-  else {
+  } else {
     let oldHeader = document.querySelector(".nameinput");
     oldHeader.style = `display: none`;
   }
@@ -105,7 +104,7 @@ function replaceBackButton({ selectedList, currentState }) {
   const headerName = document.querySelector(".headerNameEdit");
   headerName.removeChild(oldBackBtn);
 
-  console.log("SELECTEDLIST " + JSON.stringify(selectedList));
+  // console.log("SELECTEDLIST " + JSON.stringify(selectedList));
 
   const backBtn = document.createElement("span");
   backBtn.className = "backBtn hover";
@@ -113,7 +112,7 @@ function replaceBackButton({ selectedList, currentState }) {
   headerName.prepend(backBtn);
 
   backBtn.addEventListener("click", () => {
-    console.log("selected list: " + JSON.stringify(selectedList));
+    // console.log("selected list: " + JSON.stringify(selectedList));
     showSelectedList(selectedList, currentState);
   });
 }
@@ -150,12 +149,15 @@ function renderSettingView() {
 function checkUserMode() {
   let checkbox = document.querySelector('.theme-switch input[type="checkbox"]');
 
-  if (systemPrefersDark() && (darkmodeFromLocal() === "true" || darkmodeFromLocal() === null)) {
+  if (
+    systemPrefersDark() &&
+    (darkmodeFromLocal() === "true" || darkmodeFromLocal() === null)
+  ) {
     body.classList.add("darkmode");
     checkbox.checked = true;
-      console.log("dark mode preferred");
+    // console.log("dark mode preferred");
   } else if (!systemPrefersDark()) {
-    console.log("No dark mode preferred");
+    // console.log("No dark mode preferred");
     if (darkmodeFromLocal() === "true") {
       checkbox.checked = true;
       body.classList.add("darkmode");

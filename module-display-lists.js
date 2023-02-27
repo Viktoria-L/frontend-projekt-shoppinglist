@@ -3,7 +3,7 @@ export function display(outputArray) {
   const outputElement = document.querySelector("#list-output");
   let result = "";
 
-  console.log(outputArray);
+  // console.log(outputArray);
   const isEmpty = outputArray.length === 0;
   statusElement.style = "display: " + ((isEmpty && "block") || "none");
   // statusElement.innerHTML = isEmpty && 'No lists available!' || ''
@@ -43,7 +43,7 @@ export function display(outputArray) {
   </div>
   `;
   }
-  console.log(outputElement);
+  // console.log(outputElement);
   outputElement.innerHTML = result;
   //json = JSON.stringify(outputObj);
   //output.innerHTML = json;
@@ -61,10 +61,10 @@ export async function triggerDisplay() {
 export function debugDisplayLists(inputLists) {
   let outputHTML = "";
   for (const list of inputLists) {
-    // console.log(list);
+    // // console.log(list);
     outputHTML += `<p><span class="bold">List ID: </span>${list._id} `;
     outputHTML += `<span class="bold">List name: </span>${list.listname}</p>`;
-    // console.log(list.itemList);
+    // // console.log(list.itemList);
     try {
       for (const itemList of Array(list.itemList)) {
         if (list.itemList.length !== 0) {
@@ -82,7 +82,7 @@ export function debugDisplayLists(inputLists) {
         outputHTML += `</ul>`;
       }
     } catch (error) {
-      console.log("error error! " + error);
+      // console.log("error error! " + error);
     }
   }
   let element = document.createElement("main");

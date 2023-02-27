@@ -8,7 +8,7 @@ export async function showSelectedList(selectedList, currentState) {
   const headerName = document.querySelector(".headerNameEdit");
 
   selectedList = await getAndSetUpdatedList(selectedList);
-  console.log("new stuff: " + JSON.stringify(selectedList));
+  // console.log("new stuff: " + JSON.stringify(selectedList));
 
   currentContentContainer.innerHTML = "";
   let ulContainer = document.createElement("article");
@@ -37,7 +37,7 @@ export async function showSelectedList(selectedList, currentState) {
   const settingsButton = document.querySelector("#settings-button");
   settingsButton.currentState = currentState;
   settingsButton.selectedList = selectedList;
-  // console.log("parameter selectedList:" + settingsButton.selected)
+  // // console.log("parameter selectedList:" + settingsButton.selected)
   settingsButton.listItemsUl = listItemsUl;
   settingsButton.API_BASE = API_BASE;
   settingsButton.headerName = headerName;
@@ -62,6 +62,6 @@ async function getAndSetUpdatedList(selectedList) {
     selectedList = listData;
     return selectedList;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }

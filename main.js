@@ -10,9 +10,7 @@ import {
 } from "./module-api.js";
 import { triggerDisplay, display } from "./module-display-lists.js";
 import { createSettingsButtonEventListener } from "./module-settings.js";
-import { darkmodeFromLocal,
-systemPrefersDark,
- } from "./module-of-darkness.js";
+import { darkmodeFromLocal, systemPrefersDark } from "./module-of-darkness.js";
 
 // inte använd men länken till början av APIt
 const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
@@ -24,7 +22,7 @@ let debugMode = false;
 let lists;
 if (debugMode) {
   lists = await getListsUsingCustomField();
-  console.log(lists);
+  // console.log(lists);
 }
 
 // Visa index-funktioner här
@@ -33,14 +31,14 @@ if (debugMode) {
 function checkMode() {
   let body = document.querySelector("body");
 
-  if (darkmodeFromLocal() === "false"){
+  if (darkmodeFromLocal() === "false") {
     body.classList.remove("darkmode");
-    console.log("No dark mode preferred");
-  } else if (darkmodeFromLocal() === "true"){
+    // console.log("No dark mode preferred");
+  } else if (darkmodeFromLocal() === "true") {
     body.classList.add("darkmode");
-  } else if (systemPrefersDark() || (darkmodeFromLocal() === "true")) {
+  } else if (systemPrefersDark() || darkmodeFromLocal() === "true") {
     body.classList.add("darkmode");
-    console.log("dark mode preferred");
+    // console.log("dark mode preferred");
   }
 }
 checkMode();
@@ -57,7 +55,7 @@ settingsButton.currentState = "index";
 
 // om man vill skriva ut
 // let stringifiedLists = JSON.stringify(lists);
-// console.log("All lists:\n" + stringifiedLists);
+// // console.log("All lists:\n" + stringifiedLists);
 
 // skapar debugelement om debugMode är true
 createDebugElements(debugMode);

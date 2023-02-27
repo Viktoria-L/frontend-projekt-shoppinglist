@@ -8,7 +8,7 @@ export async function filterByNameOffline(name) {
   result.forEach((list) => {
     ids.push(list._id);
   });
-  console.log(ids);
+  // console.log(ids);
   return ids;
 }
 
@@ -20,11 +20,11 @@ export async function getAllListsOffline(lists) {
 
   // ser finare ut men kanske inte nödvändigtvis bättre
   let stringifiedData = JSON.stringify(data);
-  // console.log(stringifiedData);
+  // // console.log(stringifiedData);
 
   // om man vill loopa
   for (const list of data) {
-    // console.log(list.listname);
+    // // console.log(list.listname);
   }
   return data;
 }

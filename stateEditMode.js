@@ -36,12 +36,16 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         alert("No special characters are allowed");
       } else {
         if (selectedList) {
-          if(selectedList.itemList.some((object) => object.title === listItemInput.value)){
+          if (
+            selectedList.itemList.some(
+              (object) => object.title === listItemInput.value
+            )
+          ) {
             alert("That item already exists! Try again");
           } else {
-          addNewListItem(selectedList._id, listItemInput.value);
-          addItem();
-          showUpdateModal("New item added!");
+            addNewListItem(selectedList._id, listItemInput.value);
+            addItem();
+            showUpdateModal("New item added!");
           }
         } else {
           addItem();
@@ -52,11 +56,11 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
 
   if (selectedList) {
     selectedList.itemList.forEach((item) => {
-      // console.log("ITEM IS" + item.title)
+      // // console.log("ITEM IS" + item.title)
       itemListArray.push(item);
     });
-    // console.log("editing list" + JSON.stringify(itemListArray));
-    // console.log(selectedList);
+    // // console.log("editing list" + JSON.stringify(itemListArray));
+    // // console.log(selectedList);
 
     let listNamn = selectedList.listname;
 
@@ -128,14 +132,14 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       });
 
       let removeSpan = document.querySelector(`#span_${trashName}`);
-      console.log("spannet", removeSpan);
-      // console.log("ny info", item._id);
+      // console.log("spannet", removeSpan);
+      // // console.log("ny info", item._id);
 
       removeSpan.setAttribute("list_id", item._id);
       removeSpan.addEventListener("click", (event) => {
-        console.log("clicked trashspan")
-        // console.log("pressed item, id", event.target.getAttribute("list_id"));
-        // console.log("current list", selectedList._id);
+        // console.log("clicked trashspan")
+        // // console.log("pressed item, id", event.target.getAttribute("list_id"));
+        // // console.log("current list", selectedList._id);
 
         // removes item from DOM and api
         // deleteObject(removeSpan.id, labelA);
@@ -152,8 +156,8 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         }" value="${listNamn}" onfocus="this.placeholder=''"></input>
         <button id="editBtn"><svg class="hover" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><use xlink:href="assets/three-dots-vertical.svg#three-dots-vertical"></use></button>
         `;
-    // console.log(selectedList._id, selectedList.listname);
-    // console.log(selectedList.itemList[0]._id, selectedList.itemList[0].title);
+    // // console.log(selectedList._id, selectedList.listname);
+    // // console.log(selectedList.itemList[0]._id, selectedList.itemList[0].title);
     let listNameInput = document.querySelector(".nameinput");
 
     // UPDATING LIST-TITLE TO API
@@ -161,7 +165,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     listNameInput.addEventListener("focusout", () => {
       if (listNameInput.value === selectedList.listname) {
         listNameInput.blur();
-        console.log("same name");
+        // console.log("same name");
       } else if (listNameInput.value === (null || "")) {
         alert("You can't leave this field empty");
         listNameInput.blur();
@@ -176,7 +180,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       if (e.key === "Enter") {
         if (listNameInput.value === selectedList.listname) {
           listNameInput.blur();
-          console.log("same name");
+          // console.log("same name");
         } else if (listNameInput.value === (null || "")) {
           alert("You can't leave this field empty");
           listNameInput.blur();
@@ -193,8 +197,8 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   const backBtn = document.querySelector(".backBtn");
   backBtn.addEventListener("click", () => {
     let currentState = "viewOneList";
-    console.log("edit mode clicked    current state: " + currentState);
-    console.log("current list:" + selectedList);
+    // console.log("edit mode clicked    current state: " + currentState);
+    // console.log("current list:" + selectedList);
     if (selectedList === null) {
       window.location.href = "";
     } else {
@@ -213,15 +217,19 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   addItemBtn.addEventListener("click", () => {
     if (selectedList) {
       if (listItemInput.value !== null && listItemInput.value !== "") {
-        if(selectedList.itemList.some((object) => object.title === listItemInput.value)){
+        if (
+          selectedList.itemList.some(
+            (object) => object.title === listItemInput.value
+          )
+        ) {
           alert("That item already exists! Try again");
         } else {
-        console.log(selectedList._id);
-        addNewListItem(selectedList._id, listItemInput.value);
-        addItem();
-        showUpdateModal("New item added!");
-      } 
-    } else {
+          // console.log(selectedList._id);
+          addNewListItem(selectedList._id, listItemInput.value);
+          addItem();
+          showUpdateModal("New item added!");
+        }
+      } else {
         alert("You cant add empty items, try again!");
       }
     } else {
@@ -248,7 +256,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
           let inputfields = document.getElementById(
             `item_${listItemInput.value}`
           );
-          console.log(inputfields);
+          // console.log(inputfields);
 
           //Funktion för att hitta rätt object i arrayen och ta bort den samtidigt som den tar bort utskriften
           function deleteObject(title) {
@@ -260,11 +268,11 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
           }
 
           itemListArray.push({ title: listItemInput.value, checked: false });
-          console.log(itemListArray);
+          // console.log(itemListArray);
 
           removeBtn.addEventListener("click", (event) => {
             deleteObject(removeBtn.id);
-            console.log(itemListArray);
+            // console.log(itemListArray);
           });
 
           function updateListItemLocally(previoustitle) {
@@ -374,8 +382,8 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         let nameInput = document.querySelector(".nameinput");
         nameInput.className = `nameinput list-color-header-${selectedColor}`;
       }
-      console.log(`selected color: ${selectedColor}`);
-      console.log(selectedList);
+      // console.log(`selected color: ${selectedColor}`);
+      // console.log(selectedList);
     });
     colorSelectDiv.append(colorButtonLabel);
     colorButtonLabel.append(colorButton);
@@ -414,9 +422,9 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       }
     );
     const { list } = await res.json();
-    console.log(list);
+    // console.log(list);
     currentList = list._id;
-    console.log(currentList);
+    // console.log(currentList);
 
     saveItems();
     return list;
@@ -441,7 +449,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       );
 
       const { list } = await res.json();
-      console.log(list);
+      // console.log(list);
     });
   }
 }

@@ -53,8 +53,8 @@ export async function getListsUsingCustomField() {
 // funktion som tar bort lista med ett speciellt ID
 // ta inte bort fel 😄
 export async function deleteListUsingID(id) {
-  if (!id) {
-    console.log(!id, "wrong");
+  if (id === null) {
+    console.log(id, "wrong");
     return;
   }
   const res = await fetch(

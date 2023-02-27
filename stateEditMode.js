@@ -5,6 +5,7 @@ import {
   updateColor,
 } from "./module-api.js";
 import { showUpdateModal } from "./module-animations.js";
+import { showSelectedList } from "./module-show-selected-list.js";
 
 export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   const outputElement = document.querySelector("#current-content");
@@ -33,13 +34,13 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       if (containsSpecialChars(listItemInput.value)) {
         alert("No special characters are allowed");
       } else {
-          if (selectedList) {
-            addNewListItem(selectedList._id, listItemInput.value);
-            addItem();
-            showUpdateModal("New item added!");
-          } else {
-            addItem();
-          }
+        if (selectedList) {
+          addNewListItem(selectedList._id, listItemInput.value);
+          addItem();
+          showUpdateModal("New item added!");
+        } else {
+          addItem();
+        }
       }
     }
   });
@@ -141,8 +142,10 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   //Eventlistener för "gå tillbaka-knappen"
   const backBtn = document.querySelector(".backBtn");
   backBtn.addEventListener("click", () => {
-    bottomButton.classList.remove("hidden");
-    window.location.href = "";
+    let currentState = "viewOneList";
+    console.log("edit mode clicked    current state: " + currentState);
+    console.log("current list:" + selectedList)
+    showSelectedList(selectedList, currentState);
   });
 
   if(selectedList){
@@ -286,7 +289,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     colorButton.value = color;
 
     let colorButtonLabel = document.createElement("label");
-    colorButtonLabel.className = `color-select-label color-select-label-${color}`;
+    colorButtonLabel.className = ` hover color-select-label color-select-label-${color}`;
     colorButtonLabel.htmlFor = `color-select-${color}`;
     // colorButtonLabel.innerText = color;
 
@@ -294,8 +297,16 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       selectedColor = color;
       resetSelectedColorClass();
       colorButtonLabel.classList.add("color-is-selected");
+      // UPDATE COLOR IF YOUR IN A LIST
+      if (selectedList !== null) {
+        updateColor(color, selectedList._id);
+        // UPDATES WHEN CLICKED
+        headerName.className = `headerNameEdit list-color-header-${selectedColor}`;
+        let nameInput = document.querySelector(".nameinput");
+        nameInput.className = `nameinput list-color-header-${selectedColor}`;
+      }
       console.log(`selected color: ${selectedColor}`);
-      updateColor(color, selectedList._id);
+      console.log(selectedList);
     });
     colorSelectDiv.append(colorButtonLabel);
     colorButtonLabel.append(colorButton);

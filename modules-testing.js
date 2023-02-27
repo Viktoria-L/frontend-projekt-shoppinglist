@@ -82,6 +82,7 @@ export async function displayListsAlt() {
         } catch (error) {
           console.log(error);
         }
+        hideCreateListButton();
       });
 
       let count = 0;

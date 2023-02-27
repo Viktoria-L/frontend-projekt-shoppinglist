@@ -246,15 +246,13 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     saveToAPIBtn.innerText = "Save List";
     saveBtnDiv.append(saveToAPIBtn);
   }
-  saveToAPIBtn.addEventListener("click", () => {
-   
-      saveList();
+  saveToAPIBtn.addEventListener("click", async () => {
+      selectedList = await saveList();
       listItemsUl.innerHTML = "";
       let p = document.createElement("p");
       p.innerText = "Your list have been saved!";
       p.style.color = "green";
       saveBtnDiv.append(p);
-    
   });
 
   // color select för lista här
@@ -349,6 +347,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     console.log(currentList);
 
     saveItems();
+    return list;
   }
 
   async function saveItems() {

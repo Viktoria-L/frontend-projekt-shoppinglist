@@ -1,12 +1,13 @@
 import { viewMode } from "./stateViewMode.js";
 import { editMode } from "./stateEditMode.js";
-import { createSettingsButtonEventListener } from "./module-settings.js"
+import { createSettingsButtonEventListener } from "./module-settings.js";
 
 export async function showSelectedList(selectedList, currentState) {
   const currentContentContainer = document.getElementById("current-content");
   const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
   const headerName = document.querySelector(".headerNameEdit");
 
+  selectedList = await getAndSetUpdatedList(selectedList);
   console.log("new stuff: " + JSON.stringify(selectedList));
 
   currentContentContainer.innerHTML = "";
@@ -48,7 +49,19 @@ function createEditModeEventListener(selectedList, currentState) {
     currentState === "viewOneList"
       ? (currentState = "editOneList")
       : (currentState = "viewOneList");
-    
+
     showSelectedList(selectedList, currentState);
   });
+}
+async function getAndSetUpdatedList(selectedList) {
+  try {
+    const listResponse = await fetch(
+      `https://nackademin-item-tracker.herokuapp.com/lists/${selectedList._id}`
+    );
+    const listData = await listResponse.json();
+    selectedList = listData;
+    return selectedList;
+  } catch (error) {
+    console.log(error);
+  }
 }

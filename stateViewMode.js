@@ -63,8 +63,7 @@ let bottomButton = document.querySelector("#newListBtn");
 
     //Eventlistener för "gå tillbaka-knappen"
     const backBtn = document.querySelector(".backBtn");
-    backBtn.addEventListener("click", () => {
-    bottomButton.classList.remove("hidden");
+  backBtn.addEventListener("click", () => {
       window.location.href = "";
     });
   

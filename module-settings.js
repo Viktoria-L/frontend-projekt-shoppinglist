@@ -51,9 +51,14 @@ function clearCurrentContent() {
   currentContent.innerHTML = "";
 }
 
-function hideCreateListButton() {
+export function hideCreateListButton() {
   const createListBtn = document.getElementById("newListBtn");
-  createListBtn.style = `display: none`;
+  createListBtn.classList.add("hidden");
+}
+
+export function showCreateListButton() {
+  const createListBtn = document.getElementById("newListBtn");
+  createListBtn.classList.remove("hidden");
 }
 
 function hideIndexHeader() {

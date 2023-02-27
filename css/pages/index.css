@@ -195,7 +195,7 @@ body {
     margin: 1rem auto;
   }
   .headerNameEdit {
-    padding: 5px 20px 0px 20px;
+    padding: 5px 20px 5px 20px;
   }
   .headerNameEdit button {
     right: 20px;
@@ -353,14 +353,7 @@ main {
   font-size: 1.5rem;
   margin: 20px 0 20px 0;
 }
-@media (min-width: 600px) {
-  .headerNameEdit h1 {
-    font-size: 1.8rem;
-  }
-  .nameinput {
-    font-size: 1.8rem;
-  }
-}
+
 .headerNameEdit button {
   all: unset;
   position: absolute;
@@ -759,4 +752,14 @@ margin-left: 8px;
 }
 .list-color-header-purple {
   background-color: var(--list-color-header-purple);
+}
+
+
+@media (min-width: 600px) {
+  .headerNameEdit h1 {
+    font-size: 1.8rem;
+  }
+  .nameinput {
+    font-size: 1.8rem;
+  }
 }

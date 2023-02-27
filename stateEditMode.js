@@ -242,26 +242,20 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   outputElement.append(saveBtnDiv);
   //Spara-knapp som ska ha eventlistener/funktion att skicka datan till api:et
   let saveToAPIBtn = document.createElement("button");
-  if (selectedList) {
-    saveToAPIBtn.className = "saveBtn";
-    saveToAPIBtn.innerText = "Add or update items by pressing enter/ +";
-    saveBtnDiv.append(saveToAPIBtn);
-  } else {
+  if (!selectedList) {
     saveToAPIBtn.className = "saveBtn";
     saveToAPIBtn.innerText = "Save List";
     saveBtnDiv.append(saveToAPIBtn);
   }
   saveToAPIBtn.addEventListener("click", async () => {
-    if (selectedList) {
-      console.log("denna knapp gör inget i denna view");
-    } else {
+   
       selectedList = await saveList();
       listItemsUl.innerHTML = "";
       let p = document.createElement("p");
       p.innerText = "Your list have been saved!";
       p.style.color = "green";
-      saveBtnDiv.append(p); //töm fälten och meddela att listan sparats
-    }
+      saveBtnDiv.append(p);
+    
   });
 
   // color select för lista här

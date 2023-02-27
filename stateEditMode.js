@@ -248,14 +248,12 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     saveBtnDiv.append(saveToAPIBtn);
   }
   saveToAPIBtn.addEventListener("click", async () => {
-   
       selectedList = await saveList();
       listItemsUl.innerHTML = "";
       let p = document.createElement("p");
       p.innerText = "Your list have been saved!";
       p.style.color = "green";
       saveBtnDiv.append(p);
-    
   });
 
   // color select för lista här

@@ -310,7 +310,7 @@ body {
 /*--------------------------DARKMODE SETTINGS ABOVE--------------------------------*/
 
 main {
-  padding: 16vw 0 0 0;
+  padding: 20vh 0 0 0;
   background-color: var(--main);
 }
 

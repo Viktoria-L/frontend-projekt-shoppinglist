@@ -165,6 +165,7 @@ export async function displayListsAlt() {
   const outputElement = document.querySelector("#current-content");
 
   createListBtn.addEventListener("click", (event) => {
+    hideCreateListButton();
     outputElement.innerHTML = "";
 
     //Bygger listans namninput-fält med fältet för namnet i headern

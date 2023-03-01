@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/compare/v0.1.4...v1.0.0) (2023-03-01)
+
+
+### Bug Fixes
+
+* :bug: show create list button when no lists are available ([2eaca07](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/commit/2eaca075dcad2283e0bb05d51fd4c54cd0b96f7c))
+
 ### [0.1.4](https://github.com/Viktoria-L/frontend-projekt-shoppinglist/compare/v0.1.3...v0.1.4) (2023-02-27)
 
 

@@ -9,7 +9,7 @@ import {
   getListsUsingCustomField,
 } from "./module-api.js";
 import { triggerDisplay, display } from "./module-display-lists.js";
-import { createSettingsButtonEventListener } from "./module-settings.js";
+import { createSettingsButtonEventListener, showCreateListButton } from "./module-settings.js";
 import { darkmodeFromLocal,
 systemPrefersDark,
  } from "./module-of-darkness.js";
@@ -46,6 +46,8 @@ function checkMode() {
 checkMode();
 
 // triggerDisplay();
+
+showCreateListButton();
 
 displayListsAlt();
 

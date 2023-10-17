@@ -1,0 +1,17 @@
+{
+  "name": "frontend-projekt-shoppinglist",
+  "version": "1.0.0",
+  "description": "| Metod |\tRoute |\tBeskrivning |\r | ----- | ----- | ----------- |\r | GET |\t/lists |\tHämta alla listor |\r | GET |\t/lists/:id |\tHämta lista med ett visst ID |\r | GET |\t/listsearch?listname=namn |\tHämta alla listor som innehåller \"namn\" i listname |\r | GET\t| /findlistbykey?key=k&value=v |\tHämta alla listor där \"key\" innehåller \"value\" |\r | POST |\t/lists |\tSkapa en ny lista |\r | DELETE |\t/lists/:id |\tTa bort en lista |\r | POST |\t/lists/:id/items |\tSkapa ett nytt list item i lista med \"id\" |\r | DELETE |\t/lists/:listid/items/:itemid |\tTa bort list item med \"itemid\" i lista med \"listid\" |\r | PUT |\t/lists/:listid/items/:itemid |\tUppdatera item med \"itemid\" i lista med \"listid\" |",
+  "main": "main.js",
+  "scripts": {
+    "start": "lite-server",
+    "watch": "tsc --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1",
+    "typescript": "^5.2.2"
+  }
+}

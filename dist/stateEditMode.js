@@ -1,4 +1,4 @@
-import { deleteListItem, updateListItem, updateListTitle, addNewListItem, updateColor, } from "./module-api";
+import { deleteListItem, updateListItem, updateListTitle, addNewListItem, updateColor, } from "./module-api.js";
 import { showUpdateModal } from "./module-animations.js";
 import { showSelectedList } from "./module-show-selected-list.js";
 export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {

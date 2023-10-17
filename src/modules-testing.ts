@@ -10,7 +10,8 @@ export async function displayListsAlt() {
   const currentContentContainer = document.getElementById("current-content");
 
   let eGroupLists = await getOurLists();
-  const API_BASE = "https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists";
+  const API_BASE =
+    "https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists";
 
   printLists(eGroupLists);
 

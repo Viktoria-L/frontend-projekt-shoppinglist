@@ -4,7 +4,7 @@ import {
   updateListTitle,
   addNewListItem,
   updateColor,
-} from "./module-api.js";
+} from "./module-api";
 import { showUpdateModal } from "./module-animations.js";
 import { showSelectedList } from "./module-show-selected-list.js";
 

@@ -12,7 +12,7 @@ export async function filterByName(name) {
 
 export async function getAllLists() {
   const res = await fetch(
-    `https://nackademin-item-tracker.herokuapp.com/lists`
+    `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists`
   );
   let data = await res.json();
 
@@ -30,7 +30,7 @@ export async function getAllLists() {
 // funktion som hämtar en lista med ett speciellt värde
 export async function getListUsingID(id) {
   const res = await fetch(
-    `https://nackademin-item-tracker.herokuapp.com/lists/${id}`
+    `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${id}`
   );
   let data = await res.json();
 
@@ -41,7 +41,7 @@ export async function getListUsingID(id) {
 
 export async function getListsUsingCustomField() {
   const res = await fetch(
-    `https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&value=grupp_e`
+    `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/findlistbykey?key=customfield&value=grupp_e`
   );
   let data = await res.json();
 
@@ -58,7 +58,7 @@ export async function deleteListUsingID(id) {
     return;
   }
   const res = await fetch(
-    `https://nackademin-item-tracker.herokuapp.com/lists/${id}`,
+    `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${id}`,
     {
       method: "DELETE",
     }
@@ -69,7 +69,7 @@ export async function deleteListUsingID(id) {
 
 export async function deleteListItem(listId, listItemId) {
   await fetch(
-    `https://nackademin-item-tracker.herokuapp.com/lists/${listId}/items/${listItemId}`,
+    `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${listId}/items/${listItemId}`,
     {
       method: "DELETE",
     }
@@ -78,7 +78,7 @@ export async function deleteListItem(listId, listItemId) {
 
 export async function updateListItem(itemTitle, listId, listItemId) {
   await fetch(
-    `https://nackademin-item-tracker.herokuapp.com/lists/${listId}/items/${listItemId}`,
+    `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${listId}/items/${listItemId}`,
     {
       method: "PUT",
       headers: {
@@ -93,7 +93,7 @@ export async function updateListItem(itemTitle, listId, listItemId) {
 
 export async function updateListTitle(listTitle, listId) {
   await fetch(
-    `https://nackademin-item-tracker.herokuapp.com/lists/${listId}`,
+    `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${listId}`,
     {
       method: "PUT",
       headers: {
@@ -103,57 +103,60 @@ export async function updateListTitle(listTitle, listId) {
         listname: listTitle,
       }),
     }
-    );
-    console.log("updateListTitle() done")
+  );
+  console.log("updateListTitle() done");
 }
 
 //Funktion för att lägga till nytt listitem i befintlig lista
-export async function addNewListItem(listId, listiteminput){
-const title = listiteminput;
-const res = await fetch(
-  `https://nackademin-item-tracker.herokuapp.com/lists/${listId}/items`,
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      title: title,
-      checked: false,
-    }),
-  }
-);
-const { list } = await res.json();
+export async function addNewListItem(listId, listiteminput) {
+  const title = listiteminput;
+  const res = await fetch(
+    `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${listId}/items`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: title,
+        checked: false,
+      }),
+    }
+  );
+  const { list } = await res.json();
 }
 
 export async function updateColor(color, listId) {
   await fetch(
-    `https://nackademin-item-tracker.herokuapp.com/lists/${listId}`,
+    `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${listId}`,
     {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        color: color
+        color: color,
       }),
     }
-    );
-    console.log("updateColor() done")
+  );
+  console.log("updateColor() done");
 }
 
 export async function createCustomList(listname, color) {
   const customfield = "grupp_e";
-  const res = await fetch(`https://nackademin-item-tracker.herokuapp.com/lists`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    listname: listname,
-    customfield: customfield,
-    color: color
-  }),
-});
-// const { list } = await res.json();
+  const res = await fetch(
+    `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        listname: listname,
+        customfield: customfield,
+        color: color,
+      }),
+    }
+  );
+  // const { list } = await res.json();
 }

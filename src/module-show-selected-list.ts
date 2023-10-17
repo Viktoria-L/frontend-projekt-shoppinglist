@@ -4,7 +4,7 @@ import { createSettingsButtonEventListener } from "./module-settings.js";
 
 export async function showSelectedList(selectedList, currentState) {
   const currentContentContainer = document.getElementById("current-content");
-  const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
+  const API_BASE = "https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists";
   const headerName = document.querySelector(".headerNameEdit");
 
   selectedList = await getAndSetUpdatedList(selectedList);
@@ -56,7 +56,7 @@ function createEditModeEventListener(selectedList, currentState) {
 async function getAndSetUpdatedList(selectedList) {
   try {
     const listResponse = await fetch(
-      `https://nackademin-item-tracker.herokuapp.com/lists/${selectedList._id}`
+      `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${selectedList._id}`
     );
     const listData = await listResponse.json();
     selectedList = listData;

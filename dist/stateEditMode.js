@@ -363,7 +363,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         const listNameInput = document.querySelector(".nameinput");
         const listname = listNameInput.value;
         const customfield = "grupp_e";
-        const res = await fetch(`https://nackademin-item-tracker.herokuapp.com/lists`, {
+        const res = await fetch(`https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -385,7 +385,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         itemListArray.forEach(async (object) => {
             const title = object.title;
             const checked = object.checked;
-            const res = await fetch(`https://nackademin-item-tracker.herokuapp.com/lists/${currentList}/items`, {
+            const res = await fetch(`https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${currentList}/items`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

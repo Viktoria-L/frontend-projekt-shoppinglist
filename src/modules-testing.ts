@@ -1,13 +1,16 @@
 import { editMode } from "./stateEditMode.js";
 import { deleteListUsingID } from "./module-api.js";
 import { showSelectedList } from "./module-show-selected-list.js";
-import { showCreateListButton, hideCreateListButton } from "./module-settings.js";
+import {
+  showCreateListButton,
+  hideCreateListButton,
+} from "./module-settings.js";
 
 export async function displayListsAlt() {
   const currentContentContainer = document.getElementById("current-content");
 
   let eGroupLists = await getOurLists();
-  const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
+  const API_BASE = "https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists";
 
   printLists(eGroupLists);
 
@@ -17,7 +20,7 @@ export async function displayListsAlt() {
 
   async function getOurLists() {
     const listResults = await fetch(
-      `https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&value=grupp_e`
+      `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/`
     );
     let jsonList = await listResults.json();
 
@@ -73,7 +76,7 @@ export async function displayListsAlt() {
       previewObject.addEventListener("click", async function () {
         try {
           const listResponse = await fetch(
-            `https://nackademin-item-tracker.herokuapp.com/lists/${list._id}`
+            `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${list._id}`
           );
           const listData = await listResponse.json();
           selectedList = listData;
@@ -118,9 +121,9 @@ export async function displayListsAlt() {
         // previewObject.innerHTML += + list.itemList.length - 5
         console.log();
       } else console.log("not an Array");
-      
+
       // efter att saker har laddats in, visa plusknappen
-      showCreateListButton()  
+      showCreateListButton();
 
       let trashcan = document.createElement("span");
       trashcan.classList.add("remove-container", "hidden", "hover");
@@ -180,7 +183,6 @@ export async function displayListsAlt() {
     currentContentContainer.appendChild(ulContainer);
     const listItemsUl = document.createElement("ul");
     ulContainer.append(listItemsUl);
-
 
     editMode({
       selectedList: selectedList,

@@ -43,7 +43,7 @@ export function display(outputArray) {
     //output.innerHTML = json;
 }
 export async function triggerDisplay() {
-    const API_BASE = "https://nackademin-item-tracker.herokuapp.com";
+    const API_BASE = "https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists";
     const API_FILTER = "grupp_e";
     // https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&value=Custom
     fetch(API_BASE + "/findlistbykey?key=customfield&value=" + API_FILTER)

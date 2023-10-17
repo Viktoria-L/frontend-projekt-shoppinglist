@@ -1,16 +1,16 @@
 import { editMode } from "./stateEditMode.js";
 import { deleteListUsingID } from "./module-api.js";
 import { showSelectedList } from "./module-show-selected-list.js";
-import { showCreateListButton, hideCreateListButton } from "./module-settings.js";
+import { showCreateListButton, hideCreateListButton, } from "./module-settings.js";
 export async function displayListsAlt() {
     const currentContentContainer = document.getElementById("current-content");
     let eGroupLists = await getOurLists();
-    const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
+    const API_BASE = "https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists";
     printLists(eGroupLists);
     let selectedList = null;
     const headerName = document.querySelector(".headerNameEdit");
     async function getOurLists() {
-        const listResults = await fetch(`https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&value=grupp_e`);
+        const listResults = await fetch(`https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/`);
         let jsonList = await listResults.json();
         return jsonList;
     }
@@ -45,7 +45,7 @@ export async function displayListsAlt() {
             //event listener för klickad lista
             previewObject.addEventListener("click", async function () {
                 try {
-                    const listResponse = await fetch(`https://nackademin-item-tracker.herokuapp.com/lists/${list._id}`);
+                    const listResponse = await fetch(`https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${list._id}`);
                     const listData = await listResponse.json();
                     selectedList = listData;
                     showSelectedList(selectedList, currentState);

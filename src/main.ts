@@ -15,7 +15,7 @@ systemPrefersDark,
  } from "./module-of-darkness.js";
 
 // inte använd men länken till början av APIt
-const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
+const API_BASE = "https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists";
 
 // Globala variabler (for now)
 let debugMode = false;

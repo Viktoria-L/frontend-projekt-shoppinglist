@@ -2,17 +2,17 @@
 
 ## API routes
 
-| Metod |	Route |	Beskrivning |
-| ----- | ----- | ----------- |
-| GET |	/lists |	Hämta alla listor |
-| GET |	/lists/:id |	Hämta lista med ett visst ID |
-| GET |	/listsearch?listname=namn |	Hämta alla listor som innehåller "namn" i listname |
-| GET	| /findlistbykey?key=k&value=v |	Hämta alla listor där "key" innehåller "value" |
-| POST |	/lists |	Skapa en ny lista |
-| DELETE |	/lists/:id |	Ta bort en lista |
-| POST |	/lists/:id/items |	Skapa ett nytt list item i lista med "id" |
-| DELETE |	/lists/:listid/items/:itemid |	Ta bort list item med "itemid" i lista med "listid" |
-| PUT |	/lists/:listid/items/:itemid |	Uppdatera item med "itemid" i lista med "listid" |
+| Metod  | Route                        | Beskrivning                                         |
+| ------ | ---------------------------- | --------------------------------------------------- |
+| GET    | /lists                       | Hämta alla listor                                   |
+| GET    | /lists/:id                   | Hämta lista med ett visst ID                        |
+| GET    | /listsearch?listname=namn    | Hämta alla listor som innehåller "namn" i listname  |
+| GET    | /findlistbykey?key=k&value=v | Hämta alla listor där "key" innehåller "value"      |
+| POST   | /lists                       | Skapa en ny lista                                   |
+| DELETE | /lists/:id                   | Ta bort en lista                                    |
+| POST   | /lists/:id/items             | Skapa ett nytt list item i lista med "id"           |
+| DELETE | /lists/:listid/items/:itemid | Ta bort list item med "itemid" i lista med "listid" |
+| PUT    | /lists/:listid/items/:itemid | Uppdatera item med "itemid" i lista med "listid"    |
 
 ## Fetch requests
 
@@ -23,8 +23,9 @@ Om du skall spara data så måste du göra ditt anrop med Content-Type "applicat
 ## Hämta alla listor
 
 ```js
-
-const res = await fetch(`https://nackademin-item-tracker.herokuapp.com/lists`);
+const res = await fetch(
+  `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists`
+);
 const data = await res.json();
 ```
 
@@ -33,7 +34,7 @@ const data = await res.json();
 ```js
 const query = listNameField.value;
 const res = await fetch(
-  `https://nackademin-item-tracker.herokuapp.com/listsearch?listname=${query}`
+  `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/listsearch?listname=${query}`
 );
 const data = await res.json();
 ```
@@ -43,16 +44,19 @@ const data = await res.json();
 ```js
 const listname = createListNameField.value;
 const customfield = customField.value;
-const res = await fetch(`https://nackademin-item-tracker.herokuapp.com/lists`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    listname: listname,
-    customfield: customfield,
-  }),
-});
+const res = await fetch(
+  `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      listname: listname,
+      customfield: customfield,
+    }),
+  }
+);
 const { list } = await res.json();
 ```
 
@@ -76,7 +80,7 @@ await fetch(`${API_BASE}lists/${currentList}`, {
 const title = itemTitleField.value;
 const desc = itemDescField.value;
 const res = await fetch(
-  `https://nackademin-item-tracker.herokuapp.com/lists/${currentList}/items`,
+  `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${currentList}/items`,
   {
     method: "POST",
     headers: {
@@ -95,7 +99,7 @@ const { list } = await res.json();
 
 ```js
 const res = await fetch(
-  `https://nackademin-item-tracker.herokuapp.com/lists/${currentList}/items/${item._id}`,
+  `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${currentList}/items/${item._id}`,
   {
     method: "DELETE",
   }
@@ -128,7 +132,7 @@ En applikation som använder sig av detta API går att titta på här: https://g
 2. GET en enskild lista med hjälp av ID:t
 3. GET alla listor där en viss key har ett visst värde, så tex:
 
-GET https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&value=Custom  
+GET https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&value=Custom
 
 > Med feature nr 3 blir det enklare för er att t.ex. ha ett custom-fält som innehåller namnet på eran app/grupp/etc, och hämta alla listor som just ni använder.
 

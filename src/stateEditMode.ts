@@ -36,12 +36,16 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         alert("No special characters are allowed");
       } else {
         if (selectedList) {
-          if(selectedList.itemList.some((object) => object.title === listItemInput.value)){
+          if (
+            selectedList.itemList.some(
+              (object) => object.title === listItemInput.value
+            )
+          ) {
             alert("That item already exists! Try again");
           } else {
-          addNewListItem(selectedList._id, listItemInput.value);
-          addItem();
-          showUpdateModal("New item added!");
+            addNewListItem(selectedList._id, listItemInput.value);
+            addItem();
+            showUpdateModal("New item added!");
           }
         } else {
           addItem();
@@ -136,7 +140,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
 
       removeSpan.setAttribute("list_id", item._id);
       removeSpan.addEventListener("click", (event) => {
-        console.log("clicked trashspan")
+        console.log("clicked trashspan");
         // console.log("pressed item, id", event.target.getAttribute("list_id"));
         // console.log("current list", selectedList._id);
 
@@ -216,15 +220,19 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   addItemBtn.addEventListener("click", () => {
     if (selectedList) {
       if (listItemInput.value !== null && listItemInput.value !== "") {
-        if(selectedList.itemList.some((object) => object.title === listItemInput.value)){
+        if (
+          selectedList.itemList.some(
+            (object) => object.title === listItemInput.value
+          )
+        ) {
           alert("That item already exists! Try again");
         } else {
-        console.log(selectedList._id);
-        addNewListItem(selectedList._id, listItemInput.value);
-        addItem();
-        showUpdateModal("New item added!");
-      } 
-    } else {
+          console.log(selectedList._id);
+          addNewListItem(selectedList._id, listItemInput.value);
+          addItem();
+          showUpdateModal("New item added!");
+        }
+      } else {
         alert("You cant add empty items, try again!");
       }
     } else {
@@ -403,7 +411,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     const listname = listNameInput.value;
     const customfield = "grupp_e";
     const res = await fetch(
-      `https://nackademin-item-tracker.herokuapp.com/lists`,
+      `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists`,
       {
         method: "POST",
         headers: {
@@ -430,7 +438,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       const title = object.title;
       const checked = object.checked;
       const res = await fetch(
-        `https://nackademin-item-tracker.herokuapp.com/lists/${currentList}/items`,
+        `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${currentList}/items`,
         {
           method: "POST",
           headers: {

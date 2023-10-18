@@ -1,6 +1,6 @@
 import { Item, List } from "./types";
 
-export function display(outputArray: List[]) {
+export function display(outputArray: List[]): void {
   const statusElement = document.querySelector("#output-status") as HTMLDivElement;
   const outputElement = document.querySelector("#list-output");
   let result = "";
@@ -51,7 +51,7 @@ export function display(outputArray: List[]) {
   //output.innerHTML = json;
 }
 
-export async function triggerDisplay() {
+export async function triggerDisplay(): Promise<void> {
   const API_BASE = "https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists";
   const API_FILTER = "grupp_e";
   // https://nackademin-item-tracker.herokuapp.com/findlistbykey?key=customfield&value=Custom
@@ -60,7 +60,7 @@ export async function triggerDisplay() {
     .then(display);
 }
 
-export function debugDisplayLists(inputLists: List[]) {
+export function debugDisplayLists(inputLists: List[]): void {
   let outputHTML = "";
   for (const list of inputLists) {
     // console.log(list);

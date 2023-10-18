@@ -34,12 +34,12 @@ function checkMode() {
   let body = document.querySelector("body");
 
   if (darkmodeFromLocal() === "false"){
-    body.classList.remove("darkmode");
+    body!.classList.remove("darkmode");
     console.log("No dark mode preferred");
   } else if (darkmodeFromLocal() === "true"){
-    body.classList.add("darkmode");
+    body!.classList.add("darkmode");
   } else if (systemPrefersDark() || (darkmodeFromLocal() === "true")) {
-    body.classList.add("darkmode");
+    body!.classList.add("darkmode");
     console.log("dark mode preferred");
   }
 }
@@ -54,7 +54,7 @@ displayListsAlt();
 // settings-knapp för index-vyn
 
 createSettingsButtonEventListener();
-const settingsButton = document.querySelector("#settings-button");
+const settingsButton = document.querySelector("#settings-button") as HTMLButtonElement;
 settingsButton.currentState = "index";
 
 // om man vill skriva ut
@@ -66,16 +66,16 @@ createDebugElements(debugMode);
 
 //Funktion för edit-knapp
 function editFunc() {
-  let editBtn = document.getElementById("editBtn");
-  editBtn.addEventListener("click", () => {
+  let editBtn = document.getElementById("editBtn") as HTMLButtonElement;
+  editBtn!.addEventListener("click", () => {
     let remove = document.querySelectorAll(".remove-container");
-    if (!editBtn.classList.contains("on")) {
-      editBtn.classList.add("on");
+    if (!editBtn!.classList.contains("on")) {
+      editBtn!.classList.add("on");
       remove.forEach((element) => {
         element.classList.remove("hidden");
       });
     } else {
-      editBtn.classList.remove("on");
+      editBtn!.classList.remove("on");
       remove.forEach((element) => {
         element.classList.add("hidden");
       });

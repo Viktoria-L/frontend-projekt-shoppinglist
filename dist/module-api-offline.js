@@ -1,4 +1,6 @@
 import { listsFromFile as offlineList } from "./data.js";
+;
+;
 export async function filterByNameOffline(name) {
     let json = await getAllListsOffline(offlineList);
     let ids = [];

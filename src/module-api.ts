@@ -1,6 +1,6 @@
 import { List } from "./types";
 
-export async function filterByName(name: string) {
+export async function filterByName(name: string): Promise<string[]> {
   let json = await getAllLists();
   let ids: string[] = [];
   // borde vara custom thingy sen istället för listname
@@ -14,11 +14,11 @@ export async function filterByName(name: string) {
   return ids;
 }
 
-export async function getAllLists() {
+export async function getAllLists(): Promise<List[]> {
   const res = await fetch(
     `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists`
   );
-  let data = await res.json();
+  let data: List[] = await res.json();
 
   // ser finare ut men kanske inte nödvändigtvis bättre
   let stringifiedData = JSON.stringify(data);
@@ -32,11 +32,11 @@ export async function getAllLists() {
 }
 
 // funktion som hämtar en lista med ett speciellt värde
-export async function getListUsingID(id: number) {
+export async function getListUsingID(id: number): Promise<List> {
   const res = await fetch(
     `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${id}`
   );
-  let data = await res.json();
+  let data: List = await res.json();
 
   let stringifiedData = JSON.stringify(data);
 

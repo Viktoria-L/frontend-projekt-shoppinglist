@@ -1,10 +1,10 @@
-export function showUpdateModal(text) {
+export function showUpdateModal(text: string): void {
   let modal = document.createElement("div");
   let main = document.querySelector("main");
   modal.innerText = text;
   modal.className = "update-modal";
-  main.prepend(modal);
+  main!.prepend(modal);
   setTimeout(() => {
-    main.removeChild(modal);
+    main!.removeChild(modal);
   }, 1400);
 }

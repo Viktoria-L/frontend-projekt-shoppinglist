@@ -4,7 +4,7 @@ export function display(outputArray) {
     let result = "";
     console.log(outputArray);
     const isEmpty = outputArray.length === 0;
-    statusElement.style = "display: " + ((isEmpty && "block") || "none");
+    statusElement.style.cssText = "display: " + ((isEmpty && "block") || "none");
     // statusElement.innerHTML = isEmpty && 'No lists available!' || ''
     for (let i = 0; i < outputArray.length; i++) {
         let list = outputArray[i];

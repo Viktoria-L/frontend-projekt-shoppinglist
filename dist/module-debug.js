@@ -1,5 +1,4 @@
 import { filterByName, getAllLists } from "./module-api.js";
-import { filterByNameOffline, getAllListsOffline, } from "./module-api-offline.js";
 import { listsFromFile as offlineList } from "./data.js";
 let body = document.querySelector("body");
 let lists = await getAllListsOffline(offlineList);

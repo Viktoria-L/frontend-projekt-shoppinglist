@@ -1,4 +1,3 @@
-import { createDebugElements } from "./module-debug.js";
 import { displayListsAlt } from "./modules-testing.js";
 import { getListsUsingCustomField, } from "./module-api.js";
 import { createSettingsButtonEventListener, showCreateListButton } from "./module-settings.js";

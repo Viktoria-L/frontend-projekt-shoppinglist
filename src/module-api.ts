@@ -1,9 +1,13 @@
-export async function filterByName(name) {
+import { List } from "./types";
+
+export async function filterByName(name: string) {
   let json = await getAllLists();
-  let ids = [];
+  let ids: string[] = [];
   // borde vara custom thingy sen istället för listname
-  let result = json.filter((list) => list.listname.includes(name) === true);
-  result.forEach((list) => {
+  let result = json.filter(
+    (list: List) => list.listname.includes(name) === true
+  );
+  result.forEach((list: List) => {
     ids.push(list._id);
   });
   console.log(ids);
@@ -28,7 +32,7 @@ export async function getAllLists() {
 }
 
 // funktion som hämtar en lista med ett speciellt värde
-export async function getListUsingID(id) {
+export async function getListUsingID(id: number) {
   const res = await fetch(
     `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${id}`
   );
@@ -39,11 +43,11 @@ export async function getListUsingID(id) {
   return data;
 }
 
-export async function getListsUsingCustomField() {
+export async function getListsUsingCustomField(): Promise<List[]> {
   const res = await fetch(
     `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/findlistbykey?key=customfield&value=grupp_e`
   );
-  let data = await res.json();
+  let data: List[] = await res.json();
 
   let stringifiedData = JSON.stringify(data);
 
@@ -52,7 +56,7 @@ export async function getListsUsingCustomField() {
 
 // funktion som tar bort lista med ett speciellt ID
 // ta inte bort fel 😄
-export async function deleteListUsingID(id) {
+export async function deleteListUsingID(id: number): Promise<void> {
   if (id === null) {
     console.log(id, "wrong");
     return;
@@ -67,7 +71,10 @@ export async function deleteListUsingID(id) {
 
 //  funktion som deletear list-item
 
-export async function deleteListItem(listId, listItemId) {
+export async function deleteListItem(
+  listId: number,
+  listItemId: number
+): Promise<void> {
   await fetch(
     `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${listId}/items/${listItemId}`,
     {
@@ -76,7 +83,11 @@ export async function deleteListItem(listId, listItemId) {
   );
 }
 
-export async function updateListItem(itemTitle, listId, listItemId) {
+export async function updateListItem(
+  itemTitle: string,
+  listId: number,
+  listItemId: number
+): Promise<void> {
   await fetch(
     `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${listId}/items/${listItemId}`,
     {
@@ -91,7 +102,10 @@ export async function updateListItem(itemTitle, listId, listItemId) {
   );
 }
 
-export async function updateListTitle(listTitle, listId) {
+export async function updateListTitle(
+  listTitle: string,
+  listId: number
+): Promise<void> {
   await fetch(
     `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${listId}`,
     {
@@ -108,7 +122,10 @@ export async function updateListTitle(listTitle, listId) {
 }
 
 //Funktion för att lägga till nytt listitem i befintlig lista
-export async function addNewListItem(listId, listiteminput) {
+export async function addNewListItem(
+  listId: number,
+  listiteminput: string
+): Promise<void> {
   const title = listiteminput;
   const res = await fetch(
     `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${listId}/items`,
@@ -126,7 +143,10 @@ export async function addNewListItem(listId, listiteminput) {
   const { list } = await res.json();
 }
 
-export async function updateColor(color, listId) {
+export async function updateColor(
+  color: string,
+  listId: number
+): Promise<void> {
   await fetch(
     `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${listId}`,
     {
@@ -142,7 +162,10 @@ export async function updateColor(color, listId) {
   console.log("updateColor() done");
 }
 
-export async function createCustomList(listname, color) {
+export async function createCustomList(
+  listname: string,
+  color: string
+): Promise<void> {
   const customfield = "grupp_e";
   const res = await fetch(
     `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists`,

@@ -1,11 +1,13 @@
-export function display(outputArray) {
-  const statusElement = document.querySelector("#output-status");
+import { Item, List } from "./types";
+
+export function display(outputArray: List[]) {
+  const statusElement = document.querySelector("#output-status") as HTMLDivElement;
   const outputElement = document.querySelector("#list-output");
   let result = "";
 
   console.log(outputArray);
   const isEmpty = outputArray.length === 0;
-  statusElement.style = "display: " + ((isEmpty && "block") || "none");
+  statusElement!.style.cssText = "display: " + ((isEmpty && "block") || "none");
   // statusElement.innerHTML = isEmpty && 'No lists available!' || ''
 
   for (let i = 0; i < outputArray.length; i++) {
@@ -26,7 +28,7 @@ export function display(outputArray) {
 			</span>
     <ul>
   `;
-    children.forEach((item) => {
+    children.forEach((item: Item) => {
       let checkedText = (item.checked && "checked") || "";
       let itemName = item.title || "???";
 
@@ -44,7 +46,7 @@ export function display(outputArray) {
   `;
   }
   console.log(outputElement);
-  outputElement.innerHTML = result;
+  outputElement!.innerHTML = result;
   //json = JSON.stringify(outputObj);
   //output.innerHTML = json;
 }
@@ -58,7 +60,7 @@ export async function triggerDisplay() {
     .then(display);
 }
 
-export function debugDisplayLists(inputLists) {
+export function debugDisplayLists(inputLists: List[]) {
   let outputHTML = "";
   for (const list of inputLists) {
     // console.log(list);

@@ -13,6 +13,7 @@ import { createSettingsButtonEventListener, showCreateListButton } from "./modul
 import { darkmodeFromLocal,
 systemPrefersDark,
  } from "./module-of-darkness.js";
+import { CustomButtonElement } from "./types.js";
 
 // inte använd men länken till början av APIt
 const API_BASE = "https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists";
@@ -54,7 +55,7 @@ displayListsAlt();
 // settings-knapp för index-vyn
 
 createSettingsButtonEventListener();
-const settingsButton = document.querySelector("#settings-button") as HTMLButtonElement;
+const settingsButton = document.querySelector("#settings-button") as CustomButtonElement;
 settingsButton.currentState = "index";
 
 // om man vill skriva ut

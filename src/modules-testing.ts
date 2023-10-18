@@ -8,7 +8,9 @@ import {
 import { Item, List } from "./types.js";
 
 export async function displayListsAlt() {
-  const currentContentContainer = document.getElementById("current-content") as HTMLDivElement;
+  const currentContentContainer = document.getElementById(
+    "current-content"
+  ) as HTMLDivElement;
 
   // let eGroupLists = await getOurLists();
   const API_BASE =
@@ -171,7 +173,9 @@ export async function displayListsAlt() {
 
   //Plus-knappen på index-sidan som ska ta en till skapa lista-vyn.
   const createListBtn = document.getElementById("newListBtn");
-  const outputElement = document.querySelector("#current-content") as HTMLDivElement;
+  const outputElement = document.querySelector(
+    "#current-content"
+  ) as HTMLDivElement;
 
   createListBtn!.addEventListener("click", (event) => {
     hideCreateListButton();
@@ -195,6 +199,6 @@ export async function displayListsAlt() {
       listItemsUl: listItemsUl,
       API_BASE: API_BASE,
       headerName: headerName,
-    });
+    } as { selectedList: List; listItemsUl: HTMLUListElement; API_BASE: string; headerName: HTMLDivElement });
   });
 }

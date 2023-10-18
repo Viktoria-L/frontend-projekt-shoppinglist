@@ -1,4 +1,4 @@
-export function viewMode({ selectedList, listItemsUl, API_BASE, headerName }) {
+export function viewMode({ selectedList, listItemsUl, API_BASE, headerName, }) {
     let bottomButton = document.querySelector("#newListBtn");
     bottomButton.classList.add("hidden");
     let listNamn = selectedList.listname;

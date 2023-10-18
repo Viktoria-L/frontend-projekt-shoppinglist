@@ -7,7 +7,7 @@ import { CustomButtonElement, List } from "./types.js";
 export async function showSelectedList(selectedList: List, currentState: string) {
   const currentContentContainer = document.getElementById("current-content");
   const API_BASE = "https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists";
-  const headerName = document.querySelector(".headerNameEdit");
+  const headerName = document.querySelector(".headerNameEdit") as HTMLDivElement;
 
   selectedList = await getAndSetUpdatedList(selectedList) as List;
   console.log("new stuff: " + JSON.stringify(selectedList));

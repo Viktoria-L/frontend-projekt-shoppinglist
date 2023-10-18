@@ -41,7 +41,7 @@ export function systemPrefersDark() {
 //-------------------------//
 
 //--Funktion som sätter darkmodevalue till local, tar true eller false som argument//
-export function darkmodeToLocal(darkValue) {
+export function darkmodeToLocal(darkValue: string) {
     //true eller false beroende på om system föredrar dark eller ej
     console.log("Sätter detta value till localStorage: ", darkValue)
 

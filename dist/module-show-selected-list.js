@@ -5,7 +5,7 @@ export async function showSelectedList(selectedList, currentState) {
     const currentContentContainer = document.getElementById("current-content");
     const API_BASE = "https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists";
     const headerName = document.querySelector(".headerNameEdit");
-    selectedList = await getAndSetUpdatedList(selectedList);
+    selectedList = (await getAndSetUpdatedList(selectedList));
     console.log("new stuff: " + JSON.stringify(selectedList));
     currentContentContainer.innerHTML = "";
     let ulContainer = document.createElement("article");

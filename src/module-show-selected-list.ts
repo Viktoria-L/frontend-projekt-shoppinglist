@@ -3,13 +3,18 @@ import { editMode } from "./stateEditMode.js";
 import { createSettingsButtonEventListener } from "./module-settings.js";
 import { CustomButtonElement, List } from "./types.js";
 
-
-export async function showSelectedList(selectedList: List, currentState: string) {
+export async function showSelectedList(
+  selectedList: List,
+  currentState: string
+) {
   const currentContentContainer = document.getElementById("current-content");
-  const API_BASE = "https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists";
-  const headerName = document.querySelector(".headerNameEdit") as HTMLDivElement;
+  const API_BASE =
+    "https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists";
+  const headerName = document.querySelector(
+    ".headerNameEdit"
+  ) as HTMLDivElement;
 
-  selectedList = await getAndSetUpdatedList(selectedList) as List;
+  selectedList = (await getAndSetUpdatedList(selectedList)) as List;
   console.log("new stuff: " + JSON.stringify(selectedList));
 
   currentContentContainer!.innerHTML = "";
@@ -37,7 +42,9 @@ export async function showSelectedList(selectedList: List, currentState: string)
   createEditModeEventListener(selectedList, currentState);
   createSettingsButtonEventListener();
   // TODO need to create a type or something that includes the extra fancy stuff added below
-  const settingsButton = document.querySelector("#settings-button") as CustomButtonElement;
+  const settingsButton = document.querySelector(
+    "#settings-button"
+  ) as CustomButtonElement;
   settingsButton!.currentState = currentState;
   settingsButton!.selectedList = selectedList;
   // console.log("parameter selectedList:" + settingsButton.selected)
@@ -61,7 +68,7 @@ async function getAndSetUpdatedList(selectedList: List) {
     const listResponse = await fetch(
       `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${selectedList._id}`
     );
-    const listData = await listResponse.json();
+    const listData: List = await listResponse.json();
     selectedList = listData;
     return selectedList;
   } catch (error) {

@@ -86,7 +86,8 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
             currentListItem.addEventListener("focusout", (e) => {
                 if (currentListItem.value !== null && currentListItem.value !== "") {
                     if (item.title !== currentListItem.value) {
-                        updateListItem(e.target.value, selectedList._id, item._id);
+                        let currentTarget = e.target;
+                        updateListItem(currentTarget.value, selectedList._id, item._id);
                         showUpdateModal("Updated text!");
                     }
                 }
@@ -100,7 +101,8 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
             currentListItem.addEventListener("keypress", (e) => {
                 if (e.key === "Enter") {
                     if (currentListItem.value !== null && currentListItem.value !== "") {
-                        updateListItem(e.target.value, selectedList._id, item._id);
+                        let currentTarget = e.target;
+                        updateListItem(currentTarget.value, selectedList._id, item._id);
                         currentListItem.blur();
                         showUpdateModal("Updated text!");
                     }
@@ -121,7 +123,9 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
                 // console.log("current list", selectedList._id);
                 // removes item from DOM and api
                 // deleteObject(removeSpan.id, labelA);
-                deleteListItem(selectedList._id, event.target.getAttribute("list_id"));
+                let targetSpan = event.target;
+                let targetSpanId = targetSpan.getAttribute("list_id");
+                deleteListItem(selectedList._id, targetSpanId);
                 labelA.parentElement.remove();
             });
         });
@@ -254,13 +258,14 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
                     }
                     let changeValue = "";
                     li.addEventListener("change", (event) => {
-                        if (containsSpecialChars(event.target.value)) {
+                        let currentLiTarget = event.target;
+                        if (containsSpecialChars(currentLiTarget.value)) {
                             alert("No special characters are allowed");
                         }
                         else {
-                            changeValue = event.target.value;
+                            changeValue = currentLiTarget.value;
                         }
-                        let previousValue = event.target.id;
+                        let previousValue = currentLiTarget.id;
                         let previousVal = previousValue.replace("item_", "");
                         updateListItemLocally(previousVal);
                     });

@@ -56,7 +56,7 @@ export async function getListsUsingCustomField(): Promise<List[]> {
 
 // funktion som tar bort lista med ett speciellt ID
 // ta inte bort fel 😄
-export async function deleteListUsingID(id: number): Promise<void> {
+export async function deleteListUsingID(id: string): Promise<void> {
   if (id === null) {
     console.log(id, "wrong");
     return;
@@ -72,8 +72,8 @@ export async function deleteListUsingID(id: number): Promise<void> {
 //  funktion som deletear list-item
 
 export async function deleteListItem(
-  listId: number,
-  listItemId: number
+  listId: string,
+  listItemId: string
 ): Promise<void> {
   await fetch(
     `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${listId}/items/${listItemId}`,
@@ -85,8 +85,8 @@ export async function deleteListItem(
 
 export async function updateListItem(
   itemTitle: string,
-  listId: number,
-  listItemId: number
+  listId: string,
+  listItemId: string
 ): Promise<void> {
   await fetch(
     `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${listId}/items/${listItemId}`,
@@ -104,7 +104,7 @@ export async function updateListItem(
 
 export async function updateListTitle(
   listTitle: string,
-  listId: number
+  listId: string
 ): Promise<void> {
   await fetch(
     `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${listId}`,
@@ -123,7 +123,7 @@ export async function updateListTitle(
 
 //Funktion för att lägga till nytt listitem i befintlig lista
 export async function addNewListItem(
-  listId: number,
+  listId: string,
   listiteminput: string
 ): Promise<void> {
   const title = listiteminput;
@@ -145,7 +145,7 @@ export async function addNewListItem(
 
 export async function updateColor(
   color: string,
-  listId: number
+  listId: string
 ): Promise<void> {
   await fetch(
     `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${listId}`,

@@ -4,9 +4,9 @@ import { showSelectedList } from "./module-show-selected-list.js";
 import { showCreateListButton, hideCreateListButton, } from "./module-settings.js";
 export async function displayListsAlt() {
     const currentContentContainer = document.getElementById("current-content");
-    let eGroupLists = await getOurLists();
+    // let eGroupLists = await getOurLists();
     const API_BASE = "https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists";
-    printLists(eGroupLists);
+    printLists();
     let selectedList = null;
     const headerName = document.querySelector(".headerNameEdit");
     async function getOurLists() {
@@ -23,7 +23,7 @@ export async function displayListsAlt() {
         const statusElement = document.querySelector("#output-status");
         console.log(fetchedLists.length, "Antal Listor");
         if (fetchedLists.length > 0) {
-            statusElement.style = "display: none";
+            statusElement.style.cssText = "display: none";
             // statusElement.innerHTML = "";
         }
         //------ ---- ---- ---- ---- ---- ---- ----
@@ -94,11 +94,13 @@ export async function displayListsAlt() {
             // ---------- DELETE-FUNCTION ----------
             trashcan.addEventListener("click", (e) => {
                 e.stopPropagation();
-                let currentList = e.target.parentElement;
+                let trashcanElement = e.target;
+                let currentList = trashcanElement.parentElement;
                 console.log(`du klickar på ${currentList.getAttribute("data-list-id")}`);
-                if (currentList.getAttribute("data-list-id") !== "null") {
+                const dataListId = currentList.getAttribute("data-list-id");
+                if (dataListId !== null) {
                     console.log(`du tog bort lista ${currentList.getAttribute("data-list-id")}`);
-                    deleteListUsingID(currentList.getAttribute("data-list-id"));
+                    deleteListUsingID(dataListId);
                     currentList.remove();
                 }
             });

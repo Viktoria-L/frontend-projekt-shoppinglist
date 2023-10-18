@@ -7,11 +7,12 @@ import {
 } from "./module-api.js";
 import { showUpdateModal } from "./module-animations.js";
 import { showSelectedList } from "./module-show-selected-list.js";
+import { Item, List } from "./types.js";
 
-export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
-  const outputElement = document.querySelector("#current-content");
+export function editMode({ selectedList, listItemsUl, API_BASE, headerName }: {selectedList: List, listItemsUl: HTMLUListElement, API_BASE: string, headerName: HTMLDivElement }) {
+  const outputElement = document.querySelector("#current-content") as HTMLDivElement;
   let currentList = "";
-  let itemListArray = [];
+  let itemListArray: Item[] = [];
 
   let listObject = {
     customField: "grupp_e",
@@ -27,8 +28,8 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
      `;
   outputElement.append(addAnItemDiv);
 
-  const listItemInput = document.querySelector(".listiteminput");
-  const addItemBtn = document.querySelector(".additembtn");
+  const listItemInput = document.querySelector(".listiteminput") as HTMLInputElement;
+  const addItemBtn = document.querySelector(".additembtn") as HTMLButtonElement;
 
   listItemInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
@@ -55,7 +56,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
   });
 
   if (selectedList) {
-    selectedList.itemList.forEach((item) => {
+    selectedList.itemList.forEach((item: Item) => {
       // console.log("ITEM IS" + item.title)
       itemListArray.push(item);
     });
@@ -64,7 +65,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
 
     let listNamn = selectedList.listname;
 
-    function deleteObject(title, element) {
+    function deleteObject(title: string, element: HTMLElement) {
       let index = itemListArray.findIndex((object) => object.title === title);
       itemListArray.splice(index, 1);
       element.remove();
@@ -86,7 +87,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       let trashName = trashId();
 
       const labelA = document.createElement("label");
-      labelA.setAttribute("for", item._id);
+      labelA.setAttribute("for", item._id!);
       labelA.classList.add("itemContainer", "editing");
       labelA.innerHTML = `<span class="iconspans hover" id="span_${trashName}"><svg class="unclickable" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" id="${trashName}" width="14px"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path class="unclickable" d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></span>
     <input type="text" onClick="this.setSelectionRange(0, this.value.length)" value="${item.title}" id="item_${item._id}"></input>`;
@@ -103,14 +104,15 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
 
       listItemsUl.append(listItem);
 
-      let currentListItem = document.getElementById(`item_${item._id}`);
+      let currentListItem = document.getElementById(`item_${item._id}`) as HTMLInputElement;
 
       // EDIT LIST-ITEM AND PUT NEW VALUE TO API
       // WHEN TEXTINPUT LOSES FOCUS
       currentListItem.addEventListener("focusout", (e) => {
         if (currentListItem.value !== null && currentListItem.value !== "") {
           if (item.title !== currentListItem.value) {
-            updateListItem(e.target.value, selectedList._id, item._id);
+            let currentTarget = e.target as HTMLInputElement;
+            updateListItem(currentTarget.value, selectedList._id, item._id!);
             showUpdateModal("Updated text!");
           }
         } else {
@@ -123,7 +125,8 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
       currentListItem.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
           if (currentListItem.value !== null && currentListItem.value !== "") {
-            updateListItem(e.target.value, selectedList._id, item._id);
+            let currentTarget = e.target as HTMLInputElement;
+            updateListItem(currentTarget.value, selectedList._id, item._id!);
             currentListItem.blur();
             showUpdateModal("Updated text!");
           } else {
@@ -134,11 +137,11 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         }
       });
 
-      let removeSpan = document.querySelector(`#span_${trashName}`);
+      let removeSpan = document.querySelector(`#span_${trashName}`) as HTMLSpanElement;
       console.log("spannet", removeSpan);
       // console.log("ny info", item._id);
 
-      removeSpan.setAttribute("list_id", item._id);
+      removeSpan.setAttribute("list_id", item._id!);
       removeSpan.addEventListener("click", (event) => {
         console.log("clicked trashspan");
         // console.log("pressed item, id", event.target.getAttribute("list_id"));
@@ -146,8 +149,10 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
 
         // removes item from DOM and api
         // deleteObject(removeSpan.id, labelA);
-        deleteListItem(selectedList._id, event.target.getAttribute("list_id"));
-        labelA.parentElement.remove();
+        let targetSpan = event.target as HTMLSpanElement;
+        let targetSpanId = targetSpan.getAttribute("list_id") as string;
+        deleteListItem(selectedList._id, targetSpanId);
+        labelA!.parentElement!.remove();
       });
     });
     /* headerName.innerHTML = "this is edit mode"; */
@@ -161,7 +166,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         `;
     // console.log(selectedList._id, selectedList.listname);
     // console.log(selectedList.itemList[0]._id, selectedList.itemList[0].title);
-    let listNameInput = document.querySelector(".nameinput");
+    let listNameInput = document.querySelector(".nameinput") as HTMLInputElement;
 
     // UPDATING LIST-TITLE TO API
     // WHEN INPUTFIELD LOSES FOCUS
@@ -197,7 +202,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     });
   }
   //Eventlistener för "gå tillbaka-knappen"
-  const backBtn = document.querySelector(".backBtn");
+  const backBtn = document.querySelector(".backBtn") as HTMLButtonElement;
   backBtn.addEventListener("click", () => {
     let currentState = "viewOneList";
     console.log("edit mode clicked    current state: " + currentState);
@@ -255,14 +260,14 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
           li.innerHTML = `<span class="iconspans"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" id="${listItemInput.value}" width="14px"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></span>
         <input type="text" onClick="this.setSelectionRange(0, this.value.length)"ö value="${listItemInput.value}" id="item_${listItemInput.value}"></input>`;
           listItemsUl.append(li);
-          let removeBtn = document.getElementById(`${listItemInput.value}`);
+          let removeBtn = document.getElementById(`${listItemInput.value}`) as HTMLButtonElement;
           let inputfields = document.getElementById(
             `item_${listItemInput.value}`
           );
           console.log(inputfields);
 
           //Funktion för att hitta rätt object i arrayen och ta bort den samtidigt som den tar bort utskriften
-          function deleteObject(title) {
+          function deleteObject(title: string) {
             let index = itemListArray.findIndex(
               (object) => object.title === title
             );
@@ -270,7 +275,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
             li.remove();
           }
 
-          itemListArray.push({ title: listItemInput.value, checked: false });
+          itemListArray.push({ title: listItemInput.value, checked: false } as {title: string, checked: boolean});
           console.log(itemListArray);
 
           removeBtn.addEventListener("click", (event) => {
@@ -278,7 +283,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
             console.log(itemListArray);
           });
 
-          function updateListItemLocally(previoustitle) {
+          function updateListItemLocally(previoustitle: string) {
             let index = itemListArray.findIndex(
               (object) => object.title === previoustitle
             );
@@ -291,13 +296,14 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
 
           let changeValue = "";
           li.addEventListener("change", (event) => {
-            if (containsSpecialChars(event.target.value)) {
+            let currentLiTarget = event.target as HTMLInputElement;
+            if (containsSpecialChars(currentLiTarget.value)) {
               alert("No special characters are allowed");
             } else {
-              changeValue = event.target.value;
+              changeValue = currentLiTarget.value;
             }
 
-            let previousValue = event.target.id;
+            let previousValue = currentLiTarget.id;
             let previousVal = previousValue.replace("item_", "");
             updateListItemLocally(previousVal);
           });
@@ -356,7 +362,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
     "blue",
     "purple",
   ];
-  let selectedColor;
+  let selectedColor: string;
 
   let colorSelectDiv = document.createElement("div");
   colorSelectDiv.className = "color-select-div";
@@ -382,7 +388,7 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
         updateColor(color, selectedList._id);
         // UPDATES WHEN CLICKED
         headerName.className = `headerNameEdit list-color-header-${selectedColor}`;
-        let nameInput = document.querySelector(".nameinput");
+        let nameInput = document.querySelector(".nameinput") as HTMLInputElement;
         nameInput.className = `nameinput list-color-header-${selectedColor}`;
       }
       console.log(`selected color: ${selectedColor}`);
@@ -400,14 +406,14 @@ export function editMode({ selectedList, listItemsUl, API_BASE, headerName }) {
 
   // color select slut
 
-  function containsSpecialChars(str) {
+  function containsSpecialChars(str: string) {
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|<>\/?~]/;
     return specialChars.test(str);
   }
 
   //Funktion för att spara listan med angivet namn
   async function saveList() {
-    const listNameInput = document.querySelector(".nameinput");
+    const listNameInput = document.querySelector(".nameinput") as HTMLInputElement;
     const listname = listNameInput.value;
     const customfield = "grupp_e";
     const res = await fetch(

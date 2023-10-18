@@ -5,17 +5,18 @@ import {
   showCreateListButton,
   hideCreateListButton,
 } from "./module-settings.js";
+import { Item, List } from "./types.js";
 
 export async function displayListsAlt() {
-  const currentContentContainer = document.getElementById("current-content");
+  const currentContentContainer = document.getElementById("current-content") as HTMLDivElement;
 
-  let eGroupLists = await getOurLists();
+  // let eGroupLists = await getOurLists();
   const API_BASE =
     "https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists";
 
-  printLists(eGroupLists);
+  printLists();
 
-  let selectedList = null;
+  let selectedList: List | null = null;
 
   const headerName = document.querySelector(".headerNameEdit");
 
@@ -33,14 +34,16 @@ export async function displayListsAlt() {
 
     const previewContainer = document.createElement("div");
     previewContainer.className = "preview-container";
-    currentContentContainer.append(previewContainer);
+    currentContentContainer!.append(previewContainer);
 
     //------ Kod som försöker fixa status----
-    const statusElement = document.querySelector("#output-status");
+    const statusElement = document.querySelector(
+      "#output-status"
+    ) as HTMLDivElement;
 
     console.log(fetchedLists.length, "Antal Listor");
     if (fetchedLists.length > 0) {
-      statusElement.style = "display: none";
+      statusElement.style.cssText = "display: none";
 
       // statusElement.innerHTML = "";
     }
@@ -79,7 +82,7 @@ export async function displayListsAlt() {
           const listResponse = await fetch(
             `https://frontend-projekt-shoppinglist-svelte.vercel.app/api/test/lists/${list._id}`
           );
-          const listData = await listResponse.json();
+          const listData: List = await listResponse.json();
           selectedList = listData;
           showSelectedList(selectedList, currentState);
           previewContainer.innerHTML = "";
@@ -97,7 +100,7 @@ export async function displayListsAlt() {
         let listUl = document.createElement("ul");
         previewObject.appendChild(listUl);
 
-        list.itemList.forEach((item) => {
+        list.itemList.forEach((item: Item) => {
           if (count >= 3) {
             if (!previewObject.innerHTML.includes("...")) {
               previewObject.innerHTML += `...`;
@@ -131,17 +134,19 @@ export async function displayListsAlt() {
       trashcan.innerHTML =
         '<svg class="remove hover unclickable" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path class="unclickable" d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>';
       // ---------- DELETE-FUNCTION ----------
-      trashcan.addEventListener("click", (e) => {
+      trashcan.addEventListener("click", (e: UIEvent) => {
         e.stopPropagation();
-        let currentList = e.target.parentElement;
+        let trashcanElement = e.target as HTMLSpanElement;
+        let currentList = trashcanElement.parentElement as HTMLDivElement;
         console.log(
           `du klickar på ${currentList.getAttribute("data-list-id")}`
         );
-        if (currentList.getAttribute("data-list-id") !== "null") {
+        const dataListId = currentList.getAttribute("data-list-id");
+        if (dataListId !== null) {
           console.log(
             `du tog bort lista ${currentList.getAttribute("data-list-id")}`
           );
-          deleteListUsingID(currentList.getAttribute("data-list-id"));
+          deleteListUsingID(dataListId);
           currentList.remove();
         }
       });
@@ -155,7 +160,7 @@ export async function displayListsAlt() {
 
   function createNewList() {}
 
-  function addItemToList(listItem) {}
+  function addItemToList(listItem: Item) {}
   // const listItemsUl = document.querySelector("#listItems");
 
   let currentState = "viewOneList";
@@ -166,14 +171,14 @@ export async function displayListsAlt() {
 
   //Plus-knappen på index-sidan som ska ta en till skapa lista-vyn.
   const createListBtn = document.getElementById("newListBtn");
-  const outputElement = document.querySelector("#current-content");
+  const outputElement = document.querySelector("#current-content") as HTMLDivElement;
 
-  createListBtn.addEventListener("click", (event) => {
+  createListBtn!.addEventListener("click", (event) => {
     hideCreateListButton();
     outputElement.innerHTML = "";
 
     //Bygger listans namninput-fält med fältet för namnet i headern
-    headerName.innerHTML = `
+    headerName!.innerHTML = `
     <span class="backBtn hover"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg></span>
     <input type="text" class="nameinput" onClick="this.setSelectionRange(0, this.value.length)" value="New List"></input>
     `;

@@ -10,28 +10,29 @@ export function createSettingsButtonEventListener() {
     settingsButton.currentState = "default value";
 }
 export function settingsButtonFunction(e) {
+    const target = e.currentTarget;
     clearCurrentContent();
     hideCreateListButton();
     hideEditButton();
-    if (e.currentTarget.currentState === "index") {
+    if (target.currentState === "index") {
         console.log(`settings button clicked from our beautiful index page`);
         hideIndexHeader();
         addBackButton();
     }
-    else if (e.currentTarget.currentState === "viewOneList") {
+    else if (target.currentState === "viewOneList") {
         console.log(`settings button clicked from our amazing view list view`);
         hideListViewTitle();
         replaceBackButton({
-            selectedList: e.currentTarget.selectedList,
-            currentState: e.currentTarget.currentState,
+            selectedList: target.selectedList,
+            currentState: target.currentState,
         });
     }
-    else if (e.currentTarget.currentState === "editOneList") {
+    else if (target.currentState === "editOneList") {
         console.log(`settings button clicked from our spectacular edit list view`);
         hideListViewTitle();
         replaceBackButton({
-            selectedList: e.currentTarget.selectedList,
-            currentState: e.currentTarget.currentState,
+            selectedList: target.selectedList,
+            currentState: target.currentState,
         });
     }
     addHeaderTitle();
@@ -45,7 +46,8 @@ function clearCurrentContent() {
 function hideEditButton() {
     const editBtn = document.getElementById("editBtn");
     if (editBtn) {
-        editBtn.firstChild.classList.add("hidden");
+        const firstChild = editBtn.firstChild;
+        firstChild.classList.add("hidden");
     }
 }
 export function hideCreateListButton() {
@@ -59,17 +61,17 @@ export function showCreateListButton() {
 function hideIndexHeader() {
     let oldHeader = document.getElementById("header-name-title");
     if (oldHeader) {
-        oldHeader.style = `display: none`;
+        oldHeader.style.cssText = `display: none`;
     }
     else {
         let oldHeader = document.querySelector(".nameinput");
-        oldHeader.style = `display: none`;
+        oldHeader.style.cssText = `display: none`;
     }
 }
 function hideListViewTitle() {
     const listTitle = document.querySelector(".nameinput");
     if (listTitle) {
-        listTitle.style = `display: none`;
+        listTitle.style.cssText = `display: none`;
     }
 }
 function addBackButton() {

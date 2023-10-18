@@ -4,11 +4,13 @@ import {
   darkmodeToLocal,
   darkmodeFromLocal,
 } from "./module-of-darkness.js";
+import { CustomButtonElement, List, } from "./types.js";
 
 let body = document.querySelector("body");
 
+
 export function createSettingsButtonEventListener() {
-  const settingsButton = document.querySelector("#settings-button");
+  const settingsButton = document.querySelector("#settings-button") as CustomButtonElement;
   // lite skumt men om man inte har skapas flera eventlisteners
   // så tar bort om det redan finns en!
   settingsButton.removeEventListener("click", settingsButtonFunction);
@@ -16,28 +18,29 @@ export function createSettingsButtonEventListener() {
   settingsButton.currentState = "default value";
 }
 
-export function settingsButtonFunction(e) {
+export function settingsButtonFunction(e: UIEvent) {
+  const target = e.currentTarget as CustomButtonElement;
   clearCurrentContent();
   hideCreateListButton();
   hideEditButton();
 
-  if (e.currentTarget.currentState === "index") {
+  if (target.currentState === "index") {
     console.log(`settings button clicked from our beautiful index page`);
     hideIndexHeader();
     addBackButton();
-  } else if (e.currentTarget.currentState === "viewOneList") {
+  } else if (target.currentState === "viewOneList") {
     console.log(`settings button clicked from our amazing view list view`);
     hideListViewTitle();
     replaceBackButton({
-      selectedList: e.currentTarget.selectedList,
-      currentState: e.currentTarget.currentState,
+      selectedList: target.selectedList,
+      currentState: target.currentState,
     });
-  } else if (e.currentTarget.currentState === "editOneList") {
+  } else if (target.currentState === "editOneList") {
     console.log(`settings button clicked from our spectacular edit list view`);
     hideListViewTitle();
     replaceBackButton({
-      selectedList: e.currentTarget.selectedList,
-      currentState: e.currentTarget.currentState,
+      selectedList: target.selectedList,
+      currentState: target.currentState,
     });
   }
 
@@ -48,41 +51,42 @@ export function settingsButtonFunction(e) {
 
 function clearCurrentContent() {
   const currentContent = document.querySelector("#current-content");
-  currentContent.innerHTML = "";
+  currentContent!.innerHTML = "";
 }
 
 function hideEditButton() {
-  const editBtn = document.getElementById("editBtn");
+  const editBtn = document.getElementById("editBtn") as HTMLButtonElement;
   if (editBtn) {
-    editBtn.firstChild.classList.add("hidden");
+    const firstChild = editBtn.firstChild as SVGImageElement;
+    firstChild.classList.add("hidden");
   }
 }
 
 export function hideCreateListButton() {
   const createListBtn = document.getElementById("newListBtn");
-  createListBtn.classList.add("hidden");
+  createListBtn!.classList.add("hidden");
 }
 
 export function showCreateListButton() {
   const createListBtn = document.getElementById("newListBtn");
-  createListBtn.classList.remove("hidden");
+  createListBtn!.classList.remove("hidden");
 }
 
-function hideIndexHeader() {
+function hideIndexHeader(): void {
   let oldHeader = document.getElementById("header-name-title");
   if (oldHeader) {
-    oldHeader.style = `display: none`;
+    oldHeader.style.cssText = `display: none`;
   }
   else {
-    let oldHeader = document.querySelector(".nameinput");
-    oldHeader.style = `display: none`;
+    let oldHeader = document.querySelector(".nameinput") as HTMLInputElement;
+    oldHeader.style.cssText = `display: none`;
   }
 }
 
 function hideListViewTitle() {
-  const listTitle = document.querySelector(".nameinput");
+  const listTitle = document.querySelector(".nameinput") as HTMLInputElement;
   if (listTitle) {
-    listTitle.style = `display: none`;
+    listTitle.style.cssText = `display: none`;
   }
 }
 
@@ -92,7 +96,7 @@ function addBackButton() {
   backBtn.className = "backBtn hover";
   backBtn.innerHTML += `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>`;
   if (!document.querySelector(".backBtn")) {
-    headerName.prepend(backBtn);
+    headerName!.prepend(backBtn);
   }
 
   backBtn.addEventListener("click", () => {
@@ -100,10 +104,10 @@ function addBackButton() {
   });
 }
 
-function replaceBackButton({ selectedList, currentState }) {
-  const oldBackBtn = document.querySelector(".backBtn");
-  const headerName = document.querySelector(".headerNameEdit");
-  headerName.removeChild(oldBackBtn);
+function replaceBackButton({ selectedList, currentState }: {selectedList: List, currentState: string}) {
+  const oldBackBtn = document.querySelector(".backBtn") as HTMLButtonElement;
+  const headerName = document.querySelector(".headerNameEdit") as HTMLDivElement;
+  headerName!.removeChild(oldBackBtn);
 
   console.log("SELECTEDLIST " + JSON.stringify(selectedList));
 
@@ -119,7 +123,7 @@ function replaceBackButton({ selectedList, currentState }) {
 }
 
 function addHeaderTitle() {
-  const headerName = document.querySelector(".headerNameEdit");
+  const headerName = document.querySelector(".headerNameEdit") as HTMLDivElement;
   let headerNameTitle = document.createElement("h1");
   headerNameTitle.id = "settings-title";
   headerNameTitle.innerHTML = "Settings";
@@ -142,23 +146,23 @@ function renderSettingView() {
   </label>
 </div>
   `;
-  currentContent.append(settingDiv);
+  currentContent!.append(settingDiv);
 
   checkUserMode();
 }
 
 function checkUserMode() {
-  let checkbox = document.querySelector('.theme-switch input[type="checkbox"]');
+  let checkbox = document.querySelector('.theme-switch input[type="checkbox"]') as HTMLInputElement;
 
   if (systemPrefersDark() && (darkmodeFromLocal() === "true" || darkmodeFromLocal() === null)) {
-    body.classList.add("darkmode");
+    body!.classList.add("darkmode");
     checkbox.checked = true;
       console.log("dark mode preferred");
   } else if (!systemPrefersDark()) {
     console.log("No dark mode preferred");
     if (darkmodeFromLocal() === "true") {
       checkbox.checked = true;
-      body.classList.add("darkmode");
+      body!.classList.add("darkmode");
     }
   }
 }
@@ -166,14 +170,14 @@ function checkUserMode() {
 function toogleDarkmode() {
   let tooglemodeBtn = document.querySelector(
     '.theme-switch input[type="checkbox"]'
-  );
+  ) as HTMLInputElement;
 
   tooglemodeBtn.addEventListener("click", () => {
     if (tooglemodeBtn.checked) {
-      body.classList.add("darkmode");
+      body!.classList.add("darkmode");
       darkmodeToLocal("true");
     } else {
-      body.classList.remove("darkmode");
+      body!.classList.remove("darkmode");
       darkmodeToLocal("false");
     }
   });

@@ -60,9 +60,6 @@ settingsButton.currentState = "index";
 // let stringifiedLists = JSON.stringify(lists);
 // console.log("All lists:\n" + stringifiedLists);
 
-// skapar debugelement om debugMode är true
-createDebugElements(debugMode);
-
 //Funktion för edit-knapp
 function editFunc() {
   let editBtn = document.getElementById("editBtn") as HTMLButtonElement;
